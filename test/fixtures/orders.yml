@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  canal: MyString
+  proveedor: MyString
+  cliente: MyString
+  sku: MyString
+  cantidad: 
+  cantidad_despachada: 
+  precio_unitario: 
+  fecha_entrega: 2017-04-24 17:11:07
+  estado: MyString
+  motivo_rechazo: MyString
+  motivo_anulacion: MyString
+  notas: MyString
+  id_factura: MyString
+
+two:
+  id: MyString
+  canal: MyString
+  proveedor: MyString
+  cliente: MyString
+  sku: MyString
+  cantidad: 
+  cantidad_despachada: 
+  precio_unitario: 
+  fecha_entrega: 2017-04-24 17:11:07
+  estado: MyString
+  motivo_rechazo: MyString
+  motivo_anulacion: MyString
+  notas: MyString
+  id_factura: MyString
