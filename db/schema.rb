@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424204942) do
+ActiveRecord::Schema.define(version: 20170424201107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,6 @@ ActiveRecord::Schema.define(version: 20170424204942) do
     t.string   "id_factura"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-  end
-
-  create_table "warehouses", force: :cascade do |t|
-    t.string   "nombre"
-    t.integer  "capacidad"
-    t.integer  "stock"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
