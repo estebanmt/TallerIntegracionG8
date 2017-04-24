@@ -1,2 +1,0 @@
-class Warehouse < ApplicationRecord
-end
