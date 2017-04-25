@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   end
 
   # POST /orders
+  # PUT /crear
   def create
     @order = Order.new(order_params)
 
@@ -46,6 +47,12 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidad_despachada, :precio_unitario, :fecha_entrega, :estado, :motivo_rechazo, :motivo_anulacion, :notas, :id_factura)
+      params.require(:order).permit(:order_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidad_despachada,
+                                    :precio_unitario, :fecha_entrega, :estado, :motivo_rechazo, :motivo_anulacion,
+                                    :notas, :id_factura)
     end
+
+    # def order_params
+    #   params.require(:order).permit(:canal, :cantidad, :proveedor, :cliente, :sku, :fecha_entrega, :notas)
+    # end
 end
