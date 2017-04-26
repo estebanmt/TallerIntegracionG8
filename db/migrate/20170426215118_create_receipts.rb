@@ -3,7 +3,7 @@ class CreateReceipts < ActiveRecord::Migration[5.0]
     create_table :receipts do |t|
       t.string :supplier
       t.string :client
-      t.int :amount
+      t.integer :amount
 
       t.timestamps
     end
