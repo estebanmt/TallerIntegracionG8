@@ -56,7 +56,7 @@ GEM
     capistrano-rails (1.2.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rails-collection (0.1.0)
+    capistrano-rails-db (0.0.2)
       capistrano-rails (~> 1.1)
     capistrano-rbenv (2.1.1)
       capistrano (~> 3.1)
@@ -157,7 +157,7 @@ DEPENDENCIES
   capistrano (~> 3.7, >= 3.7.1)
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.2)
-  capistrano-rails-collection
+  capistrano-rails-db
   capistrano-rbenv (~> 2.1)
   hirb
   listen (~> 3.0.5)
