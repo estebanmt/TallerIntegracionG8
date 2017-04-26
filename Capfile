@@ -5,10 +5,9 @@ require "capistrano/setup"
 require "capistrano/deploy"
 require 'capistrano/rbenv'
 require 'capistrano/bundler' # Rails needs Bundler, right?
-require 'capistrano/rails/migrations'
 require 'capistrano/passenger'
-
-
+require 'capistrano/rails/db'
+require 'capistrano/rails/migrations'
 
 # Load the SCM plugin appropriate to your project:
 #
