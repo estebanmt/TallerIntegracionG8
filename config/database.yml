@@ -58,8 +58,7 @@ development:
 test:
   <<: *default
   database: TallerIntegracion_test
-  username: grupo8
-  password: grupo8
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,5 +82,10 @@ test:
 production:
   <<: *default
   database: TallerIntegracion_production
-  username: TallerIntegracion
-  password: <%= ENV['TALLERINTEGRACION_DATABASE_PASSWORD'] %>
+
+  #todo::Usar VAriables de entorno
+  #username: TallerIntegracion
+  #password: <%= ENV['TALLERINTEGRACION_DATABASE_PASSWORD'] %>
+
+  username: grupo8
+  password: grupo8
