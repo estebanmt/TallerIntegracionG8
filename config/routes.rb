@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :receipts
   resources :transactions
   resources :invoices
   resources :products
@@ -47,6 +48,9 @@ Rails.application.routes.draw do
 
   # Anular factura
   post 'cancel', to: 'invoices#cancel'
+
+  # Crear boleta
+  post 'boleta', to: 'receipts#create_from_invoice'
 
   # Ruteos acordados con otros grupos
 

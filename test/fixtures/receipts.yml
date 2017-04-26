@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supplier: MyString
+  client: MyString
+  amount: 
+
+two:
+  supplier: MyString
+  client: MyString
+  amount: 
