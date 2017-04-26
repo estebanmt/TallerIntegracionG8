@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # Ruteos acordados con otros grupos
 
   # Obtener lista de productos
-  get 'products', to: 'products#list'
+  get 'products', to: 'products#index'
 
   # Enviar orden de compra
   put 'purchase_orders', to: 'orders#receive'
