@@ -5,25 +5,89 @@ class OrdersController < ApplicationController
   # PUT /purchase_orders/:id
   # POST /recepcionar/:id
   def receive
-
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Recibido",
+    "rejection_motive": "",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # POST /purchase_orders/:id
   # PATCH /purchase_orders/accepted
   def accept
-
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Aceptado",
+    "rejection_motive": "No hay stock",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # POST /purchase_orders/:id
   # PATCH /purchase_orders/:id/rejected
   # POST /rechazar/:id
   def reject
-
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Rechazado",
+    "rejection_motive": "No hay stock",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # DELETE /anular/:id
   def cancel
-
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Anulado",
+    "rejection_motive": "",
+    "cancellation_motive": "Producto no existe",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # GET /orders
@@ -33,21 +97,76 @@ class OrdersController < ApplicationController
     render json: @orders
   end
 
+  # Metodo temporal para mock de GET /obtener/:id
+  def show_order
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Creado",
+    "rejection_motive": "",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
+  end
+
   # GET /orders/:id
   # GET /obtener/:id
   def show
-    render json: @order
+    #render json: @order
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Creado",
+    "rejection_motive": "",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # PUT /crear
   def create
-    @order = Order.new(order_params)
-
-    if @order.save
-      render json: @order, status: :created, location: @order
-    else
-      render json: @order.errors, status: :unprocessable_entity
-    end
+    # @order = Order.new(order_params)
+    #
+    # if @order.save
+    #   render json: @order, status: :created, location: @order
+    # else
+    #   render json: @order.errors, status: :unprocessable_entity
+    # end
+    render json: '[{
+    "order_id": "423",
+    "channel": "b2b",
+    "supplier": "proveedor X",
+    "client": "cliente Y",
+    "sku": "jkl567",
+    "amount": 100,
+    "amount_dispatched": 0,
+    "unit_price": 5,
+    "delivery_date": null,
+    "status": "Creado",
+    "rejection_motive": "",
+    "cancellation_motive": "",
+    "notes": "Urgente",
+    "invoice_id": "999",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # PATCH/PUT /orders/1

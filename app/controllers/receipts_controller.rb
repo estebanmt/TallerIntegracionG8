@@ -3,7 +3,13 @@ class ReceiptsController < ApplicationController
 
   # POST /boleta
   def create_from_invoice
-
+    render json: '[{
+    "receipt_id": "123",
+    "amount": 250000,
+    "sender": "empresa X",
+    "receiver": "empresa W",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
 

@@ -3,25 +3,69 @@ class TransactionsController < ApplicationController
 
   # PUT /trx
   def transfer
-
+    render json: '[{
+    "transaction_id": "123",
+    "amount": 100000,
+    "sender": "empresa X",
+    "reciever": "empresa Y",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # GET /banco/cuenta/:id
   def account
-
+    render json: '[{
+    "account_id": "123",
+    "balance": 5600000,
+    "owner": "empresa X"
+}]'
   end
 
   # GET /transactions
   def index
-    @transactions = Transaction.all
+    #@transactions = Transaction.all
 
-    render json: @transactions
+    #render json: @transactions
+    render json: '[{
+    "transaction_id": "123",
+    "amount": 100000,
+    "sender": "empresa X",
+    "reciever": "empresa Y",
+    "created_at": "2017-04-26T22:40:17.326Z"
+},{
+    "transaction_id": "123",
+    "amount": 50000,
+    "sender": "empresa X",
+    "reciever": "empresa Z",
+    "created_at": "2017-04-26T22:40:17.326Z"
+},{
+    "total": 150000
+}]'
+
+  end
+
+  # Metodo temporal para mock de GET trx/:id
+  def show_transaction
+    render json: '[{
+    "transaction_id": "123",
+    "amount": 100000,
+    "sender": "empresa X",
+    "reciever": "empresa Y",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # GET /transactions/1
   # GET /trx/:id
   def show
-    render json: @transaction
+    # render json: @transaction
+    render json: '[{
+    "transaction_id": "123",
+    "amount": 100000,
+    "sender": "empresa X",
+    "reciever": "empresa Y",
+    "created_at": "2017-04-26T22:40:17.326Z"
+}]'
   end
 
   # POST /transactions

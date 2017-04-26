@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   delete 'anular/:id', to: 'orders#cancel'
 
   # Obtener order de compra
-  get 'obtener/:id', to: 'orders#show'
+  # get 'obtener/:id', to: 'orders#show'
+  get 'obtener/:id', to: 'orders#show_order'
 
   # Ruteos del banco
 
@@ -29,7 +30,8 @@ Rails.application.routes.draw do
   put 'trx', to: 'transactions#transfer'
 
   # Obtener transaccion
-  get 'trx/:id', to: 'transactions#show'
+  #get 'trx/:id', to: 'transactions#show'
+  get 'trx/:id', to: 'transactions#show_transaction'
 
   # Obtener cartola
   get 'cartola', to: 'transactions#index'
@@ -44,13 +46,17 @@ Rails.application.routes.draw do
   post '', to: 'invoices#generate'
 
   # Obtener factura
-  get ':id', to: 'invoices#show'
+  # get ':id', to: 'invoices#show'
+  get ':id', to: 'invoices#show_invoice'
+
+  # Rechazar factura
+  post 'reject', to: 'invoices#reject'
 
   # Anular factura
   post 'cancel', to: 'invoices#cancel'
 
   # Crear boleta
-  post 'boleta', to: 'receipts#create_from_invoice'
+  post 'boleta', to: 'invoices#paid'
 
   # Ruteos acordados con otros grupos
 
