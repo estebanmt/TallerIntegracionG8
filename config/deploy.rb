@@ -13,9 +13,13 @@ set :user, 'grupo8'
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.3.1'
 
+#set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/grupo8/dev/TallerIntegracionG8"
-set :linked_files, %w{config/database.yml}
+set :deploy_to, "/home/grupo8/deploy/TallerIntegracionG8"
+#set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for :format is :airbrussh.
@@ -39,6 +43,12 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+#SSHKit.config.command_map[:rake]  = "bundle exec rake"
+#SSHKit.config.command_map[:rails] = "bundle exec rails"
+
+set :passenger_restart_with_touch, true
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
