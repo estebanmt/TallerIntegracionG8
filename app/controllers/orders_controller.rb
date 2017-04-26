@@ -1,6 +1,31 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
 
+  # PUT /purchase_orders
+  # PUT /purchase_orders/:id
+  # POST /recepcionar/:id
+  def receive
+
+  end
+
+  # POST /purchase_orders/:id
+  # PATCH /purchase_orders/accepted
+  def accept
+
+  end
+
+  # POST /purchase_orders/:id
+  # PATCH /purchase_orders/:id/rejected
+  # POST /rechazar/:id
+  def reject
+
+  end
+
+  # DELETE /anular/:id
+  def cancel
+
+  end
+
   # GET /orders
   def index
     @orders = Order.all
@@ -8,12 +33,12 @@ class OrdersController < ApplicationController
     render json: @orders
   end
 
-  # GET /orders/1
+  # GET /orders/:id
+  # GET /obtener/:id
   def show
     render json: @order
   end
 
-  # POST /orders
   # PUT /crear
   def create
     @order = Order.new(order_params)
