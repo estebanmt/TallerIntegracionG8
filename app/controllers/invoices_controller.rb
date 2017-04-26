@@ -29,6 +29,11 @@ class InvoicesController < ApplicationController
 
   end
 
+  # PUT /
+  def generate
+
+  end
+
   # GET /invoices
   def index
     @invoices = Invoice.all

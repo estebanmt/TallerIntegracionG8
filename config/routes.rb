@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   resources :invoices
   resources :products
   resources :orders
@@ -21,6 +22,31 @@ Rails.application.routes.draw do
   # Obtener order de compra
   get 'obtener/:id', to: 'orders#show'
 
+  # Ruteos del banco
+
+  # Transferir dinero
+  put 'trx', to: 'transactions#transfer'
+
+  # Obtener transaccion
+  get 'trx/:id', to: 'transactions#show'
+
+  # Obtener cartola
+  get 'cartola', to: 'transactions#index'
+
+  # Obtener cuenta y saldo
+  get 'banco/cuenta/:id', to: 'transactions#account'
+
+
+  # Ruteos de facturas
+
+  # Emitir factura
+  post '', to: 'invoices#generate'
+
+  # Obtener factura
+  get ':id', to: 'invoices#show'
+
+  # Anular factura
+  post 'cancel', to: 'invoices#cancel'
 
   # Ruteos acordados con otros grupos
 
