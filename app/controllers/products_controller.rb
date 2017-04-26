@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all
 
     render json: @products
+    #render json: '{hello}'
   end
 
   # GET /products/1
