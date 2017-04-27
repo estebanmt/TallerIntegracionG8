@@ -48,7 +48,7 @@ group :development do
 
 end
 
-
+gem 'rake-assets'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
