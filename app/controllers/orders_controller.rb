@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def render_message
-    render json: '[{"Autentificacion incorrecta"}]', :status => 401
+    render json: '[{"Error": "autentificacion incorrecta"}]', :status => 401
   end
 
 
