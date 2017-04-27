@@ -1,5 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
+  before_action :render_message, unless: :check_header
+
+  def check_header
+    !request.env["HTTP_X_ACCESS_TOKEN"].nil?
+  end
+
+  def render_message
+    render json: '[{"Autentificacion incorrecta"}]', :status => 401
+  end
+
+
 
   # PUT /purchase_orders
   # PUT /purchase_orders/:id

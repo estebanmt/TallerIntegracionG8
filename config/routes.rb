@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   # Obtener factura
   # get ':id', to: 'invoices#show'
-  get ':id', to: 'invoices#show_invoice'
+  get '1', to: 'invoices#show_invoice'
 
   # Rechazar factura
   post 'reject', to: 'invoices#reject'
@@ -58,10 +58,13 @@ Rails.application.routes.draw do
   # Crear boleta
   post 'boleta', to: 'invoices#paid'
 
+
+
   # Ruteos acordados con otros grupos
 
   # Obtener lista de productos
   get 'products', to: 'products#index'
+  get 'precios', to: 'products#index'
 
   # Enviar orden de compra
   put 'purchase_orders', to: 'orders#receive'
