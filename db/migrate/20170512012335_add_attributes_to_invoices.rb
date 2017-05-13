@@ -1,7 +1,7 @@
 class AddAttributesToInvoices < ActiveRecord::Migration[5.0]
   def change
     change_table :invoices do |t|
-      t.string :id
+      t.string :invoice_id
       t.string :supplier
       t.string :client
       t.integer :gross_amount

@@ -1,7 +1,7 @@
 class CreateWarehouses < ActiveRecord::Migration[5.0]
   def change
     create_table :warehouses do |t|
-      t.string :id
+      t.string :warehouse_id
       t.integer :spaceUsed
       t.integer :spaceTotal
       t.boolean :reception
