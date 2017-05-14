@@ -45,7 +45,11 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-rails-db'
-  gem 'wdm', '>= 0.1.0'
+end
+
+#WINDOWS Gems That don't play well with nix
+platforms :mswin do
+  gem 'wdm', '>= 0.1.0', :group => [:development, :test]
 end
 
 gem 'rake-assets'
