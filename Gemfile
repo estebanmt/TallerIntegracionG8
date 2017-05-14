@@ -52,10 +52,16 @@ platforms :mswin do
   gem 'wdm', '>= 0.1.0', :group => [:development, :test]
 end
 
+
 gem 'rake-assets'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
+
+#gem 'workflow', '~> 1.2'
+#gem 'daemons', '~> 1.2', '>= 1.2.4'
+
+gem "whenever", require: false
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

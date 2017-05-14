@@ -8,6 +8,7 @@ require 'capistrano/bundler' # Rails needs Bundler, right?
 require 'capistrano/passenger'
 require 'capistrano/rails/db'
 require 'capistrano/rails/migrations'
+require "whenever/capistrano"
 
 # Load the SCM plugin appropriate to your project:
 #
