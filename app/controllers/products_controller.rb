@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     "sku": "abc456",
     "unit_price": 100
 }]'
+
   end
 
   # GET /products/1
