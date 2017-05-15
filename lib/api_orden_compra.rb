@@ -28,15 +28,14 @@ class ApiOrdenCompra
   end
 
 
-  def self.crearOrdenCompra(cliente, proveedor, sku, fecha_entrega, cantidad, precio_unitario, canal, notas)
-    hmac = doHashSHA1('PUT' + cliente + proveedor + sku + fecha_entrega + cantidad + precio_unitario + canal + notas)
+  def self.crearOrdenCompra(cliente, proveedor, sku, fechaEntrega, cantidad, precioUnitario, canal, notas)
     puts 'hmac: ' + hmac
-    params = {'cliente' => cliente, 'proveedor' => proveedor, 'sku' => sku, 'fecha_entrega' => fecha_entrega,
-                  'cantidad' => cantidad, 'precio_unitario' => precio_unitario, 'canal' => canal, 'notas' => notas }
+    params = {'cliente' => cliente, 'proveedor' => proveedor, 'sku' => sku, 'fechaEntrega' => fechaEntrega,
+                  'cantidad' => cantidad, 'precioUnitario' => precioUnitario, 'canal' => canal, 'notas' => notas }
     return post_url(@CREAR_OC, params, hmac)
     #return hmac
   end
-  
+
   def self.recepcionarOrdenCompra(id)
     hmac = doHashSHA1('POST'.concat(id))
     params = nil
@@ -80,13 +79,7 @@ class ApiOrdenCompra
     @url = @API_URL_DEV + uri
     puts @url
 
-    puts "aaa"
-    puts params
-    puts params.to_json
-    puts @url
-
-    #@response= RestClient.put @url, params.to_json, :content_type => 'application/json'
-    @response = RestClient.put 'https://integracion-2017-dev.herokuapp.com/oc/crear', {:cliente => "2",:proveedor => "1", :sku => "1", :fechaEntrega => "99999999999991", :cantidad => "1", :precioUnitario => "1", :canal => "b2b", :notas => "1"}.to_json,:content_type => 'application/json'
+    @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)

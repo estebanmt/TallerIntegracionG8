@@ -122,8 +122,8 @@ class OrdersController < ApplicationController
 
   # PUT /crear
   def create_order
-    ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fecha_entrega],
-                                    params[:cantidad], params[:precio_unitario], params[:canal],params[:notas])
+    ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
+                                    params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
     # @order = Order.new(order_params)
     #
     # if @order.save
@@ -155,8 +155,8 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:order_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidad_despachada,
-                                    :precio_unitario, :fecha_entrega, :estado, :motivo_rechazo, :motivo_anulacion,
+      params.require(:order).permit(:_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidadDespachada,
+                                    :precioUnitario, :fechaEntrega, :estado, :motivoRechazo, :motivoAnulacion,
                                     :notas, :id_factura)
     end
 
