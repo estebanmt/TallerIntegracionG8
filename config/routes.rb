@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'rechazar/:id', to: 'orders#reject'
 
   # Anular orden de compra
-  delete 'anular/:id', to: 'orders#cancel'
+  delete 'anular/:id', to: 'orders#cancel_order'
 
   # Obtener order de compra
   # get 'obtener/:id', to: 'orders#show'

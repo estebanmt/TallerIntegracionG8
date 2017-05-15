@@ -87,24 +87,8 @@ class OrdersController < ApplicationController
   end
 
   # DELETE /anular/:id
-  def cancel
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Anulado",
-    "rejection_motive": "",
-    "cancellation_motive": "Producto no existe",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+  def cancel_order
+    ApiOrdenCompra.anularOrdenCompra(params[:id])
   end
 
   # GET /orders
@@ -116,7 +100,7 @@ class OrdersController < ApplicationController
 
   # Metodo temporal para mock de GET /obtener/:id
   def show_order
-    ApiOrdenCompra.getOrdenCompra(params[:id])
+    ApiOrdenCompra.getOrdenCompra(params[:_id], params[:motivoAnulacion])
   end
 
 
