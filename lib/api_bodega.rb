@@ -20,12 +20,9 @@ class APIBodega
     return Base64.encode64(hmac)
   end
 
-  def self.get_almacenes (almacenId)
-
-    hmac = doHashSHA1('GET'.concat(almacenId))
-    params = {:almacenId => almacenId}
-    return unique_url(@URI_GET_ALMACENES, params, hmac)
-
+  def self.get_almacenes ()
+    hmac = doHashSHA1('GET')
+    return unique_url(@URI_GET_ALMACENES, nil, hmac)
   end
 
   def self.get_skusWithStock(almacenId)
@@ -35,11 +32,17 @@ class APIBodega
   end
 
   def self.query_params(params)
-    queryParams = "";
-    params.each do |field, value|
-      queryParams.concat(field).concat("=").concat(value).concat("&");
-      return queryParams
+    if params != nil
+      queryParams = "";
+      params.each do |field, value|
+        #queryParams.concat(field).concat("=").concat(value).concat("&");
+        queryParams = queryParams + field + "=" + value + "&";
+        return queryParams
+      end
+    else
+      return nil;
     end
+
   end
 
 
@@ -52,7 +55,11 @@ class APIBodega
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     puts @auth
 
-    @url = @API_URL_DEV.concat(uri).concat("?") + @query_params
+    if @query_params != nil
+      @url = @API_URL_DEV + uri + "?" + @query_params
+    else
+      @url = @API_URL_DEV + uri
+    end
     puts @url
 
     @response = RestClient::Request.execute(
@@ -71,4 +78,5 @@ class APIBodega
 
 end
 
+APIBodega.get_almacenes()
 APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
