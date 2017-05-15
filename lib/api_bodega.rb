@@ -34,20 +34,25 @@ class APIBodega
     return unique_url(@GET_SKUS_WITH_STOCK, params, hmac)
   end
 
-  def self.add_params
-
+  def self.query_params(params)
+    queryParams = "";
+    params.each do |field, value|
+      queryParams.concat(field).concat("=").concat(value).concat("&");
+      return queryParams
+    end
   end
 
 
   def self.unique_url(uri, params, authorization)
     #response =  RestClient.Req(@API_URL_DEV.concat(uri), params, {:Content-Type => 'application/json', :Authorization => 'INTEGRACION grupo8:'.concat(authorization)})
 
-    puts params
+    @query_params = query_params(params)
+    puts @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     puts @auth
 
-    @url = @API_URL_DEV.concat(uri)
+    @url = @API_URL_DEV.concat(uri).concat("?") + @query_params
     puts @url
 
     @response = RestClient::Request.execute(
