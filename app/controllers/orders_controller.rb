@@ -22,23 +22,12 @@ class OrdersController < ApplicationController
   # PUT /purchase_orders/:id
   # POST /recepcionar/:id
   def receive
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Recibido",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+    puts params[:_id]
+    puts params[:_id]
+    puts params[:_id]
+    puts params[:_id]
+
+    ApiOrdenCompra.receiveOrdenCompra(params[:_id])
   end
 
   # POST /purchase_orders/:id

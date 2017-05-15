@@ -10,6 +10,7 @@ class ApiOrdenCompra
   @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/oc/'
 
   @GET_OC = 'obtener/'
+  @RECEIVE_OC = 'recepcionar/'
   @CREAR_OC = 'crear/'
 
   def self.doHashSHA1(authorization)
@@ -27,6 +28,11 @@ class ApiOrdenCompra
     #return hmac
   end
 
+  def self.receiveOrdenCompra(id)
+    #hmac = doHashSHA1('POST' + id)
+    params = { '_id' => id }
+    return post_url(@RECEIVE_OC + id, params, '')
+  end
 
   def self.crearOrdenCompra(cliente, proveedor, sku, fechaEntrega, cantidad, precioUnitario, canal, notas)
     puts 'hmac: ' + hmac
@@ -36,11 +42,6 @@ class ApiOrdenCompra
     #return hmac
   end
 
-  def self.recepcionarOrdenCompra(id)
-    hmac = doHashSHA1('POST'.concat(id))
-    params = nil
-    return get_url(@GET_OC + id, params, hmac)
-  end
 
   def self.get_url(uri, params, authorization)
     #puts 'hello' + params
@@ -81,6 +82,21 @@ class ApiOrdenCompra
 
     @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
 
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+  end
+
+  def self.post_url(uri, params, authorization)
+    puts params
+
+    @auth = 'INTEGRACION grupo8:'.concat(authorization)
+    puts @auth
+
+    @url = @API_URL_DEV + uri
+    puts @url
+
+    @response=RestClient.post @url, params.to_json, :content_type => :json
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     puts json
