@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Ruteos del enunciado
 
   # Crear orden de compra
-  put 'crear', to: 'orders#create'
+  put 'crear', to: 'orders#create_order'
 
   # Recepcionar orden de compra
   post 'recepcionar/:id', to: 'orders#receive'

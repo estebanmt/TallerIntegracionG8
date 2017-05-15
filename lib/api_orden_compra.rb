@@ -2,12 +2,14 @@ require 'rest_client'
 require 'openssl'
 require "base64"
 require 'digest'
+require 'security'
 
 class ApiOrdenCompra
   @key = '0pPfDeRT'
   @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/oc/'
 
   @GET_OC = 'obtener/'
+  @CREAR_OC = 'crear/'
 
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
@@ -20,6 +22,14 @@ class ApiOrdenCompra
     puts 'hmac: ' + hmac
     params = nil
     return get_url(@GET_OC + id, params, hmac)
+    #return hmac
+  end
+
+  def self.crearOrdenCompra(cliente, proveedor, sku, fecha_entrega, cantidad, precio_unitario, canal, notas)
+    hmac = doHashSHA1('PUT' + cliente + proveedor + sku + fecha_entrega + cantidad + precio_unitario + canal + notas)
+    puts 'hmac: ' + hmac
+    params = nil
+    return get_url(@CREAR_OC, params, hmac)
     #return hmac
   end
 

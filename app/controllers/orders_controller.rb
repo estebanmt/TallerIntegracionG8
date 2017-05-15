@@ -119,31 +119,11 @@ class OrdersController < ApplicationController
     ApiOrdenCompra.getOrdenCompra(params[:id])
   end
 
-  # GET /orders/:id
-  # GET /obtener/:id
-  def show
-    #render json: @order
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
-  end
 
   # PUT /crear
-  def create
+  def create_order
+    ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fecha_entrega],
+                                    params[:cantidad], params[:precio_unitario], params[:canal],params[:notas])
     # @order = Order.new(order_params)
     #
     # if @order.save
