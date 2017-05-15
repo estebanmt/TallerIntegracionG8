@@ -27,6 +27,7 @@ class ApiOrdenCompra
     #return hmac
   end
 
+
   def self.crearOrdenCompra(cliente, proveedor, sku, fecha_entrega, cantidad, precio_unitario, canal, notas)
     hmac = doHashSHA1('PUT' + cliente + proveedor + sku + fecha_entrega + cantidad + precio_unitario + canal + notas)
     puts 'hmac: ' + hmac
@@ -34,6 +35,12 @@ class ApiOrdenCompra
                   'cantidad' => cantidad, 'precio_unitario' => precio_unitario, 'canal' => canal, 'notas' => notas }
     return post_url(@CREAR_OC, params, hmac)
     #return hmac
+  end
+  
+  def self.recepcionarOrdenCompra(id)
+    hmac = doHashSHA1('POST'.concat(id))
+    params = nil
+    return get_url(@GET_OC + id, params, hmac)
   end
 
   def self.get_url(uri, params, authorization)
