@@ -24,6 +24,12 @@ class ApiOrdenCompra
     #return hmac
   end
 
+  def self.recepcionarOrdenCompra(id)
+    hmac = doHashSHA1('POST'.concat(id))
+    params = nil
+    return get_url(@GET_OC + id, params, hmac)
+  end
+
   def self.get_url(uri, params, authorization)
     #puts 'hello' + params
 
