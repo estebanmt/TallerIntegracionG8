@@ -104,7 +104,7 @@ class APIBodega
 
 end
 
-APIBodega.get_almacenes()
-APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
-APIBodega.get_stock('53', '590baa77d6b4ec0004902cbf')
-APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')
+#APIBodega.get_almacenes()
+#APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
+#APIBodega.get_stock('53', '590baa77d6b4ec0004902cbf')
+#APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')

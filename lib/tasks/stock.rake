@@ -6,7 +6,7 @@ namespace :stock do
   desc "Check Stock level"
   task check: :environment do
     puts "#{Time.now} - Generate Authorization!"
-    APIBodega.GET_ALMACENES('590baa77d6b4ec0004902cbf')
+    APIBodega.get_almacenes()
   end
 
 end
