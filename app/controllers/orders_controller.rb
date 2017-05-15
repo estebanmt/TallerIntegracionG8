@@ -1,6 +1,12 @@
+require 'rest-client'
+require 'openssl'
+require "base64"
+require 'digest'
+require 'api_orden_compra'
+
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
-  before_action :render_message, unless: :check_header
+  #before_action :render_message, unless: :check_header
 
   def check_header
     !request.env["HTTP_X_ACCESS_TOKEN"].nil?
@@ -110,23 +116,7 @@ class OrdersController < ApplicationController
 
   # Metodo temporal para mock de GET /obtener/:id
   def show_order
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+    ApiOrdenCompra.getOrdenCompra(params[:id])
   end
 
   # GET /orders/:id
