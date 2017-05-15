@@ -11,7 +11,7 @@ class Security
     return Base64.encode64(hmac)
   end
 end
-#Security.doHashSHA1('GET590baa77d6b4ec0004902cbf')
+Security.doHashSHA1('GET590baa77d6b4ec0004902cbf')
 
 
 
