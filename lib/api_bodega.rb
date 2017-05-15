@@ -10,8 +10,6 @@ class APIBodega
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
 
   def initialize()
-
-
   end
 
   def self.doHashSHA1(authorization)
@@ -31,6 +29,12 @@ class APIBodega
     return unique_url(@GET_SKUS_WITH_STOCK, params, hmac)
   end
 
+  def self.mover_Stock(productoId, almacenId)
+    hmac = doHashSHA1('GET'.concat(productoId).concat(almacenId))
+    params = {'almacenId' => almacenId}
+    return unique_url(@GET_SKUS_WITH_STOCK, params, hmac)
+  end
+
   def self.query_params(params)
     if params != nil
       queryParams = "";
@@ -42,7 +46,6 @@ class APIBodega
     else
       return nil;
     end
-
   end
 
 
@@ -65,13 +68,11 @@ class APIBodega
     @response = RestClient::Request.execute(
         method: :get,
         url: @url,
-
         headers: {'Content-Type' => 'application/json',
                   "Authorization" => @auth})
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-
     puts json
 
   end
