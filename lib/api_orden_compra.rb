@@ -2,7 +2,6 @@ require 'rest_client'
 require 'openssl'
 require "base64"
 require 'digest'
-require 'security'
 
 class ApiOrdenCompra
   @key = '0pPfDeRT'
@@ -10,8 +9,15 @@ class ApiOrdenCompra
 
   @GET_OC = 'obtener/'
 
+  def self.doHashSHA1(authorization)
+    digest = OpenSSL::Digest.new('sha1')
+
+    hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
+    return Base64.encode64(hmac)
+  end
+
   def self.getOrdenCompra(id)
-    hmac = Security.doHashSHA1('GET'.concat(id))
+    hmac = doHashSHA1('GET'.concat(id))
     puts 'hmac: ' + hmac
     params = nil
     return get_url(@GET_OC + id, params, hmac)
