@@ -97,4 +97,13 @@ Rails.application.routes.draw do
   # Recibir pago
   patch 'invoices/:id/paid', to: 'invoices#paid'
 
+  # GET almacenes
+  get 'getAlmacenes', to: 'warehouses#getAlmacenes'
+
+  #GET skusWithStock
+  get 'getSkusWithStock/:id', to: 'warehouses#getSkusWithStock'
+
+  #GET stock
+  get 'getStock/:id/:sku', to: 'warehouses#getStock'
+
 end
