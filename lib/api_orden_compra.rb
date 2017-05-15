@@ -19,18 +19,18 @@ class ApiOrdenCompra
     hmac = doHashSHA1('GET'.concat(id))
     puts 'hmac: ' + hmac
     params = nil
-    return get_url(@GET_OC.concat(id), params, hmac)
+    return get_url(@GET_OC + id, params, hmac)
     #return hmac
   end
 
   def self.get_url(uri, params, authorization)
-    puts params
+    #puts 'hello' + params
 
     @query_params = query_params(params)
-    puts @query_params
+    #puts 'hello' + @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
+    #puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
