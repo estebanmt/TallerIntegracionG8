@@ -13,6 +13,7 @@ class ApiOrdenCompra
 
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
+
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
     return Base64.encode64(hmac)
   end
