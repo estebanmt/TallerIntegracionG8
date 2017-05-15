@@ -32,18 +32,18 @@ ActiveRecord::Schema.define(version: 20170515175500) do
   end
 
   create_table "orders", id: :serial, force: :cascade do |t|
-    t.string "order_id"
+    t.string "_id"
     t.string "canal"
     t.string "proveedor"
     t.string "cliente"
     t.string "sku"
     t.integer "cantidad"
-    t.integer "cantidad_despachada"
-    t.integer "precio_unitario"
-    t.datetime "fecha_entrega"
+    t.integer "cantidadDespachada"
+    t.integer "precioUnitario"
+    t.datetime "fechaEntrega"
     t.string "estado"
-    t.string "motivo_rechazo"
-    t.string "motivo_anulacion"
+    t.string "motivoRechazo"
+    t.string "motivoAnulacion"
     t.string "notas"
     t.string "id_factura"
     t.datetime "created_at", null: false
