@@ -131,23 +131,6 @@ class OrdersController < ApplicationController
     # else
     #   render json: @order.errors, status: :unprocessable_entity
     # end
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
   end
 
   # PATCH/PUT /orders/1
