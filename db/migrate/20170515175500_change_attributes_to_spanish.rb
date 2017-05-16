@@ -9,8 +9,8 @@ class ChangeAttributesToSpanish < ActiveRecord::Migration[5.1]
       t.rename :unit_price, :precioUnitario
       t.rename :delivery_date, :fechaEntrega
       t.rename :status, :estado
-      t.rename :rejection_motive, :motivoRechazo
-      t.rename :cancellation_motive, :motivoAnulacion
+      t.rename :rejection_motive, :rechazo
+      t.rename :cancellation_motive, :anulacion
       t.rename :notes, :notas
       t.rename :invoice_id, :id_factura
       t.rename :order_id, :_id
