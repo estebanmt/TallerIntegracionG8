@@ -112,7 +112,7 @@ class OrdersController < ApplicationController
   # PUT /crear
   def create_order
     ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
-                                    params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
+                                    params[:cantidad], params[:precioUnitario], params[:canal], params[:notas])
     # @order = Order.new(order_params)
     #
     # if @order.save
@@ -137,12 +137,12 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+  # Only allow a trusted parameter "white list" through.
     def order_params
       params.require(:order).permit(:_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidadDespachada,
                                     :precioUnitario, :fechaEntrega, :estado, :motivoRechazo, :motivoAnulacion,
