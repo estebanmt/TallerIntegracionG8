@@ -1,6 +1,12 @@
+require 'rest-client'
+require 'openssl'
+require "base64"
+require 'digest'
+require 'api_orden_compra'
+
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
-  before_action :render_message, unless: :check_header
+  #before_action :render_message, unless: :check_header
 
   def check_header
     !request.env["HTTP_X_ACCESS_TOKEN"].nil?
@@ -16,23 +22,7 @@ class OrdersController < ApplicationController
   # PUT /purchase_orders/:id
   # POST /recepcionar/:id
   def receive
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Recibido",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+     ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
   end
 
   # POST /purchase_orders/:id
@@ -59,46 +49,16 @@ class OrdersController < ApplicationController
 
   # POST /purchase_orders/:id
   # PATCH /purchase_orders/:id/rejected
+
+
   # POST /rechazar/:id
-  def reject
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Rechazado",
-    "rejection_motive": "No hay stock",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+  def reject_order
+    ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
   end
 
   # DELETE /anular/:id
-  def cancel
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Anulado",
-    "rejection_motive": "",
-    "cancellation_motive": "Producto no existe",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+  def cancel_order
+    ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
   end
 
   # GET /orders
@@ -110,74 +70,13 @@ class OrdersController < ApplicationController
 
   # Metodo temporal para mock de GET /obtener/:id
   def show_order
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
-  end
-
-  # GET /orders/:id
-  # GET /obtener/:id
-  def show
-    #render json: @order
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+    ApiOrdenCompra.getOrdenCompra(params[:_id])
   end
 
   # PUT /crear
-  def create
-    # @order = Order.new(order_params)
-    #
-    # if @order.save
-    #   render json: @order, status: :created, location: @order
-    # else
-    #   render json: @order.errors, status: :unprocessable_entity
-    # end
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Creado",
-    "rejection_motive": "",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
+  def create_order
+    ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
+                                    params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
   end
 
   # PATCH/PUT /orders/1
@@ -202,8 +101,8 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:order_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidad_despachada,
-                                    :precio_unitario, :fecha_entrega, :estado, :motivo_rechazo, :motivo_anulacion,
+      params.require(:order).permit(:_id, :canal, :proveedor, :cliente, :sku, :cantidad, :cantidadDespachada,
+                                    :precioUnitario, :fechaEntrega, :estado, :rechazo, :anulacion,
                                     :notas, :id_factura)
     end
 

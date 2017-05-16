@@ -11,17 +11,19 @@ Rails.application.routes.draw do
   # Ruteos del enunciado
 
   # Crear orden de compra
-  put 'crear', to: 'orders#create'
   get 'dashboard', to: 'dashboards#index'
+
+
+  put 'crear', to: 'orders#create_order'
 
   # Recepcionar orden de compra
   post 'recepcionar/:id', to: 'orders#receive'
 
   # Rechazar orden de compra
-  post 'rechazar/:id', to: 'orders#reject'
+  post 'rechazar/:id', to: 'orders#reject_order'
 
   # Anular orden de compra
-  delete 'anular/:id', to: 'orders#cancel'
+  post 'anular/:id', to: 'orders#cancel_order'
 
   # Obtener order de compra
   # get 'obtener/:id', to: 'orders#show'
