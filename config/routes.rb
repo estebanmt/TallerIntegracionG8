@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :warehouses
   resources :receipts
   resources :transactions
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 
   # Crear orden de compra
   put 'crear', to: 'orders#create'
+  get 'dashboard', to: 'dashboards#index'
 
   # Recepcionar orden de compra
   post 'recepcionar/:id', to: 'orders#receive'

@@ -1,0 +1,50 @@
+
+<h1>Productos</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Cantidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dicc.each do |prod| %>
+      <tr>
+        <% prod.each do |val| %>
+        <td><%= val %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1>Almacenes</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Espacio Usado</th>
+      <th>Espacio Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dicc_almacenes.each do |alma| %>
+      <tr>
+        <td><%=alma[0]%></td>
+        <%alma[1].each do |por|%>
+          <td><%= por%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
