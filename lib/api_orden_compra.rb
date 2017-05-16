@@ -2,7 +2,6 @@ require 'rest_client'
 require 'openssl'
 require "base64"
 require 'digest'
-require 'security'
 require 'json'
 
 class ApiOrdenCompra
