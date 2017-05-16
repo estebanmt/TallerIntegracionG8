@@ -17,9 +17,11 @@ class OrdersController < ApplicationController
   end
 
 
-
-  # PUT /purchase_orders
   # PUT /purchase_orders/:id
+  def receive_order
+
+  end
+
   # POST /recepcionar/:id
   def receive
      ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
