@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.assets.precompile = ['*.js', '*.css']
+  #config.assets.precompile = ['*.js', '*.css']
+  #config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+  config.assets.precompile += [/.*\.css/]
 
   config.assets.css_compressor = :yui
   config.assets.js_compressor = :uglifier
