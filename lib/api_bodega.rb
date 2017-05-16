@@ -72,13 +72,13 @@ class APIBodega
   def self.producir_Stock(sku, cantidad, trxId)
     hmac = doHashSHA1('PUT'.concat(sku + cantidad + trxId))
     params = {'productoId' => productoId, 'cantidad' => cantidad, 'trxId' => trxId}
-    return get_url(@PRODUCIR_STOCK, params, hmac)
+    return post_url(@PRODUCIR_STOCK, params, hmac)
   end
 
   def self.producir_Stock_Sin_Pago(sku, cantidad)
-    hmac = doHashSHA1('PUT'.concat(sku + cantidad))
-    params = {'productoId' => productoId, 'cantidad' => cantidad}
-    return get_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
+    hmac = doHashSHA1('PUT'+sku.to_s + cantidad.to_s)
+    params = {'sku' => sku, 'cantidad' => cantidad}
+    return put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)
@@ -96,18 +96,14 @@ class APIBodega
       skuid = sku_cantidad[i]["_id"].to_f
        if skuid == sku
         cantotal = sku_cantidad[i]["total"].to_f
-        # puts cantotal
         if cantidad <=  cantotal
-        #  puts "Entro"
           stock = get_stock(sku.to_s, @BODEGA_RECEPCION)
-          # puts stock
           for j in 0..stock.length-1
             ids.push(stock[j]["_id"])
           end
         end
        end
     end
-    # puts ids
     for i in 0..cantidad-1
       mover_Stock(ids[i],@BODEGA_GENERAL)
     end
@@ -115,12 +111,8 @@ class APIBodega
 
   def self.mover_General_Despacho(sku, cantidad)
     sku_cantidad = get_skusWithStock(@BODEGA_GENERAL)
-
     largo = sku_cantidad.length
-    #puts largo
     ids = Array.new
-
-    # puts sku_cantidad[0]["total"]
     for i in 0..largo-1
       skuid = sku_cantidad[i]["_id"].to_f
        if skuid == sku
@@ -136,13 +128,9 @@ class APIBodega
         end
        end
     end
-
-    # puts ids
-
     for i in 0..cantidad-1
       mover_Stock(ids[i],@BODEGA_DESPACHO)
     end
-
   end
 
   def self.query_params(params)
@@ -183,7 +171,7 @@ class APIBodega
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-     #puts json
+    puts json
 
     return json
 
@@ -204,6 +192,21 @@ class APIBodega
     puts json
   end
 
+  def self.put_url(uri, params, authorization)
+    # puts params
+
+    @auth = 'INTEGRACION grupo8:'.concat(authorization)
+    # puts @auth
+
+    @url = @API_URL_DEV + uri
+    # puts @url
+
+    @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+  end
+
 end
 
 #APIBodega.get_almacenes()
@@ -212,3 +215,4 @@ end
 #APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')
 #APIBodega.mover_General_Despacho(53,10)
 #APIBodega.mover_Recepcion_General(53,10)
+APIBodega.producir_Stock_Sin_Pago(38,30)
