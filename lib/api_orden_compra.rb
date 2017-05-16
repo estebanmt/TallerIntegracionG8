@@ -12,45 +12,45 @@ class ApiOrdenCompra
   @GET_OC = 'obtener/'
   @RECEIVE_OC = 'recepcionar/'
   @CREAR_OC = 'crear/'
+  @ANULAR_OC = 'anular/'
+  @RECHAZAR_OC = 'rechazar/'
 
-  def self.doHashSHA1(authorization)
-    digest = OpenSSL::Digest.new('sha1')
+  def self.rechazarOrdenCompra(id, rechazo)
+    params = {'_id' => id, 'rechazo' => rechazo}
+    return post_url(@RECHAZAR_OC + id, params)
+    #return hmac
+  end
 
-    hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
-    return Base64.encode64(hmac)
+  def self.anularOrdenCompra(id, anulacion)
+    params = {'_id' => id, 'anulacion' => anulacion}
+    return post_url(@ANULAR_OC + id, params)
+    #return hmac
   end
 
   def self.getOrdenCompra(id)
-    hmac = doHashSHA1('GET'.concat(id))
-    puts 'hmac: ' + hmac
     params = nil
-    return get_url(@GET_OC + id, params, hmac)
+    return get_url(@GET_OC + id, params)
     #return hmac
   end
 
-  def self.receiveOrdenCompra(id)
-    #hmac = doHashSHA1('POST' + id)
-    params = {'_id' => id}
-    return post_url(@RECEIVE_OC + id, params, '')
+  def self.recepcionarOrdenCompra(id)
+    params = { '_id' => id }
+    return post_url(@RECEIVE_OC + id, params)
   end
 
   def self.crearOrdenCompra(cliente, proveedor, sku, fechaEntrega, cantidad, precioUnitario, canal, notas)
-    puts 'hmac: ' + hmac
     params = {'cliente' => cliente, 'proveedor' => proveedor, 'sku' => sku, 'fechaEntrega' => fechaEntrega,
-              'cantidad' => cantidad, 'precioUnitario' => precioUnitario, 'canal' => canal, 'notas' => notas}
-    return post_url(@CREAR_OC, params, hmac)
-    #return hmac
+                  'cantidad' => cantidad, 'precioUnitario' => precioUnitario, 'canal' => canal, 'notas' => notas }
+    return put_url(@CREAR_OC, params)
   end
 
 
-  def self.get_url(uri, params, authorization)
+  def self.get_url(uri, params)
     #puts 'hello' + params
 
     @query_params = query_params(params)
     #puts 'hello' + @query_params
 
-    @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    #puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
@@ -62,20 +62,16 @@ class ApiOrdenCompra
     @response = RestClient::Request.execute(
         method: :get,
         url: @url,
-        headers: {'Content-Type' => 'application/json',
-                  "Authorization" => @auth})
+        headers: {'Content-Type' => 'application/json'})
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     puts json
   end
 
-
-  def self.post_url(uri, params, authorization)
+  def self.put_url(uri, params)
     puts params
 
-    @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
 
     @url = @API_URL_DEV + uri
     puts @url
@@ -87,14 +83,13 @@ class ApiOrdenCompra
     puts json
   end
 
-  def self.post_url(uri, params, authorization)
+  def self.post_url(uri, params)
     puts params
 
-    @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
 
     @url = @API_URL_DEV + uri
     puts @url
+    puts params
 
     @response=RestClient.post @url, params.to_json, :content_type => :json
     # TODO more error checking (500 error, etc)

@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170515175500) do
     t.integer "precioUnitario"
     t.datetime "fechaEntrega"
     t.string "estado"
-    t.string "motivoRechazo"
-    t.string "motivoAnulacion"
+    t.string "rechazo"
+    t.string "anulacion"
     t.string "notas"
     t.string "id_factura"
     t.datetime "created_at", null: false
