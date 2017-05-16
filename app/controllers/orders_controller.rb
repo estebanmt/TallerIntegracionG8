@@ -3,6 +3,8 @@ require 'openssl'
 require "base64"
 require 'digest'
 require 'api_orden_compra'
+require 'api_b2b'
+require 'json'
 
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
@@ -16,11 +18,12 @@ class OrdersController < ApplicationController
     render json: '[{"Error": "autentificacion incorrecta"}]', :status => 401
   end
 
-
   # PUT /purchase_orders/:id
-  def receive_order
-
+  def notify
+    json = ApiOrdenCompra.getOrdenCompra(params[:id])[0]
+    ApiB2b.revisarOrdenCompra(json)
   end
+
 
   # POST /recepcionar/:id
   def receive
@@ -51,8 +54,6 @@ class OrdersController < ApplicationController
 
   # POST /purchase_orders/:id
   # PATCH /purchase_orders/:id/rejected
-
-
   # POST /rechazar/:id
   def reject_order
     ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
@@ -72,7 +73,7 @@ class OrdersController < ApplicationController
 
   # Metodo temporal para mock de GET /obtener/:id
   def show_order
-    ApiOrdenCompra.getOrdenCompra(params[:_id])
+    ApiOrdenCompra.getOrdenCompra(params[:id])
   end
 
   # PUT /crear

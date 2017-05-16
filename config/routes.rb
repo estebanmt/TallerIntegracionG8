@@ -71,8 +71,8 @@ Rails.application.routes.draw do
   get 'products', to: 'products#index'
   get 'precios', to: 'products#index'
 
-  # Enviar orden de compra (otro grupo notifica que creo una o/c para nosotros)
-  put 'purchase_orders/:id', to: 'orders#receive_order'
+  # Notificar orden de compra (otro grupo notifica que creo una o/c para nosotros)
+  put 'purchase_orders/:id', to: 'orders#notify'
 
   # Informar aceptacion de orden de compra
   post 'purchase_orders/:id', to: 'orders#accept'
