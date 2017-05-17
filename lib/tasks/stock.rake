@@ -14,6 +14,7 @@ namespace :stock do
     end
     puts ids
     puts ENV["CLAVE_BODEGA"]
+    APIBodega.producirStock19
   end
 
 end
