@@ -80,19 +80,19 @@ class APIBodega
     end
   end
 
-  def self.producir_Stock_19
+  def self.producirStock19
     producir_Stock_Sin_Pago("19", 2840)
   end
-  def self.producir_Stock_20
+  def self.producirStock20
     producir_Stock_Sin_Pago("20", 2040)
   end
-  def self.producir_Stock_26
+  def self.producirStock26
     producir_Stock_Sin_Pago("26", 2016)
   end
-  def self.producir_Stock_27
+  def self.producirStock27
     producir_Stock_Sin_Pago("27", 2480)
   end
-  def self.producir_Stock_38
+  def self.producirStock38
     producir_Stock_Sin_Pago("38", 2010)
   end
 
