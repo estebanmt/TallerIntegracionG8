@@ -2,6 +2,7 @@ require 'rest_client'
 require 'openssl'
 require "base64"
 require 'digest'
+require 'json'
 
 class APIBodega
   @BODEGA_GENERAL = '590baa77d6b4ec0004902cbf'
@@ -36,6 +37,48 @@ class APIBodega
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
     return Base64.encode64(hmac)
   end
+
+  def self.getTotalStock (sku)
+    aux1 = get_stock(sku,@BODEGA_GENERAL).count
+
+    aux2 = get_stock(sku,@BODEGA_GENERAL_2).count
+
+    aux3 = get_stock(sku,@BODEGA_RECEPCION).count
+
+    aux4 = get_stock(sku,@BODEGA_PULMON).count
+
+    aux5 = get_stock(sku,@BODEGA_DESPACHO).count
+
+    suma = aux1 + aux2 + aux3 + aux4 + aux5
+
+    return suma
+  end
+
+  def self.showStockPrimas
+    puts "19:" + getTotalStock("19").to_s
+    puts "20:" + getTotalStock("20").to_s
+    puts "26:" + getTotalStock("26").to_s
+    puts "27:" + getTotalStock("27").to_s
+    puts "38:" + getTotalStock("38").to_s
+  end
+  def self.minMateriasPrimasPropias()
+      while (getTotalStock("19")<2000)
+        producir_Stock_Sin_Pago("19", 1420)
+      end
+      while (getTotalStock("20")<2000)
+        producir_Stock_Sin_Pago("20", 1800)
+      end
+      while (getTotalStock("26")<2000)
+        producir_Stock_Sin_Pago("26", 1728)
+      end
+      while (getTotalStock("27")<2000)
+        producir_Stock_Sin_Pago("27", 1860)
+      end
+      while (getTotalStock("38")<2000)
+        producir_Stock_Sin_Pago("38", 1800)
+      end
+  end
+
 
   def self.get_almacenes ()
     hmac = doHashSHA1('GET')
@@ -97,9 +140,9 @@ class APIBodega
     ids = Array.new
     # puts sku_cantidad[0]["total"]
     for i in 0..largo-1
-      skuid = sku_cantidad[i]["_id"].to_f
+      skuid = sku_cantidad[i]["_id"].to_s
        if skuid == sku
-        cantotal = sku_cantidad[i]["total"].to_f
+        cantotal = sku_cantidad[i]["total"].to_i
         if cantidad <=  cantotal
           stock = get_stock(sku.to_s, @BODEGA_RECEPCION)
           for j in 0..stock.length-1
@@ -118,9 +161,9 @@ class APIBodega
     largo = sku_cantidad.length
     ids = Array.new
     for i in 0..largo-1
-      skuid = sku_cantidad[i]["_id"].to_f
+      skuid = sku_cantidad[i]["_id"].to_s
        if skuid == sku
-        cantotal = sku_cantidad[i]["total"].to_f
+        cantotal = sku_cantidad[i]["total"].to_i
         # puts cantotal
         if cantidad <=  cantotal
         #  puts "Entro"
@@ -175,7 +218,7 @@ class APIBodega
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
+    #puts json
 
     return json
 
@@ -193,7 +236,7 @@ class APIBodega
     @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
+    #puts json
   end
 
   def self.put_url(uri, params, authorization)
@@ -208,7 +251,7 @@ class APIBodega
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
+    #puts json
   end
 
 end
@@ -219,4 +262,7 @@ end
 #APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')
 #APIBodega.mover_General_Despacho(53,10)
 #APIBodega.mover_Recepcion_General(53,10)
-APIBodega.producir_Stock_Sin_Pago(38,30)
+#APIBodega.producir_Stock_Sin_Pago(38,30)
+#APIBodega.getTotalStock("26")
+#APIBodega.stockPrimasMinimo
+#APIBodega.showStockPrimas

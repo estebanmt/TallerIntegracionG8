@@ -1,24 +1,13 @@
+require 'product_table'
+
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
 
   # GET /products
   def index
-    @products = Product.all
-
-    #render json: @products
-    render json: '[{
-    "id": 1,
-    "name": "Producto 1",
-    "sku": "abc123",
-    "unit_price": 5
-}, {
-    "id": 2,
-    "name": "Producto 2",
-    "sku": "abc456",
-    "unit_price": 100
-}]'
-
+    #@products = Product.all
+    render json: ProductTable.priceList
   end
 
   # GET /products/1
