@@ -35,6 +35,7 @@ class APIBodega
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
+    puts hmac
     return Base64.encode64(hmac)
   end
 
@@ -80,19 +81,19 @@ class APIBodega
     end
   end
 
-  def self.producir_Stock_19
+  def self.producirStock19
     producir_Stock_Sin_Pago("19", 2840)
   end
-  def self.producir_Stock_20
+  def self.producirStock20
     producir_Stock_Sin_Pago("20", 2040)
   end
-  def self.producir_Stock_26
+  def self.producirStock26
     producir_Stock_Sin_Pago("26", 2016)
   end
-  def self.producir_Stock_27
+  def self.producirStock27
     producir_Stock_Sin_Pago("27", 2480)
   end
-  def self.producir_Stock_38
+  def self.producirStock38
     producir_Stock_Sin_Pago("38", 2010)
   end
 
@@ -149,7 +150,9 @@ class APIBodega
     hmac = doHashSHA1('PUT'+sku.to_s + cantidad.to_s)
     params = {'sku' => sku, 'cantidad' => cantidad}
     OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
-    return put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
+    result = put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
+    puts result
+    return result
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)
@@ -225,14 +228,14 @@ class APIBodega
     #puts @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    #puts @auth
+    puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
     else
       @url = @API_URL_DEV + uri
     end
-    #puts @url
+    puts @url
 
     @response = RestClient::Request.execute(
         method: :get,
@@ -249,13 +252,13 @@ class APIBodega
   end
 
   def self.post_url(uri, params, authorization)
-    # puts params
+    puts params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    # puts @auth
+    puts @auth
 
     @url = @API_URL_DEV + uri
-    # puts @url
+    puts @url
 
     @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
@@ -264,13 +267,13 @@ class APIBodega
   end
 
   def self.put_url(uri, params, authorization)
-    # puts params
+    puts params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
 
     @url = @API_URL_DEV + uri
-    # puts @url
+    puts @url
 
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
