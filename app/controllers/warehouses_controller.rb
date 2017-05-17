@@ -67,19 +67,19 @@ class WarehousesController < ApplicationController
 
   # GET /orden
   def order19
-    APIbodega.producir_Stock_19
+    APIBodega.producir_Stock_19
   end
   def order20
-    APIbodega.producir_Stock_20
+    APIBodega.producir_Stock_20
   end
   def order26
-    APIbodega.producir_Stock_26
+    APIBodega.producir_Stock_26
   end
   def order27
-    APIbodega.producir_Stock_27
+    APIBodega.producir_Stock_27
   end
   def order38
-    APIbodega.producir_Stock_38
+    APIBodega.producir_Stock_38
   end
 
 
