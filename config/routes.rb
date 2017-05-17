@@ -109,4 +109,11 @@ Rails.application.routes.draw do
   #GET stock
   get 'getStock/:id/:sku', to: 'warehouses#getStock'
 
+  # GET inicializar
+  get 'inicializar/1', to: 'warehouses#initialize1'
+  get 'inicializar/2', to: 'warehouses#initialize2'
+  get 'inicializar/3', to: 'warehouses#initialize3'
+  get 'inicializar/4', to: 'warehouses#initialize4'
+  get 'inicializar/5', to: 'warehouses#initialize5'
+
 end
