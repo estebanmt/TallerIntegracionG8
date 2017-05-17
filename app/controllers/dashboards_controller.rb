@@ -2,14 +2,12 @@ require 'api_bodega.rb'
 class DashboardsController < ActionController::Base
   @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
   ##ACEITE MARA - CREMA - SEMOLA - CACAO - HARINA - SAL -LEVADURA - SEMILLAS_MARAVILLA - CEREAL_MAIZ - PAN INT
-  @ARREGLO_ALMACENES = ['590baa77d6b4ec0004902cbf', '590baa77d6b4ec0004902ea4', '590baa77d6b4ec0004902cbd', '590baa77d6b4ec0004902cbe', '590baa77d6b4ec0004902ea5']
+  @ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], ENV["BODEGA_GENERAL_2"], ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
   ##GEN-GEN2-RECEP-DESPA-PULM
 
   def index
     @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-    @ARREGLO_ALMACENES = ['590baa77d6b4ec0004902cbf', '590baa77d6b4ec0004902ea4',
-       '590baa77d6b4ec0004902cbd', '590baa77d6b4ec0004902cbe',
-        '590baa77d6b4ec0004902ea5']
+    #@ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], NV["BODEGA_GENERAL_2"], '590baa77d6b4ec0004902ea4', ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
     @dicc_skus = {}
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
