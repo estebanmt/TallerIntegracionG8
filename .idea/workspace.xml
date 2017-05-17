@@ -34,8 +34,8 @@
       <file leaf-file-name="api_bodega.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1509">
-              <caret line="268" column="4" lean-forward="true" selection-start-line="268" selection-start-column="4" selection-end-line="268" selection-end-column="4" />
+            <state relative-caret-position="138">
+              <caret line="149" column="31" lean-forward="false" selection-start-line="149" selection-start-column="31" selection-end-line="149" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -98,18 +98,8 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="122">
-              <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-              <folding>
-                <marker date="1495004939000" expanded="true" signature="140:3462" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="1396:1419" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="1624:1632" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="1671:1999" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="2044:2425" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="2454:2861" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="2968:3023" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="3108:3222" ph=" ... end" />
-                <marker date="1495004939000" expanded="true" signature="3272:3458" ph=" ... end" />
-              </folding>
+              <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -948,14 +938,7 @@
       <workItem from="1494900742558" duration="1442000" />
       <workItem from="1494953619788" duration="9950000" />
       <workItem from="1494989632780" duration="214000" />
-      <workItem from="1494995473762" duration="9367000" />
-    </task>
-    <task id="LOCAL-00002" summary="Change deploy setup">
-      <created>1493175963995</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1493175963995</updated>
+      <workItem from="1494995473762" duration="10396000" />
     </task>
     <task id="LOCAL-00003" summary="Change database access method">
       <created>1493176289710</created>
@@ -1293,11 +1276,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495005968380</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Puts results for debug">
+      <created>1495006115687</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1495006115687</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72983000" />
+    <option name="totallyTimeSpent" value="74012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
@@ -1340,7 +1330,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Generate HMAC" />
     <MESSAGE value="Add Gem Rest-Client" />
     <MESSAGE value="Add api_bodega" />
     <MESSAGE value="Add getSkusWithStock (GET)" />
@@ -1365,7 +1354,8 @@
     <MESSAGE value="Get almacenes" />
     <MESSAGE value="Get almacenes of apibodega to dashbord" />
     <MESSAGE value="Puts results of warehouse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Puts results of warehouse" />
+    <MESSAGE value="Puts results for debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Puts results for debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1763,25 +1753,15 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
-          <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-          <folding>
-            <marker date="1495004939000" expanded="true" signature="140:3462" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="1396:1419" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="1624:1632" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="1671:1999" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="2044:2425" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="2454:2861" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="2968:3023" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="3108:3222" ph=" ... end" />
-            <marker date="1495004939000" expanded="true" signature="3272:3458" ph=" ... end" />
-          </folding>
+          <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1509">
-          <caret line="268" column="4" lean-forward="true" selection-start-line="268" selection-start-column="4" selection-end-line="268" selection-end-column="4" />
+        <state relative-caret-position="138">
+          <caret line="149" column="31" lean-forward="false" selection-start-line="149" selection-start-column="31" selection-end-line="149" selection-end-column="31" />
           <folding />
         </state>
       </provider>
