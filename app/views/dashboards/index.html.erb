@@ -45,3 +45,28 @@
 </table>
 
 <br>
+
+<h1>ORDENES DE FABRICACION</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>SKU</th>
+      <th>CANTIDAD</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordenes_fabricacion.each do |lib| %>
+      <tr>
+        <td><%= lib.id %></td>
+        <td><%= lib.sku %></td>
+        <td><%= lib.cantidad %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

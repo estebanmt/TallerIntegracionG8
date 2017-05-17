@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515175500) do
+ActiveRecord::Schema.define(version: 20170517064303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20170515175500) do
     t.string "cancellation_motive"
   end
 
+  create_table "orden_fabricacions", force: :cascade do |t|
+    t.string "sku"
+    t.string "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "_id"
     t.string "canal"
@@ -42,8 +49,8 @@ ActiveRecord::Schema.define(version: 20170515175500) do
     t.integer "precioUnitario"
     t.datetime "fechaEntrega"
     t.string "estado"
-    t.string "motivoRechazo"
-    t.string "motivoAnulacion"
+    t.string "rechazo"
+    t.string "anulacion"
     t.string "notas"
     t.string "id_factura"
     t.datetime "created_at", null: false

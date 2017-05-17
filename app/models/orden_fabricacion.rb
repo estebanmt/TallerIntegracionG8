@@ -1,0 +1,2 @@
+class OrdenFabricacion < ApplicationRecord
+end

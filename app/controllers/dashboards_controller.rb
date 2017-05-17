@@ -28,6 +28,7 @@ class DashboardsController < ActionController::Base
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
     obtener_almacenes(@lista_almacenes)
+    @ordenes_fabricacion = OrdenFabricacion.all
 
   end
 
@@ -46,7 +47,7 @@ class DashboardsController < ActionController::Base
 
   def obtener_almacenes(lista_almacenes)
     almanaque = APIBodega.get_almacenes()
-    for i in 0..almanaque.length - 1 
+    for i in 0..almanaque.length - 1
       lista = []
       str = ""
       if almanaque[i]["pulmon"]
@@ -64,5 +65,6 @@ class DashboardsController < ActionController::Base
       lista_almacenes << lista
     end
   end
+
 
 end
