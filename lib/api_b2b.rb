@@ -43,6 +43,75 @@ class ApiB2b
     aceptarOrden(idOrden)
   end
 
+  def self.minMateriasPrimasProducto(sku)
+    if(sku=="53")
+      if(APIBodega.getTotalStock("52")<500)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"5","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"7","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
+      end
+      if(APIBodega.getTotalStock("26")<63)
+        minMateriasPrimasProducto("26")
+        APIBodega.producir_Stock_Sin_Pago("26",63)
+      end
+      if(APIBodega.getTotalStock("38")<250)
+        minMateriasPrimasProducto("38")
+        APIBodega.producir_Stock_Sin_Pago("38",250)
+       end
+      if(APIBodega.getTotalStock("7")<651)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"1","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"5","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"7","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+      end
+      if(APIBodega.getTotalStock("23")<15)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"1","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"6","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"7","23", "12345678901234", "15", "500", "b2b","COMPRASKU")
+
+      end
+    end
+    if(sku=="42")
+      if(APIBodega.getTotalStock("25")<67)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"1","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"5","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"7","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
+      end
+      if(APIBodega.getTotalStock("20")<71)
+        minMateriasPrimasProducto("20")
+        APIBodega.producir_Stock_Sin_Pago("20",71)
+      end
+      if(APIBodega.getTotalStock("3")<69)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"5","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
+      end
+    end
+    if(sku=="6")
+      if(APIBodega.getTotalStock("7")<300)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"1","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"5","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"7","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+      end
+      if(APIBodega.getTotalStock("49")<100)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"1","49", "12345678901234", "100", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"2","49", "12345678901234", "100", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO_PROD,"3","49", "12345678901234", "100", "500", "b2b","COMPRASKU")
+      end
+    end
+
+    if(sku=="4")
+      if(APIBodega.getTotalStock("4")<190)
+        minMateriasPrimasProducto("4")
+        APIBodega.producir_Stock_Sin_Pago("4",190)
+      end
+    end
+  end
+
+  def self.comprarMateria(sku,cantidad)
+    ApiOrdenCompra.crearOrdenCompra
+  end
 
   def self.iniciarProduccion(json)
     puts APIBodega.producir_Stock_Sin_Pago(json["sku"], json["cantidad"])
@@ -69,3 +138,5 @@ end
 #                           "fechaDespachos"=>[], "fechaEntrega"=>"9019-04-01T01:58:35.753Z", "precioUnitario"=>10,
 #                           "cantidadDespachada"=>0, "cantidad"=>120, "canal"=>"b2b", "__v"=>0}
 # )
+
+ApiB2b.minMateriasPrimasProducto("6")
