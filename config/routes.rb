@@ -116,11 +116,11 @@ Rails.application.routes.draw do
   get 'inicializar/4', to: 'warehouses#initialize4'
   get 'inicializar/5', to: 'warehouses#initialize5'
   get 'inicializar/primas', to: 'warehouses#initializePrimas'
-  get 'order/19', to: 'warehouse#order19'
-  get 'order/20', to: 'warehouse#order20'
-  get 'order/26', to: 'warehouse#order26'
-  get 'order/27', to: 'warehouse#order27'
-  get 'order/38', to: 'warehouse#order38'
+  get 'order/19', to: 'warehouses#order19'
+  get 'order/20', to: 'warehouses#order20'
+  get 'order/26', to: 'warehouses#order26'
+  get 'order/27', to: 'warehouses#order27'
+  get 'order/38', to: 'warehouses#order38'
 
 
 
