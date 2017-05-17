@@ -2,6 +2,8 @@ require 'rest-client'
 require 'openssl'
 require "base64"
 require 'digest'
+require 'api_b2b'
+require 'api_bodega'
 
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :update, :destroy]

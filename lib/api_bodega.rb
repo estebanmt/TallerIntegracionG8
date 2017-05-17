@@ -62,21 +62,21 @@ class APIBodega
     puts "38:" + getTotalStock("38").to_s
   end
   def self.minMateriasPrimasPropias()
-      while (getTotalStock("19")<2000)
-        producir_Stock_Sin_Pago("19", 1420)
-      end
-      while (getTotalStock("20")<2000)
-        producir_Stock_Sin_Pago("20", 1800)
-      end
-      while (getTotalStock("26")<2000)
-        producir_Stock_Sin_Pago("26", 1728)
-      end
-      while (getTotalStock("27")<2000)
-        producir_Stock_Sin_Pago("27", 1860)
-      end
-      while (getTotalStock("38")<2000)
-        producir_Stock_Sin_Pago("38", 1800)
-      end
+    if (getTotalStock("19")<2000)
+      producir_Stock_Sin_Pago("19", 2840)
+    end
+    if (getTotalStock("20")<2000)
+      producir_Stock_Sin_Pago("20", 2040)
+    end
+    if (getTotalStock("26")<2000)
+      producir_Stock_Sin_Pago("26", 2016)
+    end
+    if (getTotalStock("27")<2000)
+      producir_Stock_Sin_Pago("27", 2480)
+    end
+    if (getTotalStock("38")<2000)
+      producir_Stock_Sin_Pago("38", 2010)
+    end
   end
 
 
