@@ -47,7 +47,7 @@ class ApiB2b
     if(sku=="53")
       if(APIBodega.getTotalStock("52")<500)
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
       end
       if(APIBodega.getTotalStock("26")<63)
@@ -59,24 +59,24 @@ class ApiB2b
         APIBodega.producir_Stock_Sin_Pago("38",250)
        end
       if(APIBodega.getTotalStock("7")<651)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"1","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
       end
       if(APIBodega.getTotalStock("23")<15)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"1","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"6","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","23", "12345678901234", "15", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","23", "12345678901234", "15", "500", "b2b","COMPRASKU")
 
       end
     end
     if(sku=="42")
       if(APIBodega.getTotalStock("25")<67)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"1","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
       end
       if(APIBodega.getTotalStock("20")<71)
         minMateriasPrimasProducto("20")
@@ -84,19 +84,19 @@ class ApiB2b
       end
       if(APIBodega.getTotalStock("3")<69)
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
       end
     end
     if(sku=="6")
       if(APIBodega.getTotalStock("7")<300)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"1","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","7", "12345678901234", "300", "500", "b2b","COMPRASKU")
       end
       if(APIBodega.getTotalStock("49")<100)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"1","49", "12345678901234", "100", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"2","49", "12345678901234", "100", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","49", "12345678901234", "100", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e681","49", "12345678901234", "100", "500", "b2b","CCOMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","49", "12345678901234", "100", "500", "b2b","COMPRASKU")
       end
     end
