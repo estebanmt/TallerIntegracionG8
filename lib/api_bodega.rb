@@ -148,7 +148,9 @@ class APIBodega
   def self.producir_Stock_Sin_Pago(sku, cantidad)
     hmac = doHashSHA1('PUT'+sku.to_s + cantidad.to_s)
     params = {'sku' => sku, 'cantidad' => cantidad}
-    return put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
+    result put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
+    puts result
+    return result
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)

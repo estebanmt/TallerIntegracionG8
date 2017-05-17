@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3d9171fc-b36c-4444-91e0-ca4010131d7a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/dashboards_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/dashboards_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_bodega.rb" afterPath="$PROJECT_DIR$/lib/api_bodega.rb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_bodega.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api_bodega.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="185" column="23" lean-forward="true" selection-start-line="185" selection-start-column="23" selection-end-line="185" selection-end-column="23" />
+            <state relative-caret-position="196">
+              <caret line="149" column="51" lean-forward="false" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -69,15 +69,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="292">
               <caret line="108" column="12" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
-              <folding>
-                <marker date="1495001546000" expanded="true" signature="172:324" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="647:713" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="762:803" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="848:911" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="1113:1153" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="1192:1244" ph="##..." />
-                <marker date="1495001546000" expanded="true" signature="1464:1531" ph="##..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,9 +97,19 @@
       <file leaf-file-name="warehouses_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
-              <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="122">
+              <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+              <folding>
+                <marker date="1495004939000" expanded="true" signature="140:3462" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="1396:1419" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="1624:1632" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="1671:1999" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="2044:2425" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="2454:2861" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="2968:3023" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="3108:3222" ph=" ... end" />
+                <marker date="1495004939000" expanded="true" signature="3272:3458" ph=" ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,10 +134,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboards_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboards_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/dashboards_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="693">
               <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding />
             </state>
@@ -190,10 +192,10 @@
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/deploy.rb" />
-        <option value="$PROJECT_DIR$/lib/api_bodega.rb" />
         <option value="$PROJECT_DIR$/config/api_env.yml" />
         <option value="$PROJECT_DIR$/lib/tasks/stock.rake" />
         <option value="$PROJECT_DIR$/app/controllers/dashboards_controller.rb" />
+        <option value="$PROJECT_DIR$/lib/api_bodega.rb" />
       </list>
     </option>
   </component>
@@ -945,7 +947,7 @@
       <workItem from="1494900742558" duration="1442000" />
       <workItem from="1494953619788" duration="9950000" />
       <workItem from="1494989632780" duration="214000" />
-      <workItem from="1494995473762" duration="6643000" />
+      <workItem from="1494995473762" duration="8286000" />
     </task>
     <task id="LOCAL-00001" summary="Add Capistrano setup">
       <created>1493171385905</created>
@@ -1269,22 +1271,28 @@
       <option name="project" value="LOCAL" />
       <updated>1495002522285</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Get almacenes of apibodega to dashbord">
+      <created>1495002740554</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1495002740554</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70259000" />
+    <option name="totallyTimeSpent" value="71902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15277778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32661718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1680,22 +1688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="108" column="12" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
-          <folding>
-            <marker date="1495001546000" expanded="true" signature="172:324" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="647:713" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="762:803" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="848:911" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="1113:1153" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="1192:1244" ph="##..." />
-            <marker date="1495001546000" expanded="true" signature="1464:1531" ph="##..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/product_table.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1728,22 +1720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="185" column="23" lean-forward="true" selection-start-line="185" selection-start-column="23" selection-end-line="185" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/stock.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1754,8 +1730,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/dashboards_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="693">
           <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="108" column="12" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+          <folding>
+            <marker date="1495004939000" expanded="true" signature="140:3462" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="1396:1419" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="1624:1632" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="1671:1999" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="2044:2425" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="2454:2861" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="2968:3023" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="3108:3222" ph=" ... end" />
+            <marker date="1495004939000" expanded="true" signature="3272:3458" ph=" ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="149" column="51" lean-forward="false" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
           <folding />
         </state>
       </provider>
