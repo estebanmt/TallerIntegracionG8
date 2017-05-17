@@ -8,7 +8,7 @@ namespace :stock do
     puts "#{Time.now} - Generate Authorization!"
     almacenes =  APIBodega.get_almacenes()
     puts almacenes
-    almacenes.each {|almacen| puts almacen._id}
+    almacenes.each {|almacen| puts almacen[_id]}
     puts ENV["CLAVE_BODEGA"]
   end
 
