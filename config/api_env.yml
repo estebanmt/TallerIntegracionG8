@@ -1,10 +1,11 @@
 development:
-ID_GRUPO: '5910c0910e42840004f6e687'
-ID_CUENTA_BANCO: '5910c0910e42840004f6e68d'
+ID_GRUPO: '590baa00d6b4ec0004902469'
+ID_CUENTA_BANCO: '590baa00d6b4ec0004902470'
 CLAVE_BODEGA: '2T02j&xwE#tQA#e'
 USUARIO_COMPRA_EM_LINEA: 'grupo8'
-CONTRASENA_COMPRA_EM_LINEA: '$i2YrP$7'
+CONTRASENA_COMPRA_EM_LINEA: '0pPfDeRT'
 URL_API_BODEGA: 'https://integracion-2017-dev.herokuapp.com/bodega/'
+URL_API_OC: 'https://integracion-2017-dev.herokuapp.com/oc/'
 
 test:
 ID_GRUPO: '5910c0910e42840004f6e687'
@@ -13,11 +14,13 @@ CLAVE_BODEGA: '2T02j&xwE#tQA#e'
 USUARIO_COMPRA_EM_LINEA: 'grupo8'
 CONTRASENA_COMPRA_EM_LINEA: '$i2YrP$7'
 URL_API_BODEGA: 'https://integracion-2017-dev.herokuapp.com/bodega/'
+URL_API_OC: 'https://integracion-2017-dev.herokuapp.com/oc/'
 
 production:
 ID_GRUPO: '5910c0910e42840004f6e687'
 ID_CUENTA_BANCO: '5910c0910e42840004f6e68d'
-CLAVE_BODEGA: '2T02j&xwE#tQA#e'
+CLAVE_BODEGA: 'kyQqh8B9HPj$Te'
 USUARIO_COMPRA_EM_LINEA: 'grupo8'
 CONTRASENA_COMPRA_EM_LINEA: '$i2YrP$7'
-URL_API_BODEGA: 'https://integracion-2017-dev.herokuapp.com/bodega/'
+URL_API_BODEGA: 'https://integracion-2017-prod.herokuapp.com/bodega/'
+URL_API_OC: 'https://integracion-2017-prod.herokuapp.com/oc/'
