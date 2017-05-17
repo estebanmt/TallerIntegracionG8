@@ -28,8 +28,7 @@ class DashboardsController < ActionController::Base
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
     obtener_almacenes(@lista_almacenes)
-    #@ordenes_fabricacion = OrdenFabricacion.all
-    @ordenes_fabricacion = nil
+    @ordenes_fabricacion = OrdenFabricacion.all
 
 
   end
