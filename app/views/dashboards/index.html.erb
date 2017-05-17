@@ -1,7 +1,6 @@
+<h1>PRODUCTOS</h1>
 
-<h1>Productos</h1>
-
-<table class="table table-bordered">
+<table>
   <thead>
     <tr>
       <th>SKU</th>
@@ -11,37 +10,35 @@
   </thead>
 
   <tbody>
-    <% @dicc.each do |prod| %>
+    <% @dicc_skus.each do |lib| %>
       <tr>
-        <% prod.each do |val| %>
-        <td><%= val %></td>
-        <% end %>
+        <td><%= lib[0] %></td>
+        <td><%= lib[1] %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<h1>Almacenes</h1>
 
-<table class="table table-bordered">
+<h1>ALMACENES</h1>
+
+<table>
   <thead>
     <tr>
-      <th>ID</th>
       <th>Nombre</th>
-      <th>Espacio Usado</th>
-      <th>Espacio Total</th>
+      <th>Usado</th>
+      <th>Total</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @dicc_almacenes.each do |alma| %>
+    <% @lista_almacenes.each do |lib| %>
       <tr>
-        <td><%=alma[0]%></td>
-        <%alma[1].each do |por|%>
-          <td><%= por%></td>
-        <% end %>
+        <td><%= lib[0] %></td>
+        <td><%= lib[1] %></td>
+        <td><%= lib[2] %></td>
       </tr>
     <% end %>
   </tbody>
