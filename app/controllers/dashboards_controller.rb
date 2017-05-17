@@ -7,7 +7,7 @@ class DashboardsController < ActionController::Base
 
   def index
     @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-    #@ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], NV["BODEGA_GENERAL_2"], '590baa77d6b4ec0004902ea4', ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
+    @ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], NV["BODEGA_GENERAL_2"], '590baa77d6b4ec0004902ea4', ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
     @dicc_skus = {}
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
