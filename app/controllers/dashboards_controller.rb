@@ -6,8 +6,11 @@ class DashboardsController < ActionController::Base
   ##GEN-GEN2-RECEP-DESPA-PULM
 
   def index
-    @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-    @ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], ENV["BODEGA_GENERAL_2"], ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
+    #@ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
+    #@ARREGLO_ALMACENES = [ENV["BODEGA_GENERAL"], ENV["BODEGA_GENERAL_2"], ENV["BODEGA_RECEPCION"], ENV["BODEGA_DESPACHO"], ENV["BODEGA_PULMON"]]
+    puts @ARREGLO_SKUS
+    puts @ARREGLO_ALMACENES
+
     @dicc_skus = {}
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
