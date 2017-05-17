@@ -7,6 +7,7 @@ namespace :stock do
   task check: :environment do
     puts "#{Time.now} - Generate Authorization!"
     APIBodega.get_almacenes()
+    puts ENV["CLAVE_BODEGA"]
   end
 
 end
