@@ -35,6 +35,7 @@ class APIBodega
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
+    puts hmac
     return Base64.encode64(hmac)
   end
 
