@@ -30,6 +30,7 @@ class DashboardsController < ActionController::Base
     obtener_almacenes(@lista_almacenes)
     @ordenes_fabricacion = OrdenFabricacion.all
 
+
   end
 
   def obtain_skus(lista_alma, diccionario)
