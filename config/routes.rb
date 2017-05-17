@@ -115,5 +115,6 @@ Rails.application.routes.draw do
   get 'inicializar/3', to: 'warehouses#initialize3'
   get 'inicializar/4', to: 'warehouses#initialize4'
   get 'inicializar/5', to: 'warehouses#initialize5'
+  get 'inicializar/primas', to 'warehouses#initializePrimas'
 
 end

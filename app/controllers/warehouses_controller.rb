@@ -59,6 +59,9 @@ class WarehousesController < ApplicationController
   def initialize5
     ApiB2b.minMateriasPrimasProducto("23")
   end
+  def initializePrimas
+    APIBodega.minMateriasPrimasPropias
+  end
 
 
 
