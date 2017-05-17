@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   # PUT /purchase_orders/:id
   def notify
-    json = ApiOrdenCompra.getOrdenCompra(params[:id])[0]
+    json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
     ApiB2b.revisarOrdenCompra(json)
   end
 
