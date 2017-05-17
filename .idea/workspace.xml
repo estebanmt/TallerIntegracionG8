@@ -4,7 +4,6 @@
     <list default="true" id="3d9171fc-b36c-4444-91e0-ca4010131d7a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_b2b.rb" afterPath="$PROJECT_DIR$/lib/api_b2b.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_bodega.rb" afterPath="$PROJECT_DIR$/lib/api_bodega.rb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,9 +46,11 @@
       <file leaf-file-name="api_b2b.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/api_b2b.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="99" column="80" lean-forward="false" selection-start-line="99" selection-start-column="80" selection-end-line="99" selection-end-column="80" />
-              <folding />
+            <state relative-caret-position="225">
+              <caret line="141" column="1" lean-forward="false" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+              <folding>
+                <marker date="1494988133309" expanded="true" signature="5396:5931" ph="##..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -700,7 +701,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60123000" />
+    <option name="totallyTimeSpent" value="60325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1303" height="668" extended-state="6" />
@@ -1131,9 +1132,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/api_b2b.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="99" column="80" lean-forward="false" selection-start-line="99" selection-start-column="80" selection-end-line="99" selection-end-column="80" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="141" column="1" lean-forward="false" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+          <folding>
+            <marker date="1494988133309" expanded="true" signature="5396:5931" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>

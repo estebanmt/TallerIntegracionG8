@@ -261,4 +261,4 @@ end
 #APIBodega.producir_Stock_Sin_Pago(38,30)
 #APIBodega.getTotalStock("26")
 #APIBodega.stockPrimasMinimo
-APIBodega.showStockPrimas
+#APIBodega.showStockPrimas

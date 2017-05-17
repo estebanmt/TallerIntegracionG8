@@ -139,4 +139,4 @@ end
 #                           "cantidadDespachada"=>0, "cantidad"=>120, "canal"=>"b2b", "__v"=>0}
 # )
 
-ApiB2b.minMateriasPrimasProducto("6")
+#ApiB2b.minMateriasPrimasProducto("6")
