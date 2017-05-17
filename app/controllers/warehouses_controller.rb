@@ -43,6 +43,29 @@ class WarehousesController < ApplicationController
     @warehouse.destroy
   end
 
+  # GET /inicializar
+  def initialize1
+    ApiB2b.minMateriasPrimasProducto("53")
+  end
+  def initialize2
+    ApiB2b.minMateriasPrimasProducto("26")
+  end
+  def initialize3
+    ApiB2b.minMateriasPrimasProducto("38")
+  end
+  def initialize4
+    ApiB2b.minMateriasPrimasProducto("7")
+  end
+  def initialize5
+    ApiB2b.minMateriasPrimasProducto("23")
+  end
+  def initializePrimas
+    APIBodega.minMateriasPrimasPropias
+  end
+
+
+
+
   # GET almacenes
   def getAlmacenes
     @auth = 'INTEGRACION grupo8:' + doHashSHA1('GET')
