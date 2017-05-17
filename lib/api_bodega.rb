@@ -61,6 +61,7 @@ class APIBodega
     puts "27:" + getTotalStock("27").to_s
     puts "38:" + getTotalStock("38").to_s
   end
+
   def self.minMateriasPrimasPropias()
     if (getTotalStock("19")<2000)
       producir_Stock_Sin_Pago("19", 2840)
@@ -77,6 +78,28 @@ class APIBodega
     if (getTotalStock("38")<2000)
       producir_Stock_Sin_Pago("38", 2010)
     end
+  end
+
+  def self.producir_Stock_19
+    producir_Stock_Sin_Pago("19", 2840)
+  end
+  def self.producir_Stock_20
+    producir_Stock_Sin_Pago("20", 2040)
+  end
+  def self.producir_Stock_26
+    producir_Stock_Sin_Pago("26", 2016)
+  end
+  def self.producir_Stock_27
+    producir_Stock_Sin_Pago("27", 2480)
+  end
+  def self.producir_Stock_38
+    producir_Stock_Sin_Pago("38", 2010)
+  end
+
+
+
+  def self.produceStock
+    producir_Stock_Sin_Pago("20", 2040)
   end
 
 
