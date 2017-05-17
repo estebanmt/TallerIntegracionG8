@@ -227,14 +227,14 @@ class APIBodega
     #puts @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    #puts @auth
+    puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
     else
       @url = @API_URL_DEV + uri
     end
-    #puts @url
+    puts @url
 
     @response = RestClient::Request.execute(
         method: :get,
@@ -251,13 +251,13 @@ class APIBodega
   end
 
   def self.post_url(uri, params, authorization)
-    # puts params
+    puts params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    # puts @auth
+    puts @auth
 
     @url = @API_URL_DEV + uri
-    # puts @url
+    puts @url
 
     @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
@@ -266,13 +266,13 @@ class APIBodega
   end
 
   def self.put_url(uri, params, authorization)
-    # puts params
+    puts params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
 
     @url = @API_URL_DEV + uri
-    # puts @url
+    puts @url
 
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
