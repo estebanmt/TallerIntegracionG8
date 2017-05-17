@@ -10,8 +10,12 @@ class APIBodega
   @BODEGA_DESPACHO = '590baa77d6b4ec0004902cbe'
   @BODEGA_PULMON = '590baa77d6b4ec0004902ea5'
 
-  @key = '2T02j&xwE#tQA#e'
-  @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
+  #@key = '2T02j&xwE#tQA#e'
+  @key = ENV["CLAVE_BODEGA"]
+
+  #@API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
+  @API_URL_DEV = ENV["URL_API_BODEGA"]
+
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
   @GET_STOCK = 'stock'
