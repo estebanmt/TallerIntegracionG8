@@ -11,6 +11,7 @@ class APIBodega
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
   @BODEGA_PULMON = ENV["BODEGA_PULMON"]
 
+
   #@key = '2T02j&xwE#tQA#e'
   @key = ENV["CLAVE_BODEGA"]
 
