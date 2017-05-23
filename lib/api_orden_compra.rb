@@ -16,6 +16,7 @@ class ApiOrdenCompra
 
 
 
+
   # Method that receives order notification from other group (invoked by /purchase_orders/:id)
   def self.notificarPedido(id)
     return self.getOrdenCompra(id)
@@ -60,7 +61,6 @@ class ApiOrdenCompra
                   'cantidad' => cantidad, 'precioUnitario' => precioUnitario, 'canal' => canal, 'notas' => notas }
     return put_url(@CREAR_OC, params)
   end
-
 
   def self.get_url(uri, params)
     #puts 'hello' + params

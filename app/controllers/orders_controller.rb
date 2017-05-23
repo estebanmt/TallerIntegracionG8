@@ -18,83 +18,56 @@ class OrdersController < ApplicationController
     render json: '[{"Error": "autentificacion incorrecta"}]', :status => 401
   end
 
+
+  #METODOS OTROS GRUPOS
+
   # PUT /purchase_orders/:id
+  # A clientes (otros grupos)
   def notify
     json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
     ApiB2b.revisarOrdenCompra(json)
   end
 
-
-  # POST /recepcionar/:id
-  def receive
-     ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
-  end
-
-  # POST /purchase_orders/:id
+  # POST /purchase_orders/:id  ..... realizar pedido a cliente
+  def enviarOrdenCliente end
   # PATCH /purchase_orders/accepted
-  def accept
-    render json: '[{
-    "order_id": "423",
-    "channel": "b2b",
-    "supplier": "proveedor X",
-    "client": "cliente Y",
-    "sku": "jkl567",
-    "amount": 100,
-    "amount_dispatched": 0,
-    "unit_price": 5,
-    "delivery_date": null,
-    "status": "Aceptado",
-    "rejection_motive": "No hay stock",
-    "cancellation_motive": "",
-    "notes": "Urgente",
-    "invoice_id": "999",
-    "created_at": "2017-04-26T22:40:17.326Z"
-}]'
-  end
-
-  # POST /purchase_orders/:id
+  def aceptarOrdenCliente end
   # PATCH /purchase_orders/:id/rejected
-  # POST /rechazar/:id
-  def reject_order
-    ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
-  end
+    def rechazarOrdenCliente end
 
-  # DELETE /anular/:id
-  def cancel_order
-    ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
-  end
 
-  # GET /orders
-  def index
-    @orders = Order.all
 
-    render json: @orders
-  end
 
-  # Metodo temporal para mock de GET /obtener/:id
-  def show_order
-    ApiOrdenCompra.getOrdenCompra(params[:id])
-  end
+  #METODOS API PROFESOR
 
-  # PUT /crear
-  def create_order
-    ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
-                                    params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
-  end
-
-  # PATCH/PUT /orders/1
-  def update
-    if @order.update(order_params)
-      render json: @order
-    else
-      render json: @order.errors, status: :unprocessable_entity
+    # POST /recepcionar/:id
+    def receive
+      ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
     end
-  end
 
-  # DELETE /orders/1
-  def destroy
-    @order.destroy
-  end
+    # POST /rechazar/:id
+    def reject_order
+      ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
+    end
+
+    # DELETE /anular/:id
+    def cancel_order
+      ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
+    end
+
+    # Metodo temporal para mock de GET /obtener/:id
+    def show_order
+      ApiOrdenCompra.getOrdenCompra(params[:id])
+    end
+
+    # PUT /crear
+    def create_order
+      ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
+                                      params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
+    end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -109,7 +82,5 @@ class OrdersController < ApplicationController
                                     :notas, :id_factura)
     end
 
-    # def order_params
-    #   params.require(:order).permit(:canal, :cantidad, :proveedor, :cliente, :sku, :fecha_entrega, :notas)
-    # end
+
 end

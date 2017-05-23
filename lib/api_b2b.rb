@@ -43,6 +43,21 @@ class ApiB2b
     aceptarOrden(idOrden)
   end
 
+  #Recibe cantidad a comprar con su sku, y devuelve la cantidad ajustada a comprar por lote.
+  def self.cantidadLote(sku, cantidad)
+
+  end
+
+  #Metodo que compre producto a otro grupo
+  def self.comprarProducto(sku, cantidad)
+
+  end
+
+  #Retorna precio sku segun grupo
+  def self.getPrecio(sku, proveedor)
+
+  end
+
   def self.minMateriasPrimasProducto(sku)
     if(sku=="53")
       if(APIBodega.getTotalStock("52")<500)
@@ -50,14 +65,16 @@ class ApiB2b
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
       end
-      if(APIBodega.getTotalStock("26")<63)
+      if(aux=APIBodega.getTotalStock("26")<63)
+        cantidad=63-aux
+        cantidadLote("26",cantidad)
         minMateriasPrimasProducto("26")
         APIBodega.producir_Stock_Sin_Pago("26",63)
       end
       if(APIBodega.getTotalStock("38")<250)
         minMateriasPrimasProducto("38")
         APIBodega.producir_Stock_Sin_Pago("38",250)
-       end
+      end
       if(APIBodega.getTotalStock("7")<651)
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
