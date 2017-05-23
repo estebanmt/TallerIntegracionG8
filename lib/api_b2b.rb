@@ -45,7 +45,15 @@ class ApiB2b
 
   #Recibe cantidad a comprar con su sku, y devuelve la cantidad ajustada a comprar por lote.
   def self.cantidadLote(sku, cantidad)
+    h = {'4'=>'200', '6' => '30', '19' => '1420', '20' => '60', '23' => '300', '26' => '144', '27' => '620', '38' => '30', '42' => '200', '53' => '620'}
 
+    aux = h[sku].to_f
+
+    while(cantidad > aux)
+      aux = aux + h[sku].to_f
+    end
+
+    return aux
   end
 
   #Metodo que compre producto a otro grupo
@@ -157,3 +165,5 @@ end
 # )
 
 #ApiB2b.minMateriasPrimasProducto("6")
+
+ApiB2b.cantidadLote("6",113)
