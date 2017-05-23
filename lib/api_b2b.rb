@@ -198,8 +198,16 @@ class ApiB2b
 
 
   def self.getListaPrecio(id)
-    params = nil
+    @url = 'http://integra17-' + id + '.ing.puc.cl/api/publico/precios'
+    @response = RestClient::Request.execute(
+        method: :get,
+        url: @url,
+        headers: {'Content-Type' => 'application/json'})
 
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+    return json
   end
 
   def self.iniciarProduccion(json)
@@ -219,6 +227,7 @@ class ApiB2b
 
     #indicar a otro grupo que se acepto
   end
+
 end
 
 # ApiB2b.revisarOrdenCompra({"_id"=>"591a3182ea37b2000403c832", "created_at"=>"2017-05-15T22:53:54.091Z",
@@ -232,4 +241,5 @@ end
 
 #ApiB2b.cantidadLote("6",113)
 #ApiB2b.minMateriasPrimasProducto("6")
-ApiB2b.numeroLote("6", 20)
+#ApiB2b.numeroLote("6", 20)
+ApiB2b.getListaPrecio("3")
