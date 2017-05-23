@@ -5,17 +5,23 @@ require 'digest'
 require 'json'
 
 class APIBodega
-  @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
-  @BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
-  @BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
-  @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
-  @BODEGA_PULMON = ENV["BODEGA_PULMON"]
+  #@BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
+  #@BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
+  #@BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
+  #@BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+  #@BODEGA_PULMON = ENV["BODEGA_PULMON"]
 
-  #@key = '2T02j&xwE#tQA#e'
-  @key = ENV["CLAVE_BODEGA"]
+  @BODEGA_GENERAL= '590baa77d6b4ec0004902cbf'
+  @BODEGA_GENERAL_2= '590baa77d6b4ec0004902ea4'
+  @BODEGA_RECEPCION= '590baa77d6b4ec0004902cbd'
+  @BODEGA_DESPACHO= '590baa77d6b4ec0004902cbe'
+  @BODEGA_PULMON= '590baa77d6b4ec0004902ea5'
 
-  #@API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
-  @API_URL_DEV = ENV["URL_API_BODEGA"]
+  @key = '2T02j&xwE#tQA#e'
+  #@key = ENV["CLAVE_BODEGA"]
+
+  @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
+  #@API_URL_DEV = ENV["URL_API_BODEGA"]
 
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
@@ -35,23 +41,16 @@ class APIBodega
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
-    puts hmac
     return Base64.encode64(hmac)
   end
 
   def self.getTotalStock (sku)
     aux1 = get_stock(sku,@BODEGA_GENERAL).count
-
     aux2 = get_stock(sku,@BODEGA_GENERAL_2).count
-
     aux3 = get_stock(sku,@BODEGA_RECEPCION).count
-
     aux4 = get_stock(sku,@BODEGA_PULMON).count
-
     aux5 = get_stock(sku,@BODEGA_DESPACHO).count
-
     suma = aux1 + aux2 + aux3 + aux4 + aux5
-
     return suma
   end
 
@@ -151,7 +150,6 @@ class APIBodega
     params = {'sku' => sku, 'cantidad' => cantidad}
     OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
     result = put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
-    puts result
     return result
   end
 
@@ -228,14 +226,12 @@ class APIBodega
     #puts @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
     else
       @url = @API_URL_DEV + uri
     end
-    puts @url
 
     @response = RestClient::Request.execute(
         method: :get,
