@@ -142,8 +142,11 @@ class APIBodega
   end
 
   def self.producir_Stock(sku, cantidad, trxId)
-    hmac = doHashSHA1('PUT'.concat(sku + cantidad + trxId))
-    params = {'productoId' => productoId, 'cantidad' => cantidad, 'trxId' => trxId}
+    puts sku
+    puts cantidad
+    puts trxId
+    hmac = doHashSHA1('PUT'.concat(sku.to_s + cantidad.to_s + trxId.to_s))
+    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
     return post_url(@PRODUCIR_STOCK, params, hmac)
   end
 
@@ -294,3 +297,4 @@ end
 #APIBodega.getTotalStock("26")
 #APIBodega.stockPrimasMinimo
 #APIBodega.showStockPrimas
+APIBodega.producir_Stock(20, 1, "59237a51dc86600004fd628e")
