@@ -115,9 +115,15 @@ class ApiB2b
 
   #Retorna precio sku segun grupo
   def self.getPrecio(sku, proveedor)
-    if (sku=="7")
-      return 290
+    listaPrecio = getListaPrecio(proveedor)
+
+
+    for aux in listaPrecio do
+      if JSON.parse(aux)['sku']== sku then
+        precio = JSON.parse(aux)['precio']
+      end
     end
+    return precio
   end
 
   def self.minMateriasPrimasProducto(sku)
@@ -206,7 +212,6 @@ class ApiB2b
 
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
     return json
   end
 
@@ -242,4 +247,4 @@ end
 #ApiB2b.cantidadLote("6",113)
 #ApiB2b.minMateriasPrimasProducto("6")
 #ApiB2b.numeroLote("6", 20)
-ApiB2b.getListaPrecio("3")
+ApiB2b.getPrecio("1","3")
