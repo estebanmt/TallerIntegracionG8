@@ -21,7 +21,6 @@ class ApiB2b
   @ID_GRUPO7 = '590baa00d6b4ec0004902468'
 
 
-
   def self.revisarOrdenCompra(json)
     puts "INICIO"
     idOrden = json["_id"]
@@ -57,7 +56,6 @@ class ApiB2b
   #Recibe cantidad a comprar con su sku, y devuelve la cantidad ajustada a comprar por lote.
   def self.cantidadLote(sku, cantidad)
     h = {'4'=>'200', '6' => '30', '19' => '1420', '20' => '60', '23' => '300', '26' => '144', '27' => '620', '38' => '30', '42' => '200', '53' => '620'}
-
     aux = h[sku].to_f
 
     while(cantidad > aux)
@@ -67,24 +65,21 @@ class ApiB2b
     return aux
   end
 
-  #Devuelve cuantos lotes son necesarios producir para llegar al minimo de 100 unidades.
+  #Devuelve cuantos lotes son necesarios producir para llegar a la cantidad deseada
   def self.numeroLote(sku, cantidad)
     h = {'4'=>'200', '6' => '30', '19' => '1420', '20' => '60', '23' => '300', '26' => '144', '27' => '620', '38' => '30', '42' => '200', '53' => '620'}
 
-    if (cantidad==0)
-      puts 0
+    if cantidad==0
       return 0
     else
       aux = h[sku].to_f
       contador = 1
-      while(cantidad > aux)
+      while cantidad > aux
         aux = aux + h[sku].to_f
         contador = contador +1
       end
-      puts contador
       return contador
     end
-
   end
 
   #Metodo que compre producto a otro grupo
@@ -92,15 +87,16 @@ class ApiB2b
     sku_aux = sku
     cantidad_aux = cantidad
     if (sku_aux=="7")
-      precio1 = getPrecio(sku_aux, @ID_GRUPO1)
+      #precio1 = getPrecio(sku_aux, @ID_GRUPO1)
       precio3 = getPrecio(sku_aux, @ID_GRUPO3)
-      precio5 = getPrecio(sku_aux, @ID_GRUPO5)
-      precio7 = getPrecio(sku_aux, @ID_GRUPO7)
+      #precio5 = getPrecio(sku_aux, @ID_GRUPO5)
+      #precio7 = getPrecio(sku_aux, @ID_GRUPO7)
       #fecha corresponde al 02/06/2017
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 1496405760, cantidad_aux, precio1, "b2b", "")
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 1496405760, cantidad_aux, precio1, "b2b", "")
       ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 1496405760, cantidad_aux, precio3, "b2b", "")
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 1496405760, cantidad_aux, precio5, "b2b", "")
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 1496405760, cantidad_aux, precio7, "b2b", "")
+      puts "OC grupo 3 creada"
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 1496405760, cantidad_aux, precio5, "b2b", "")
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 1496405760, cantidad_aux, precio7, "b2b", "")
     end
     if (sku_aux=="49")
       precio1 = getPrecio(sku_aux, @ID_GRUPO1)
@@ -113,11 +109,51 @@ class ApiB2b
      end
   end
 
-  #Retorna precio sku segun grupo
+  #Evalua las materias primas del producto ingresado como parametro. SI faltan materias primas
+  #para poder producir la cantidad ingresada, se compran o se producen (y devuelve false)
+  #SI ya se tiene todas las materias necesarias para producir la cantidad, devuelve true.
+  def self.materiasPrimasProducto(sku, cantidad)
+
+    validador = true
+
+    #Sku 4... LOTE: 200, necesito sku: 38 (190 por lote)
+    if sku=="4"
+      cant4 = APIBodega.getTotalStock("4")
+      if cant4 < cantidad
+        lotes = numeroLote("4", cantidad-cant4)
+        cant38 = APIBodega.getTotalStock("38")
+        if (190*lotes)-cant38 > 0
+          APIBodega.producir_Stock_Sin_Pago("38", (190*lotes)-cant38)
+          validador = false
+        end
+      end
+    end
+
+
+    #SKU 6... LOTE: 30, necesita: sku: 7 (300 por lote), sku: 49 (100 por lote)
+    if sku=="6"
+      cant6 = APIBodega.getTotalStock("6")
+      if cant6<cantidad
+        lotes = numeroLote("6", cantidad-cant6)
+        cant7 = APIBodega.getTotalStock("7")
+        cant49 = APIBodega.getTotalStock("49")
+        if (300*lotes)-cant7>0
+          comprarProducto("7",(300*lotes)-cant7)
+          validador = false
+        end
+        if (100*lotes)-cant49>0
+          comprarProducto("49", (100*lotes)-cant49)
+          validador = false
+        end
+      end
+    end
+
+    return validador
+  end
+
+  #Retorna precio de un sku segun proveedor
   def self.getPrecio(sku, proveedor)
     listaPrecio = getListaPrecio(proveedor)
-
-
     for aux in listaPrecio do
       if JSON.parse(aux)['sku']== sku then
         precio = JSON.parse(aux)['precio']
@@ -126,85 +162,9 @@ class ApiB2b
     return precio
   end
 
-  def self.minMateriasPrimasProducto(sku)
-
-    if(sku=="4")
-      if(APIBodega.getTotalStock("4")<100)
-        minMateriasPrimasProducto("4")
-        APIBodega.producir_Stock_Sin_Pago("4",190)
-      end
-    end
-
-
-    #SKU 6... LOTE: 30, necesita: sku: 7 (300), sku: 49 (100)
-    if(sku=="6")
-      cant6 = APIBodega.getTotalStock("6")
-      if(cant6<100)
-        lotes = numeroLote("6", 100-cant6)
-        cant7 = APIBodega.getTotalStock("7")
-        cant49 = APIBodega.getTotalStock("49")
-        if ((300*lotes)-cant7>0)
-          comprarProducto("7",(300*lotes)-cant7)
-        end
-        if ((100*lotes)-cant49>0)
-          comprarProducto("49", (100*lotes)-cant49)
-        end
-      end
-    end
-
-    if(sku=="53")
-      if(APIBodega.getTotalStock("52")<500)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"7","52", "1495540800", "500", "500", "b2b","COMPRA SKU 52")
-      end
-      if(aux=APIBodega.getTotalStock("26")<63)
-        cantidad=63-aux
-        cantidadLote("26",cantidad)
-        minMateriasPrimasProducto("26")
-        APIBodega.producir_Stock_Sin_Pago("26",63)
-      end
-      if(APIBodega.getTotalStock("38")<250)
-        minMateriasPrimasProducto("38")
-        APIBodega.producir_Stock_Sin_Pago("38",250)
-      end
-      if(APIBodega.getTotalStock("7")<651)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
-      end
-      if(APIBodega.getTotalStock("23")<15)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"6","23", "12345678901234", "15", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","23", "12345678901234", "15", "500", "b2b","COMPRASKU")
-
-      end
-    end
-    if(sku=="42")
-      if(APIBodega.getTotalStock("25")<67)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","25", "12345678901234", "67", "500", "b2b","CCOMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","25", "12345678901234", "67", "500", "b2b","COMPRASKU")
-      end
-      if(APIBodega.getTotalStock("20")<71)
-        minMateriasPrimasProducto("20")
-        APIBodega.producir_Stock_Sin_Pago("20",71)
-      end
-      if(APIBodega.getTotalStock("3")<69)
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
-        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","3", "12345678901234", "69", "500", "b2b","COMPRASKU")
-      end
-    end
-
-
-
-  end
-
-
-  def self.getListaPrecio(id)
-    @url = 'http://integra17-' + id + '.ing.puc.cl/api/publico/precios'
+  #Retorna lista de precios de un proveedor
+  def self.getListaPrecio(proveedor)
+    @url = 'http://integra17-' + proveedor + '.ing.puc.cl/api/publico/precios'
     @response = RestClient::Request.execute(
         method: :get,
         url: @url,
@@ -247,4 +207,4 @@ end
 #ApiB2b.cantidadLote("6",113)
 #ApiB2b.minMateriasPrimasProducto("6")
 #ApiB2b.numeroLote("6", 20)
-ApiB2b.getPrecio("1","3")
+#ApiB2b.getPrecio("1","3")
