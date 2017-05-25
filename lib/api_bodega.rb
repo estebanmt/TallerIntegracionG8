@@ -12,11 +12,11 @@ class APIBodega
   @BODEGA_PULMON = ENV["BODEGA_PULMON"]
 
 
-  #@key = '2T02j&xwE#tQA#e'
-  @key = ENV["CLAVE_BODEGA"]
+  @key = '2T02j&xwE#tQA#e'
+  #@key = ENV["CLAVE_BODEGA"]
 
-  #@API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
-  @API_URL_DEV = ENV["URL_API_BODEGA"]
+  @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
+  #@API_URL_DEV = ENV["URL_API_BODEGA"]
 
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
@@ -30,6 +30,7 @@ class APIBodega
   @PRODUCIR_STOCK = 'fabrica/fabricar'
   @PRODUCIR_STOCK_SIN_PAGO = 'fabrica/fabricarSinPago'
   @GET_CUENTA_FABRICA = 'fabrica/getCuenta'
+
   def initialize()
   end
 
@@ -147,7 +148,8 @@ class APIBodega
     puts trxId
     hmac = doHashSHA1('PUT'.concat(sku.to_s + cantidad.to_s + trxId.to_s))
     params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
-    return post_url(@PRODUCIR_STOCK, params, hmac)
+    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
+    return put_url(@PRODUCIR_STOCK, params, hmac)
   end
 
   def self.producir_Stock_Sin_Pago(sku, cantidad)
@@ -271,18 +273,18 @@ class APIBodega
   end
 
   def self.put_url(uri, params, authorization)
-    puts params
+    #puts params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
 
     @url = @API_URL_DEV + uri
-    puts @url
+    #puts @url
 
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    #puts json
+    puts json
   end
 
 end
@@ -297,4 +299,5 @@ end
 #APIBodega.getTotalStock("26")
 #APIBodega.stockPrimasMinimo
 #APIBodega.showStockPrimas
-APIBodega.producir_Stock(20, 1, "59237a51dc86600004fd628e")
+#Array.new(len,val)
+#APIBodega.producir_Stock(20, 60, "59273a0a2f064d0004c979fd")
