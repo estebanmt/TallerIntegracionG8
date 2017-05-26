@@ -38,3 +38,7 @@ Order.create(order_id: '0', channel: 'B2B', supplier: 'G1', client: 'G2', sku: '
 status: 'OK', notes: 'All Ok', invoice_id: '30')
 Invoice.create(invoice_id: '30', supplier: '20', client: '23', gross_amount: 119, iva: 19, total_amount: 10, status: 'OK',
 order_id: '123' )
+
+
+Spree::Core::Engine.load_seed if defined?(Spree::Core)
+Spree::Auth::Engine.load_seed if defined?(Spree::Auth)

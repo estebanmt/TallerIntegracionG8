@@ -17,9 +17,23 @@ module TallerIntegracion
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
+
+        config.to_prepare do
+      # Load application's model / class decorators
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+
+      # Load application's view overrides
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+    end
+    
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use ActionDispatch::Flash
   end
 end
