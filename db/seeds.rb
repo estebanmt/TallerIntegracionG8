@@ -34,10 +34,8 @@ Warehouse.create(warehouse_id: 0, spaceUsed: 5, spaceTotal: 10000, reception: fa
 Warehouse.create(warehouse_id: 1, spaceUsed: 7, spaceTotal: 10, reception: true, dispatch: false, lung: false)
 Warehouse.create(warehouse_id: 2, spaceUsed: 7, spaceTotal: 10, reception: false, dispatch: true, lung: false)
 Warehouse.create(warehouse_id: 3, spaceUsed: 0, spaceTotal: 5, reception: false, dispatch: false, lung: true)
-Order.create(order_id: '0', channel: 'B2B', supplier: 'G1', client: 'G2', sku: '125', amount: 100, amount_dispatched: 121, unit_price: 30,
-status: 'OK', notes: 'All Ok', invoice_id: '30')
-Invoice.create(invoice_id: '30', supplier: '20', client: '23', gross_amount: 119, iva: 19, total_amount: 10, status: 'OK',
-order_id: '123' )
+#Order.create(order_id: '0', channel: 'B2B', supplier: 'G1', client: 'G2', sku: '125', amount: 100, amount_dispatched: 121, unit_price: 30,status: 'OK', notes: 'All Ok', invoice_id: '30')
+#Invoice.create(invoice_id: '30', supplier: '20', client: '23', gross_amount: 119, iva: 19, total_amount: 10, status: 'OK',order_id: '123' )
 
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
