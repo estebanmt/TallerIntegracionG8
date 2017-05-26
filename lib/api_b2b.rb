@@ -56,6 +56,17 @@ class ApiB2b
   def self.comprarProducto(sku, cantidad)
     sku_aux = sku
     cantidad_aux = cantidad
+
+    #OC para sku 3
+    if (sku_aux=="3")
+      precio3 = getPrecio(sku_aux, "3")
+      #precio5 = getPrecio(sku_aux, "5")
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 3 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 5 creada"
+    end
+
     #OC para sku 7
     if (sku_aux=="7")
       #precio1 = getPrecio(sku_aux, "1")
@@ -72,6 +83,24 @@ class ApiB2b
       ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       puts "OC grupo 7 creada"
     end
+
+    #OC para sku 25
+    if (sku_aux=="25")
+      #precio1 = getPrecio(sku_aux, "1")
+      precio3 = getPrecio(sku_aux, "3")
+      #precio5 = getPrecio(sku_aux, "5")
+      #precio7 = getPrecio(sku_aux, "7")
+
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 1 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 3 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 5 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 7 creada"
+    end
+
     #OC para sku 49
     if sku_aux=="49"
       #precio1 = getPrecio(sku_aux, "1")
@@ -80,13 +109,24 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       puts "grupo1 OC / SKU 49"
-      puts json_resultado
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO2, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       puts "grupo2 OC / SKU 49"
-      puts json_resultado
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       puts "grupo3 OC / SKU 49"
-      puts json_resultado
+    end
+
+    #OC para sku 52
+    if (sku_aux=="7")
+      precio3 = getPrecio(sku_aux, "3")
+      #precio5 = getPrecio(sku_aux, "5")
+      #precio7 = getPrecio(sku_aux, "7")
+
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 3 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 5 creada"
+      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 7 creada"
     end
 
   end
@@ -148,14 +188,14 @@ class ApiB2b
       if cant42<cantidad
         lotes = numeroLote("6", cantidad-cant42)
         cant3 = APIBodega.getTotalStock("3")
+        cant20 = APIBodega.getTotalStock("20")
         cant25 = APIBodega.getTotalStock("25")
-        cant20 = APIBodega.getTotalStock("8")
-        if (71*lotes)-cant20 > 0
-          APIBodega.producir_Stock_Sin_Pago("20", (71*lotes)-cant20)
-          validador = false
-        end
         if (69*lotes)-cant3>0
           comprarProducto("3",(69*lotes)-cant3)
+          validador = false
+        end
+        if (71*lotes)-cant20 > 0
+          APIBodega.producir_Stock_Sin_Pago("20", (71*lotes)-cant20)
           validador = false
         end
         if (67*lotes)-cant25>0
