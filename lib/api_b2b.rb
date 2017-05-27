@@ -21,6 +21,7 @@ class ApiB2b
   @ID_GRUPO7 = '590baa00d6b4ec0004902468'
 
 
+
   def self.revisarOrdenCompra(json)
     puts "INICIO"
     idOrden = json["_id"]
@@ -84,6 +85,26 @@ class ApiB2b
       puts "OC grupo 7 creada"
     end
 
+    #OC para sku 8
+    if (sku_aux=="8")
+      #precio1 = getPrecio(sku_aux, "1")
+      #precio3 = getPrecio(sku_aux, "3")
+      #precio5 = getPrecio(sku_aux, "5")
+      #precio7 = getPrecio(sku_aux, "7")
+      precio3 = "300"
+
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO2, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      #puts "OC grupo 2 creada"
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO4, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      #puts "OC grupo 4 creada"
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO6, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      puts "OC grupo 6 creada"
+
+      idOC = json_resultado['_id']
+      #Aqui falta avisar orden COmpra, deberia funcionar, conseguir grupo q este bien su metodo de respuesta
+      #avisarOrdenCompra(idOC, "6")
+    end
+
     #OC para sku 25
     if (sku_aux=="25")
       #precio1 = getPrecio(sku_aux, "1")
@@ -145,7 +166,7 @@ class ApiB2b
         lotes = numeroLote("4", cantidad-cant4)
         cant38 = APIBodega.getTotalStock("38")
         if (190*lotes)-cant38 > 0
-          APIBodega.producir_Stock_Sin_Pago("38", (190*lotes)-cant38)
+          #APIBodega.producir_Stock_Sin_Pago("38", (190*lotes)-cant38)
           validador = false
         end
       end
@@ -176,7 +197,7 @@ class ApiB2b
         lotes = numeroLote("23", cantidad-cant23)
         cant8 = APIBodega.getTotalStock("8")
         if (309*lotes)-cant8 > 0
-          APIBodega.producir_Stock_Sin_Pago("8", (309*lotes)-cant8)
+          comprarProducto("8", (309*lotes)-cant8)
           validador = false
         end
       end
@@ -195,7 +216,7 @@ class ApiB2b
           validador = false
         end
         if (71*lotes)-cant20 > 0
-          APIBodega.producir_Stock_Sin_Pago("20", (71*lotes)-cant20)
+          #APIBodega.producir_Stock_Sin_Pago("20", (71*lotes)-cant20)
           validador = false
         end
         if (67*lotes)-cant25>0
@@ -221,15 +242,15 @@ class ApiB2b
           validador = false
         end
         if (15*lotes)-cant23 > 0
-          APIBodega.producir_Stock_Sin_Pago("15", (15*lotes)-cant23)
+          #APIBodega.producir_Stock_Sin_Pago("15", (15*lotes)-cant23)
           validador = false
         end
         if (63*lotes)-cant26 > 0
-          APIBodega.producir_Stock_Sin_Pago("26", (63*lotes)-cant26)
+          #APIBodega.producir_Stock_Sin_Pago("26", (63*lotes)-cant26)
           validador = false
         end
         if (250*lotes)-cant38 > 0
-          APIBodega.producir_Stock_Sin_Pago("38", (250*lotes)-cant38)
+          #APIBodega.producir_Stock_Sin_Pago("38", (250*lotes)-cant38)
           validador = false
         end
         if (500*lotes)-cant52>0
@@ -296,6 +317,20 @@ class ApiB2b
     return json
   end
 
+  #Metodo que avisa a otro grupo que se le creo una OC. Se envia PUT a purchase_orders/:id
+  def self.avisarOrdenCompra(id, proveedor)
+
+    @url = 'http://integra17-' + proveedor + '.ing.puc.cl/purchase_orders/' + id
+
+    puts @url
+    @response= RestClient.put @url, {:id => id}, :content_type => 'application/json'
+
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+    return json
+  end
+
   def self.iniciarProduccion(json)
     puts APIBodega.producir_Stock_Sin_Pago(json["sku"], json["cantidad"])
     #puts APIBodega.producir_Stock_Sin_Pago("20", "60")
@@ -326,7 +361,11 @@ end
 #ApiB2b.minMateriasPrimasProducto("6")
 
 #ApiB2b.cantidadLote("6",113)
-ApiB2b.materiasPrimasProducto("6", 100)
+#ApiB2b.materiasPrimasProducto("4", 100)
+ApiB2b.materiasPrimasProducto("23", 100)
+#ApiB2b.materiasPrimasProducto("42", 100)
+#ApiB2b.materiasPrimasProducto("53", 100)
+#ApiB2b.materiasPrimasProducto("6", 100)
 #ApiB2b.numeroLote("6", 20)
 #ApiB2b.getPrecio("49","3")
 #ApiB2b.comprarProducto("49",100)
