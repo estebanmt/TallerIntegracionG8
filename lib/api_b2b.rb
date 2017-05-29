@@ -128,6 +128,7 @@ class ApiB2b
       puts "OC grupo 6 creada"
 
       idOC = json_resultado['_id']
+      puts idOC
       #Aqui falta avisar orden COmpra, deberia funcionar, conseguir grupo q este bien su metodo de respuesta
       #avisarOrdenCompra(idOC, "6")
     end
@@ -390,7 +391,7 @@ end
 
 #ApiB2b.cantidadLote("6",113)
 #ApiB2b.materiasPrimasProducto("4", 100)
-ApiB2b.materiasPrimasProducto("23", 100)
+#ApiB2b.materiasPrimasProducto("23", 100)
 #ApiB2b.materiasPrimasProducto("42", 100)
 #ApiB2b.materiasPrimasProducto("53", 100)
 #ApiB2b.materiasPrimasProducto("6", 100)
