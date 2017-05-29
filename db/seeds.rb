@@ -40,3 +40,7 @@ Warehouse.create(warehouse_id: 3, spaceUsed: 0, spaceTotal: 5, reception: false,
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+#Spree::Gateway::IIC3103pay.create(name: 'IIC3103Pay',descriptio"#{n: 'IIC3103Pay Webpay',active: true,environment: 'development')
+
+#Spree::Store.first.payment_methods << payment_method
