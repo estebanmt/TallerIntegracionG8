@@ -74,7 +74,7 @@ class APIBodega
   end
 ##AREGLAR ESTO
 
-
+# PIOLA
   def self.minMateriasPrimasPropias()
     if (getTotalStock("19")<2000)
       producir_Stock_Sin_Pago("19", 2840)
@@ -109,15 +109,15 @@ class APIBodega
   #   producir_Stock_Sin_Pago("38", 2010)
   # end
 
+
+  ##PRODUCE un lote de sku
   def self.producirStockSku(sku)
     comprobante_de_pago = APIBanco.pagar_fabricacion(sku, @LOTE_SKU[sku])
     producir_Stock(sku, @LOTE_SKU[sku], comprobante_de_pago["_id"])
   end
 
+  def self.producir_lotes(sku, cantidad_lotes)
 
-
-  def self.produceStock
-    producir_Stock_Sin_Pago("20", 2040)
   end
 
 
@@ -157,11 +157,51 @@ class APIBodega
     return get_url(@DESPACHAR_STOCK, params, hmac)
   end
 
+  def self.encontrar_sku_total(stock, sku)
+    for i in stock
+      if i["_id"] == sku.to_i
+        return i["total"]
+      end
+    end
+    return 0
+  end
+
+  def self.verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes)
+    stock = get_skusWithStock(@BODEGA_GENERAL)
+    lista_ingredientes_por_sku = ProductTable.lista_ingredientes_por_sku(sku.to_i) #ingredientes minimos x lote
+    for i in lista_ingredientes_por_sku
+      puts i.key
+    end
+    return true
+  end
+#cantidad debe ser multiple de lote
   def self.producir_Stock(sku, cantidad, trxId)
-    hmac = doHashSHA1('PUT'.concat(sku.to_s + cantidad.to_s + trxId.to_s))
-    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
-    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
-    return put_url(@PRODUCIR_STOCK, params, hmac)
+    stock = get_skusWithStock(@BODEGA_GENERAL)
+
+    case sku
+    when 4
+      total = encontrar_sku_total(stock, 38)
+      mover = cantidad/200*190
+      if total >= mover
+        mover_General_Despacho(38,mover)
+      end
+      puts arreglo[sku]
+    when 6
+      puts arreglo[sku]
+    when "20"
+      puts arreglo[sku.to_i]
+    when 23
+      puts arreglo[sku]
+    when 42
+      puts arreglo[sku]
+    when 53
+      puts arreglo[sku]
+
+    end
+   hmac = doHashSHA1('PUT'.concat(sku.to_s + cantidad.to_s + trxId.to_s))
+   params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
+   #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
+   return put_url(@PRODUCIR_STOCK, params, hmac)
   end
 
   def self.producir_Stock_Sin_Pago(sku, cantidad)
@@ -310,4 +350,6 @@ end
 #Array.new(len,val)
 #APIBodega.producir_Stock(20, 60, "59273a0a2f064d0004c979fd")
 #APIBodega.vaciar_bodega_recepcion
-#puts APIBodega.mover_General_Despacho(38, 151)
+##puts APIBodega.mover_General_Despacho(38, 151)
+#APIBodega.producir_Stock("20", 200, 20)
+APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)

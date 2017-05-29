@@ -57,7 +57,7 @@ class ApiB2b
       if(APIBodega.getTotalStock("38")<250)
         minMateriasPrimasProducto("38")
         APIBodega.producir_Stock_Sin_Pago("38",250)
-       end
+      end
       if(APIBodega.getTotalStock("7")<651)
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
         ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
