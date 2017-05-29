@@ -101,10 +101,14 @@ class ApiOrdenCompra
         numGrupo = 1
       when '590baa00d6b4ec0004902463'
         numGrupo = 2
+      when '590baa00d6b4ec0004902464'
+        numGrupo = 3
       when '590baa00d6b4ec0004902465'
         numGrupo = 4
       when '590baa00d6b4ec0004902466'
         numGrupo = 5
+      when '590baa00d6b4ec0004902467'
+        numGrupo = 6
       when '590baa00d6b4ec0004902468'
         numGrupo = 7
     end
