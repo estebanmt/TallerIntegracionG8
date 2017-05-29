@@ -101,21 +101,32 @@ class ApiB2b
       precio3 = getPrecio(sku_aux, "3")
       #precio5 = getPrecio(sku_aux, "5")
       #precio7 = getPrecio(sku_aux, "7")
+      precio1 = "300"
+      puts precio3
 
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio1, "b2b", "1")
       puts "OC grupo 1 creada"
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      puts "OC grupo 3 creada"
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      puts "OC grupo 5 creada"
-      ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      puts "OC grupo 7 creada"
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      #puts "OC grupo 3 creada"
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      #puts "OC grupo 5 creada"
+      #ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      #puts "OC grupo 7 creada"
+
+      idOC = json_resultado['_id']
+
+      begin
+        avisarOrdenCompra(idOC, "6")
+        puts "NOtificacion envaida."
+      rescue => ex
+        puts ex.message
+      end
     end
 
     #OC para sku 8
     if (sku_aux=="8")
       #precio1 = getPrecio(sku_aux, "1")
-      #precio3 = getPrecio(sku_aux, "3")
+      precio3 = getPrecio(sku_aux, "3")
       #precio5 = getPrecio(sku_aux, "5")
       #precio7 = getPrecio(sku_aux, "7")
       precio3 = "300"
@@ -130,7 +141,11 @@ class ApiB2b
       idOC = json_resultado['_id']
       puts idOC
       #Aqui falta avisar orden COmpra, deberia funcionar, conseguir grupo q este bien su metodo de respuesta
-      #avisarOrdenCompra(idOC, "6")
+      begin
+        avisarOrdenCompra(idOC, "6")
+      rescue => ex
+        puts ex.message
+      end
     end
 
     #OC para sku 25
@@ -165,7 +180,7 @@ class ApiB2b
     end
 
     #OC para sku 52
-    if (sku_aux=="7")
+    if (sku_aux=="52")
       precio3 = getPrecio(sku_aux, "3")
       #precio5 = getPrecio(sku_aux, "5")
       #precio7 = getPrecio(sku_aux, "7")
@@ -211,10 +226,10 @@ class ApiB2b
           comprarProducto("7",(300*lotes)-cant7)
           validador = false
         end
-        if (100*lotes)-cant49>0
-          comprarProducto("49", (100*lotes)-cant49)
-          validador = false
-        end
+        #if (100*lotes)-cant49>0
+        #  comprarProducto("49", (100*lotes)-cant49)
+        #  validador = false
+        #end
       end
     end
 
