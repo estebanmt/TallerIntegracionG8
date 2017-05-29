@@ -15,6 +15,19 @@ class APIBodega
   @BODEGA_RECEPCION = '590baa77d6b4ec0004902cbd'
   @BODEGA_DESPACHO = '590baa77d6b4ec0004902cbe'
   @BODEGA_PULMON = '590baa77d6b4ec0004902ea5'
+  @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
+              [6, 'Crema', 'Lts', 49, 'Leche Descremada', 100, 'Lts'],
+              [6, 'Crema', 'Lts', 7, 'Leche', 300, 'Lts'],
+              [23, 'Harina', 'Kg', 8, 'Trigo', 309, 'Kg'],
+              [42, 'Cereal Maiz', 'Kg', 25, 'Azucar', 67, 'Kg'],
+              [42, 'Cereal Maiz', 'Kg', 20, 'Cacao', 71, 'Kg'],
+              [42, 'Cereal Maiz', 'Kg', 3, 'Maiz', 69, 'Kg'],
+              [53, 'Pan Integral', 'Kg', 52, 'Harina Integral', 500, 'Kg'],
+              [53, 'Pan Integral', 'Kg', 26, 'Sal', 63, 'Kg'],
+              [53, 'Pan Integral', 'Kg', 7, 'Leche', 651, 'Lts'],
+              [53, 'Pan Integral', 'Kg', 23, 'Harina', 15, 'Kg'],
+              [53, 'Pan Integral', 'Kg', 38, 'Semillas Maravilla', 250,'Kg']
+  ]
 
   @LOTE_SKU = ["4" => 200, "6"=> 30, "19"=> 1420, "20"=> 60, "23"=>300,
      "26"=>144, "27"=> 620, "38"=> 30, "42"=> 200, "53"=> 620]
@@ -42,10 +55,21 @@ class APIBodega
   def initialize()
   end
 
+  def self.lista_ingredientes_por_sku(sku)
+    #sku => necesario
+    totales_por_sku = {}
+    for i in @ingredients
+      if i[0] == sku.to_i
+        totales_por_sku[i[3]] = i[5]
+      end
+    end
+    return totales_por_sku
+  end
+
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
     hmac = OpenSSL::HMAC.digest(digest, @key, authorization)
-    puts hmac
+    #puts hmac
     return Base64.encode64(hmac)
   end
 
@@ -110,16 +134,73 @@ class APIBodega
   # end
 
 
-  ##PRODUCE un lote de sku
+  #############################################################################
+  #SOLUCIONANDO PROBLEMAS CON APIBanco
+  #############################################################################
+
+
+  @CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
+  @CUENTA_BANCO = "590baa00d6b4ec0004902470"
+  @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
+     "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
+
+  @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
+  @key_bodega = '2T02j&xwE#tQA#e'
+
+
+
+  def self.pagar_fabricacion(sku, cantidad_unitaria)
+    total_a_pagar = @COSTO_SKU[0][sku.to_s].to_i*cantidad_unitaria.to_i
+    #puts "@COSTO_SKU"
+    #puts @COSTO_SKU[0][sku.to_s]*cantidad_unitaria.to_i
+    return self.transferir(total_a_pagar)
+  end
+
+  def self.transferir(monto)
+    hmac = doHashSHA1('PUT')
+    params = {'monto' => monto, 'origen' => @CUENTA_BANCO, 'destino' => @CUENTA_FABRICA}
+    response = put_url_banco("/trx", params, hmac)
+    #return response["_id"]
+    return response
+  end
+
+  def self.put_url_banco(uri, params, authorization)
+    #@auth = 'INTEGRACION grupo8:'.concat(authorization)
+    @url = @URL_PAGO_TRANSFERENCIA + uri
+    #puts params
+    @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json#, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    return json
+  end
+
+    #############################################################################
+    #SOLUCIONANDO PROBLEMAS CON APIBanco
+    #############################################################################
+
+  ##PRODUCE un lote de sku, cualquiera, solo necesario el sku
   def self.producirStockSku(sku)
-    comprobante_de_pago = APIBanco.pagar_fabricacion(sku, @LOTE_SKU[sku])
-    producir_Stock(sku, @LOTE_SKU[sku], comprobante_de_pago["_id"])
+    #puts @LOTE_SKU[0][sku.to_s]
+    comprobante_de_pago = pagar_fabricacion(sku, @LOTE_SKU[0][sku.to_s])
+    #"592bc3658794840004e952e4"
+    producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
+    #producir_Stock(sku, @LOTE_SKU[0][sku.to_s], "592bc3658794840004e952e4")
+
   end
 
+  #Solo para productos elaborados, para materia prima llamar diurecto a producirStockSku
   def self.producir_lotes(sku, cantidad_lotes)
+    if verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes) #Si pasa, estamos OK
+      lista_totales_por_sku = lista_ingredientes_por_sku(sku)
+      for k in 0..cantidad_lotes - 1
+        for i in lista_totales_por_sku
+          puts mover_General_Despacho(i[0], i[1]) # i[0]:sku mat prima, i[1], cantid x lote de mat prima
+        end
+        puts producirStockSku(sku)
+      end
+    end
 
   end
-
 
   def self.get_almacenes ()
     hmac = doHashSHA1('GET')
@@ -137,7 +218,6 @@ class APIBodega
     params = {'almacenId' => almacenId, 'sku' => sku}
     return get_url(@GET_STOCK, params, hmac)
   end
-
 
   def self.mover_Stock(productoId, almacenId)
     hmac = doHashSHA1('POST'.concat(productoId).concat(almacenId))
@@ -168,49 +248,26 @@ class APIBodega
 
   def self.verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes)
     stock = get_skusWithStock(@BODEGA_GENERAL)
-    lista_ingredientes_por_sku = ProductTable.lista_ingredientes_por_sku(sku.to_i) #ingredientes minimos x lote
+    lista_ingredientes_por_sku = lista_ingredientes_por_sku(sku.to_i) #ingredientes minimos x lote
     for i in lista_ingredientes_por_sku
-      puts i.key
+      for j in stock
+        if i[0].to_i == j["_id"].to_i
+          if i[1].to_i > j["total"].to_i
+            return false
+          end
+        end
+      end
     end
     return true
   end
-#cantidad debe ser multiple de lote
+
+#se produce un lote, lo llama producirStockSku
   def self.producir_Stock(sku, cantidad, trxId)
-    stock = get_skusWithStock(@BODEGA_GENERAL)
-
-    case sku
-    when 4
-      total = encontrar_sku_total(stock, 38)
-      mover = cantidad/200*190
-      if total >= mover
-        mover_General_Despacho(38,mover)
-      end
-      puts arreglo[sku]
-    when 6
-      puts arreglo[sku]
-    when "20"
-      puts arreglo[sku.to_i]
-    when 23
-      puts arreglo[sku]
-    when 42
-      puts arreglo[sku]
-    when 53
-      puts arreglo[sku]
-
-    end
+   #stock = get_skusWithStock(@BODEGA_GENERAL)
    hmac = doHashSHA1('PUT'.concat(sku.to_s + cantidad.to_s + trxId.to_s))
    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
    return put_url(@PRODUCIR_STOCK, params, hmac)
-  end
-
-  def self.producir_Stock_Sin_Pago(sku, cantidad)
-    hmac = doHashSHA1('PUT'+sku.to_s + cantidad.to_s)
-    params = {'sku' => sku, 'cantidad' => cantidad}
-    OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
-    result = put_url(@PRODUCIR_STOCK_SIN_PAGO, params, hmac)
-    puts result
-    return result
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)
@@ -222,8 +279,8 @@ class APIBodega
     stock = get_stock(sku.to_s, @BODEGA_RECEPCION)
     while stock.length != 0
       for i in 0..stock.length-1
-        puts mover_Stock(stock[i]["_id"],@BODEGA_GENERAL)
-        if i != 0 && i%50==0
+        mover_Stock(stock[i]["_id"],@BODEGA_GENERAL)
+        if i != 0 && i%40==0
           puts 'DURMIENDOOOOOOOO'*10
           sleep(15)
         end
@@ -241,7 +298,6 @@ class APIBodega
     puts "termino de vaciar recepcion"
   end
 
-
   def self.mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku.to_s, @BODEGA_GENERAL)
     #puts stock
@@ -250,14 +306,33 @@ class APIBodega
         if cantidad == 0
           return 'Hello there, finished moving'
         end
-        puts mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
+        mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
         cantidad -= 1
-        if i != 0 && i%50==0
+        if i != 0 && i%100==0
           puts 'DURMIENDOOOOOOOO'*10
-          sleep(15)
+          #sleep(15)
         end
       end
       stock = get_stock(sku.to_s, @BODEGA_GENERAL)
+    end
+  end
+
+  def self.mover_Despacho_General(sku, cantidad)
+    stock = get_stock(sku.to_s, @BODEGA_DESPACHO)
+    #puts stock
+    while stock.length != 0
+      for i in 0..stock.length - 1
+        if cantidad == 0
+          return 'Hello there, finished moving'
+        end
+        mover_Stock(stock[i]["_id"],@BODEGA_GENERAL)
+        cantidad -= 1
+        if i != 0 && i%40==0
+          #puts 'DURMIENDOOOOOOOO'*10
+          #sleep(15)
+        end
+      end
+      stock = get_stock(sku.to_s, @BODEGA_DESPACHO)
     end
   end
 
@@ -274,7 +349,6 @@ class APIBodega
     end
   end
 
-
   def self.get_url(uri, params, authorization)
     #puts params
 
@@ -282,14 +356,12 @@ class APIBodega
     #puts @query_params
 
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
 
     if @query_params != nil
       @url = @API_URL_DEV + uri + "?" + @query_params
     else
       @url = @API_URL_DEV + uri
     end
-    puts @url
 
     @response = RestClient::Request.execute(
         method: :get,
@@ -300,24 +372,22 @@ class APIBodega
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     #puts json
-
     return json
 
   end
 
   def self.post_url(uri, params, authorization)
-    puts params
-
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    puts @auth
-
     @url = @API_URL_DEV + uri
-    puts @url
-
     @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
+    puts @response.code
+    while @response.code != 200
+      puts "-"*200
+      @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    end
     json = JSON.parse(@response.body)
-    puts json
+    #puts json
   end
 
   def self.put_url(uri, params, authorization)
@@ -335,13 +405,17 @@ class APIBodega
     puts json
   end
 
+  def self.probando
+    puts "GOLA"
+  end
+
 end
 
 #APIBodega.get_almacenes()
-#APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
+#puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbe')
 #APIBodega.get_stock('53', '590baa77d6b4ec0004902cbf')
 #APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')
-#APIBodega.mover_General_Despacho(53,10)
+#APIBodega.mover_General_Despacho(38,190)
 #APIBodega.mover_Recepcion_General(20)
 #APIBodega.producir_Stock_Sin_Pago(38,30)
 #APIBodega.getTotalStock("26")
@@ -352,4 +426,10 @@ end
 #APIBodega.vaciar_bodega_recepcion
 ##puts APIBodega.mover_General_Despacho(38, 151)
 #APIBodega.producir_Stock("20", 200, 20)
-APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)
+#puts APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)
+#APIBodega.producir_lotes(4, 1)
+#APIBodega.probando
+#APIBodega.mover_Despacho_General(38, 193)
+#APIBodega.mover_General_Despacho(38,198)
+#APIBodega.producirStockSku(26)
+#APIBodega.producirStockSku(27)

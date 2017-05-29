@@ -1,4 +1,3 @@
-require './api_bodega.rb'
 class ProductTable
 
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
@@ -73,6 +72,5 @@ class ProductTable
     end
     return totales_por_sku
   end
-end
 
-#ProductTable.lista_ingredientes_por_sku(4)
+end

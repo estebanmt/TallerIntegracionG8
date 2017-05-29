@@ -13,6 +13,7 @@ class APIBanco
 
   @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
   @key_bodega = '2T02j&xwE#tQA#e'
+  
 
   def self.pagar_fabricacion(sku, cantidad_unitaria)
     #puts @PRECIO_SKU[0][sku]
