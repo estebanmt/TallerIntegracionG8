@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:estebanmt/TallerIntegracionG8.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, "master"
+set :branch, "spree_gateway"
 set :deploy_via, :copy
 set :user, 'grupo8'
 
