@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170517064303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "invoices", force: :cascade do |t|
+  create_table "invoices", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invoice_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170517064303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :serial, force: :cascade do |t|
     t.string "_id"
     t.string "canal"
     t.string "proveedor"
@@ -49,15 +49,15 @@ ActiveRecord::Schema.define(version: 20170517064303) do
     t.integer "precioUnitario"
     t.datetime "fechaEntrega"
     t.string "estado"
-    t.string "rechazo"
-    t.string "anulacion"
+    t.string "motivoRechazo"
+    t.string "motivoAnulacion"
     t.string "notas"
     t.string "id_factura"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "sku"
     t.datetime "created_at", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170517064303) do
     t.decimal "cost", precision: 64, scale: 12
   end
 
-  create_table "receipts", force: :cascade do |t|
+  create_table "receipts", id: :serial, force: :cascade do |t|
     t.string "supplier"
     t.string "client"
     t.integer "amount"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170517064303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "transactions", id: :serial, force: :cascade do |t|
     t.integer "amount"
     t.string "sender"
     t.string "receiver"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170517064303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "warehouses", force: :cascade do |t|
+  create_table "warehouses", id: :serial, force: :cascade do |t|
     t.string "warehouse_id"
     t.integer "spaceUsed"
     t.integer "spaceTotal"

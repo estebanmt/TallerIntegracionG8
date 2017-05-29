@@ -28,12 +28,17 @@ class OrdersController < ApplicationController
     ApiB2b.revisarOrdenCompra(json)
   end
 
+  def test
+    @body = JSON.parse request.body.read
+    puts @body[0]["test"]
+  end
+
   # POST /purchase_orders/:id  ..... realizar pedido a cliente
-  def enviarOrdenCliente end
+  #def enviarOrdenCliente end
   # PATCH /purchase_orders/accepted
-  def aceptarOrdenCliente end
+  #def aceptarOrdenCliente end
   # PATCH /purchase_orders/:id/rejected
-    def rechazarOrdenCliente end
+  #  def rechazarOrdenCliente end
 
 
 

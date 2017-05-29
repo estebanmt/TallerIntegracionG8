@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :orders
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+
   # Ruteos del enunciado
 
   # Crear orden de compra
@@ -73,6 +74,7 @@ Rails.application.routes.draw do
 
   # Notificar orden de compra (otro grupo notifica que creo una o/c para nosotros)
   put 'purchase_orders/:id', to: 'orders#notify'
+  put 'test/test', to: 'orders#test'
 
   # Informar aceptacion de orden de compra
   post 'purchase_orders/:id', to: 'orders#accept'
