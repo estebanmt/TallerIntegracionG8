@@ -4,15 +4,20 @@ require "base64"
 require 'digest'
 require 'json'
 require './api_bodega.rb'
+require 'api_base'
 
-class APIBanco
-  @CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
-  @CUENTA_BANCO = "590baa00d6b4ec0004902470"
+class APIBanco < APIBase
+  #@CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
+  #@CUENTA_BANCO = "590baa00d6b4ec0004902470"
+
+  @CUENTA_FABRICA =  ENV["CUENTA_FABRICA"]
+  @CUENTA_BANCO = ENV["CUENTA_BANCO"]
+
   @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
      "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
 
-  @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
-  @key_bodega = '2T02j&xwE#tQA#e'
+  #@URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
+  @URL_PAGO_TRANSFERENCIA = ENV["URL_PAGO_TRANSFERENCIA"]
 
   def self.pagar_fabricacion(sku, cantidad_unitaria)
     #puts @PRECIO_SKU[0][sku]
@@ -38,13 +43,6 @@ class APIBanco
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     #puts json
-  end
-
-  def self.doHashSHA1(authorization)
-    digest = OpenSSL::Digest.new('sha1')
-    hmac = OpenSSL::HMAC.digest(digest, @key_bodega, authorization)
-    #puts hmac
-    return Base64.encode64(hmac)
   end
 
   def self.transferir(monto)
