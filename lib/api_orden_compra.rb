@@ -29,6 +29,39 @@ class ApiOrdenCompra
 
   end
 
+  # Notifica rechazo de O/C de otro grupo
+  def self.notificarRechazo(id, idGrupo, rechazo)
+    params = {'causa' => rechazo}
+    @numGrupo = getNumGrupoFromId(idGrupo)
+
+    @url = 'http://dev.integra17-2.ing.puc.cl/' + @numGrupo + '/purchase_orders/' + id + '/rejected'
+
+    @response = RestClient::Request.execute(
+        method: :patch,
+        url: @url,
+        headers: {'Content-Type' => 'application/json'})
+
+    json = JSON.parse(@response)
+    return json
+
+  end
+
+  # Notifica recepcion de O/C de otro grupo (si se acepta)
+  def self.notificarRecepcion(id, idGrupo)
+    params = nil
+    @numGrupo = getNumGrupoFromId(idGrupo)
+
+    @url = 'http://dev.integra17-2.ing.puc.cl/' + @numGrupo + '/purchase_orders/' + id + '/accepted'
+
+    @response = RestClient::Request.execute(
+        method: :patch,
+        url: @url,
+        headers: {'Content-Type' => 'application/json'})
+
+    json = JSON.parse(@response)
+    return json
+  end
+
   # Method that changes order status to "rechazada"
   def self.rechazarOrdenCompra(id, rechazo)
     params = {'_id' => id, 'rechazo' => rechazo}
@@ -60,6 +93,23 @@ class ApiOrdenCompra
     params = {'cliente' => cliente, 'proveedor' => proveedor, 'sku' => sku, 'fechaEntrega' => fechaEntrega,
                   'cantidad' => cantidad, 'precioUnitario' => precioUnitario, 'canal' => canal, 'notas' => notas }
     return put_url(@CREAR_OC, params)
+  end
+
+  def self.getNumGrupoFromId(idGrupo)
+    case idGrupo
+      when '590baa00d6b4ec0004902462'
+        numGrupo = 1
+      when '590baa00d6b4ec0004902463'
+        numGrupo = 2
+      when '590baa00d6b4ec0004902465'
+        numGrupo = 4
+      when '590baa00d6b4ec0004902466'
+        numGrupo = 5
+      when '590baa00d6b4ec0004902468'
+        numGrupo = 7
+    end
+
+    return numGrupo
   end
 
   def self.get_url(uri, params)
@@ -114,6 +164,10 @@ class ApiOrdenCompra
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     puts json
+  end
+
+  def self.patch_url(uri, params)
+
   end
 
   def self.query_params(params)

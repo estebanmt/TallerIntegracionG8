@@ -20,6 +20,8 @@ class ApiB2b
   @ID_GRUPO6 = ''
   @ID_GRUPO7 = '590baa00d6b4ec0004902468'
 
+  @ID_GRUPOS = [ @ID_GRUPO1, @ID_GRUPO2, @ID_GRUPO3, @ID_GRUPO4, @ID_GRUPO5, @ID_GRUPO6, @ID_GRUPO7 ]
+
 
   def self.revisarOrdenCompra(json)
     puts "INICIO"
@@ -45,11 +47,36 @@ class ApiB2b
     end
     puts "proveedor valido"
 
-    # Evaluar factibilidad fechaDespacho
+    # revisar que id cliente sea legitima
+    if not @ID_GRUPOS.include? json["cliente"]
+      rechazarOrden(idOrden, 'Id de cliente invalida')
+      return
+    end
+
+    # revisar que fecha limite sea mayor que actual
+
+    # revisar que canal sea b2b
+    if json["canal"] != 'b2b'
+      rechazarOrden(idOrden, 'Canal invalido. Debe ser "b2b"')
+      return
+    end
+
+    # revisar que precioUnitario > 0
+    if json["precioUnitario"] <= 0
+      rechazarOrden(idOrden, 'Precio unitarios es muy bajo')
+      return
+    end
 
     # Si pasa todas las pruebas se acepta la orden
-    iniciarProduccion(json)
-    aceptarOrden(idOrden)
+    # iniciarProduccion(json)
+
+    # Se intenta despachar la orden
+    if APIBodega.despacharOrden(json["sku"], json["precio_unitario"], json["_id"], json["cantidad"], json["cliente"])
+      aceptarOrden(idOrden)
+    else
+      rechazarOrden(idOrden, 'No se pudo realizar despacho')
+    end
+
   end
 
 
@@ -185,6 +212,7 @@ class ApiB2b
     ApiOrdenCompra.rechazarOrdenCompra(id, rechazo)
 
     #indicar a otro grupo que se rechazo
+
   end
 
   def self.aceptarOrden(id)
