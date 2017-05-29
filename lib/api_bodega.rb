@@ -310,4 +310,4 @@ end
 #Array.new(len,val)
 #APIBodega.producir_Stock(20, 60, "59273a0a2f064d0004c979fd")
 #APIBodega.vaciar_bodega_recepcion
-#puts APIBodega.mover_General_Despacho(38, 9)
+#puts APIBodega.mover_General_Despacho(38, 151)
