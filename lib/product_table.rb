@@ -1,4 +1,8 @@
+require 'api_bodega'
+
 class ProductTable
+
+  @BODEGA_GENERAL =  '590baa77d6b4ec0004902cbf'
 
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
 
@@ -48,18 +52,33 @@ class ProductTable
   end
 
   def self.priceList
-    return '{[
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50},
-{"sku": 6, "name": "Crema", "price": 514, "stock": 50},
-{"sku": 19, "name": "Semola", "price": 116, stock=50},
-{"sku": 20, "name": "Cacao", "price": 172, stock=50},
-{"sku": 23, "name": "Harina", "price": 364, stock=50},
-{"sku": 26, "name": "Sal", "price": 99, stock=50},
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50},
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50},
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50},
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50}
-]}'
+    json = APIBodega.get_skusWithStock(@BODEGA_GENERAL)
+
+    puts getStockFromJson('4', json)
+
+    return '[
+{"sku": 4, "name": "Aceite de Maravilla", "price": 412, "stock": ' + getStockFromJson('4', json) + '},
+{"sku": 6, "name": "Crema", "price": 514, "stock": ' + getStockFromJson('6', json) + '},
+{"sku": 19, "name": "Semola", "price": 116, "stock": ' + getStockFromJson('19', json) + '},
+{"sku": 20, "name": "Cacao", "price": 172, "stock": ' + getStockFromJson('20', json) + '},
+{"sku": 23, "name": "Harina", "price": 364, "stock": ' + getStockFromJson('23', json) + '},
+{"sku": 26, "name": "Sal", "price": 99, "stock": ' + getStockFromJson('26', json) + '},
+{"sku": 27, "name": "Levadura", "price": 232, "stock": ' + getStockFromJson('27', json) + '},
+{"sku": 38, "name": "Semillas Maravilla", "price": 379, "stock": ' + getStockFromJson('38', json) + '},
+{"sku": 42, "name": "Cereal Maiz", "price": 812, "stock": ' + getStockFromJson('42', json) + '},
+{"sku": 53, "name": "Pan Integral", "price": 934, "stock": ' + getStockFromJson('53', json) + '}
+]'
+  end
+
+  def self.getStockFromJson(id, json)
+    for i in json
+      if i['_id'] == id
+        return i['total'].to_s
+      end
+    end
+
+    return '0'
+
   end
 
   def self.lista_ingredientes_por_sku(sku)
