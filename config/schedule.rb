@@ -19,9 +19,16 @@
 
 # Learn more: http://github.com/javan/whenever
 
-env :PATH, ENV['PATH']
+#env :PATH, ENV['PATH']
 
+#set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
+#every 5.minutes do
+#  rake "stock:check"
+#end
+set :environment, "development"
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
-every 5.minutes do
-  rake "stock:check"
+every 2.minute do
+  puts "HOLA, --------------"
+  #rake "bodega:empty"
+
 end

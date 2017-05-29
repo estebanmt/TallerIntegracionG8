@@ -8,7 +8,7 @@ require './api_bodega.rb'
 class APIBanco
   @CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
   @CUENTA_BANCO = "590baa00d6b4ec0004902470"
-  @PRECIO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
+  @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
      "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
 
   @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
@@ -16,11 +16,11 @@ class APIBanco
 
   def self.pagar_fabricacion(sku, cantidad_unitaria)
     #puts @PRECIO_SKU[0][sku]
-    total_a_pagar = @PRECIO_SKU[0][sku].to_i*cantidad_unitaria.to_i
+    total_a_pagar = @COSTO_SKU[0][sku].to_i*cantidad_unitaria.to_i
     #puts total_a_pagar
-    comprobante_de_pago = self.transferir(total_a_pagar)
+    return self.transferir(total_a_pagar)
     #puts comprobante_de_pago["_id"]
-    APIBodega.producir_Stock(sku, cantidad_unitaria, comprobante_de_pago["_id"])
+    #APIBodega.producir_Stock(sku, cantidad_unitaria, comprobante_de_pago["_id"])
 
 
   end
