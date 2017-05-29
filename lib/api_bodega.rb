@@ -410,26 +410,3 @@ class APIBodega
   end
 
 end
-
-#APIBodega.get_almacenes()
-#puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbe')
-#APIBodega.get_stock('53', '590baa77d6b4ec0004902cbf')
-#APIBodega.mover_Stock('590baa77d6b4ec0004902e63', '590baa77d6b4ec0004902cbe')
-#APIBodega.mover_General_Despacho(38,190)
-#APIBodega.mover_Recepcion_General(20)
-#APIBodega.producir_Stock_Sin_Pago(38,30)
-#APIBodega.getTotalStock("26")
-#APIBodega.stockPrimasMinimo
-#APIBodega.showStockPrimas
-#Array.new(len,val)
-#APIBodega.producir_Stock(20, 60, "59273a0a2f064d0004c979fd")
-#APIBodega.vaciar_bodega_recepcion
-##puts APIBodega.mover_General_Despacho(38, 151)
-#APIBodega.producir_Stock("20", 200, 20)
-#puts APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)
-#APIBodega.producir_lotes(4, 1)
-#APIBodega.probando
-#APIBodega.mover_Despacho_General(38, 193)
-#APIBodega.mover_General_Despacho(38,198)
-#APIBodega.producirStockSku(26)
-#APIBodega.producirStockSku(27)
