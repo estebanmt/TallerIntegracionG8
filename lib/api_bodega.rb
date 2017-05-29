@@ -352,4 +352,4 @@ end
 #APIBodega.vaciar_bodega_recepcion
 ##puts APIBodega.mover_General_Despacho(38, 151)
 #APIBodega.producir_Stock("20", 200, 20)
-APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)
+#APIBodega.verificar_materia_prima_para_producto_elaborado(4,1)
