@@ -132,6 +132,7 @@ Rails.application.routes.draw do
   # get 'order/27', to: 'warehouses#order27'
   # get 'order/38', to: 'warehouses#order38'
   get 'order/:id', to: 'warehouses#order_id'
+  get 'order/:id/:lotes', to: 'warehouses#order_lotes'
 
 
 end

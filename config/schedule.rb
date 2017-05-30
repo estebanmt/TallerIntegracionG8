@@ -27,8 +27,7 @@
 #end
 set :environment, "development"
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
-every 2.minute do
-  puts "HOLA, --------------"
-  #rake "bodega:empty"
+every 30.minutes do
+  rake "bodega:vaciar_bodega_recepcion"
 
 end

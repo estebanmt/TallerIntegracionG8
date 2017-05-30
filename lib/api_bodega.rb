@@ -237,6 +237,8 @@ class APIBodega
 
 #Mueve los productos de general a recepcion y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
+    for i in 0..cantidad-1
+    end
     mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     for i in stock
@@ -320,6 +322,9 @@ class APIBodega
     #puts stock
     if stock.length == 0
       return "No hay ese producto en la bodega GENERAL"
+    end
+    if stock.length < cantidad.to_i
+      return "No hay suficiente producto en bodega GENERAL"
     end
     while stock.length != 0
       for i in 0..stock.length - 1
@@ -431,4 +436,4 @@ class APIBodega
 
 end
 #puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
-puts APIBodega.producirStockSku(19)
+#puts APIBodega.producirStockSku(19)
