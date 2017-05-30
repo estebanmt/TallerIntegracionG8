@@ -178,9 +178,10 @@ class APIBodega
     #puts @LOTE_SKU[0][sku.to_s]
     comprobante_de_pago = pagar_fabricacion(sku, @LOTE_SKU[0][sku.to_s])
     #"592bc3658794840004e952e4"
-    producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
+    response = producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
     #producir_Stock(sku, @LOTE_SKU[0][sku.to_s], "592bc3658794840004e952e4")
-
+    #puts response
+    return response
   end
 
   #Solo para productos elaborados, para materia prima llamar diurecto a producirStockSku
@@ -429,3 +430,5 @@ class APIBodega
   end
 
 end
+#puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
+puts APIBodega.producirStockSku(19)
