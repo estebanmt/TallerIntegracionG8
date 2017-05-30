@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'api/publico/precios', to: 'products#index'
+
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
 
   # Crear orden de compra
   get 'dashboard', to: 'dashboards#index'
-
 
   put 'crear', to: 'orders#create_order'
 
@@ -76,8 +77,8 @@ Rails.application.routes.draw do
   # Ruteos acordados con otros grupos
 
   # Obtener lista de productos
-  get 'products', to: 'products#index'
   get 'precios', to: 'products#index'
+
 
   # Notificar orden de compra (otro grupo notifica que creo una o/c para nosotros)
   put 'purchase_orders/:id', to: 'orders#notify'
@@ -131,8 +132,6 @@ Rails.application.routes.draw do
   # get 'order/27', to: 'warehouses#order27'
   # get 'order/38', to: 'warehouses#order38'
   get 'order/:id', to: 'warehouses#order_id'
-
-
 
 
 end
