@@ -220,16 +220,27 @@ class APIBodega
     return post_url(@MOVE_STOCK, params, hmac)
   end
 
+#Mover para b2b
   def self.mover_Stock_Bodega(productoId, almacenId, oc, precio)
     hmac = doHashSHA1('POST'.concat(productoId).concat(almacenId))
     params = {'almacenId' => almacenId, 'productoId' => productoId, 'oc' => oc, 'precio' => precio}
     return post_url(@MOVE_STOCK_BODEGA, params, hmac)
   end
 
+#Mover pra b2c
   def self.despachar_Stock(productoId, direccion, precio, oc)
     hmac = doHashSHA1('DELETE'.concat(productoId + direccion + precio + oc))
     params = {'productoId' => productoId, 'direccion' => direccion, 'precio' => precio, 'oc' => oc}
     return get_url(@DESPACHAR_STOCK, params, hmac)
+  end
+
+#Mueve los productos de general a recepcion y despues los despacha al almacen del otro grupo
+  def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
+    mover_General_Despacho(sku, cantidad)
+    stock = get_stock(sku, @BODEGA_DESPACHO)
+    for i in stock
+    puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    end
   end
 
   def self.encontrar_sku_total(stock, sku)
@@ -306,6 +317,9 @@ class APIBodega
   def self.mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku.to_s, @BODEGA_GENERAL)
     #puts stock
+    if stock.length == 0
+      return "No hay ese producto en la bodega GENERAL"
+    end
     while stock.length != 0
       for i in 0..stock.length - 1
         if cantidad == 0
