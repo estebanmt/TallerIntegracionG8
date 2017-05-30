@@ -1,12 +1,18 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
+require 'whenever/capistrano'
+
+#set :whenever_environment, defer { stage }
+#set :whenever_command, 'bundle exec whenever'
+#set :whenever_command, lambda {"cd #{release_path} && $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab #{fetch(:application)}_#{fetch(:stage)}" }
+
 set :application, "TallerIntegracionG8"
 set :repo_url, "git@github.com:estebanmt/TallerIntegracionG8.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, "spree_iic3103pay"
+set :branch, "master"
 set :deploy_via, :copy
 set :user, 'grupo8'
 

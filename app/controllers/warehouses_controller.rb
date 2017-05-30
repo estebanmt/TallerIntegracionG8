@@ -83,9 +83,13 @@ class WarehousesController < ApplicationController
   end
 
   def order_id
-    APIBodega.producirStockSku(params[:id])
+    #render json: params[:id]
+    @response = APIBodega.producirStockSku(params[:id])
   end
 
+def order_lotes
+  render json: APIBodega.producir_lotes(params[:id], params[:lotes])
+end
 
   # GET almacenes
   def getAlmacenes
@@ -130,7 +134,7 @@ class WarehousesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def warehouse_params
-      params.require(:warehouse).permit(:id, :spaceUsed, :spaceTotal, :reception, :dispatch, :lung, :sku)
+      params.require(:warehouse).permit(:id, :spaceUsed, :spaceTotal, :reception, :dispatch, :lung, :sku, :lotes)
     end
 
     #Hash Sha1

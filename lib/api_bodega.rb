@@ -171,8 +171,13 @@ class APIBodega
   def self.producirStockSku(sku)
     #puts @LOTE_SKU[0][sku.to_s]
     comprobante_de_pago = pagar_fabricacion(sku, @LOTE_SKU[0][sku.to_s])
-    #"592bc3658794840004e952e4"
+    Transaction.create(:amount => comprobante_de_pago["monto"],
+    :sender => comprobante_de_pago["origen"], :receiver => comprobante_de_pago["destino"],
+    :_id => comprobante_de_pago["_id"], :exitosa => true)
     response = producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
+    OrdenFabricacion.create(:sku => sku.to_s, :cantidad => response["cantidad"],
+    :monto => comprobante_de_pago["monto"], :_id => response["_id"],
+    :disponible => response["disponible"])
     #producir_Stock(sku, @LOTE_SKU[0][sku.to_s], "592bc3658794840004e952e4")
     #puts response
     return response
@@ -231,6 +236,8 @@ class APIBodega
 
 #Mueve los productos de general a recepcion y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
+    for i in 0..cantidad-1
+    end
     mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     for i in stock
@@ -314,6 +321,9 @@ class APIBodega
     #puts stock
     if stock.length == 0
       return "No hay ese producto en la bodega GENERAL"
+    end
+    if stock.length < cantidad.to_i
+      return "No hay suficiente producto en bodega GENERAL"
     end
     while stock.length != 0
       for i in 0..stock.length - 1
@@ -416,7 +426,7 @@ class APIBodega
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
+    return json
   end
 
   def self.probando
@@ -425,4 +435,4 @@ class APIBodega
 
 end
 #puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
-puts APIBodega.producirStockSku(19)
+#puts APIBodega.producirStockSku(19)

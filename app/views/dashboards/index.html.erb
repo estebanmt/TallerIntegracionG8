@@ -54,6 +54,8 @@
       <th>ID</th>
       <th>SKU</th>
       <th>CANTIDAD</th>
+      <th>MONTO</th>
+      <th>DISPONIBLE</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -61,12 +63,44 @@
   <tbody>
     <% @ordenes_fabricacion.each do |lib| %>
       <tr>
-        <td><%= lib.id %></td>
+        <td><%= lib._id %></td>
         <td><%= lib.sku %></td>
         <td><%= lib.cantidad %></td>
+        <td><%= lib.monto %></td>
+        <td><%= lib.disponible %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h1>TRANSACCIONES</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>MONTO</th>
+      <th>ORIGEN</th>
+      <th>DESTINO</th>
+      <th>EXITOSA</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |lib| %>
+      <tr>
+        <td><%= lib._id %></td>
+        <td><%= lib.amount %></td>
+        <td><%= lib.sender %></td>
+        <td><%= lib.receiver %></td>
+        <td><%= lib.exitosa %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= image_tag @graph%>
+<%= image_tag @graph1%>
 
 <br>
