@@ -1,4 +1,4 @@
-class CreateOrdenFabricacions < ActiveRecord::Migration[5.1]
+class CreateOrdenFabricacions < ActiveRecord::Migration[5.0]
   def change
     create_table :orden_fabricacions do |t|
       t.string :sku

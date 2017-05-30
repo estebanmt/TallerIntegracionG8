@@ -82,6 +82,10 @@ class WarehousesController < ApplicationController
     APIBodega.producirStock38
   end
 
+  def order_id
+    APIBodega.producirStockSku(params[:id])
+  end
+
 
   # GET almacenes
   def getAlmacenes

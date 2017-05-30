@@ -2,7 +2,7 @@ class ProductTable
 
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
 
-  products = [ [4, 'Aceite de Maravilla', 'Producto procesado', 8, 'Lts', 412, 200, 1, 2, 1.205],
+  @products = [ [4, 'Aceite de Maravilla', 'Producto procesado', 8, 'Lts', 412, 200, 1, 2, 1.205],
                [6, 'Crema', 'Producto procesado', 8, 'Lts', 514, 30, 2, 2, 2.481],
                [19, 'Semola', 'Materia prima', 8, 'Kg', 116, 1420, 0, 1, 1.881],
                [20, 'Cacao', 'Materia prima', 8, 'Kg', 172, 60, 0, 5, 2.258],
@@ -16,7 +16,7 @@ class ProductTable
 
   # SKU | Descripcion | Unidad | SKU ingrediente | Ingrediente | Requerimiento | Unidad Ingrediente
 
-  ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
+  @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
               [6, 'Crema', 'Lts', 49, 'Leche Descremada', 100, 'Lts'],
               [6, 'Crema', 'Lts', 7, 'Leche', 300, 'Lts'],
               [23, 'Harina', 'Kg', 8, 'Trigo', 309, 'Kg'],
@@ -26,10 +26,14 @@ class ProductTable
               [53, 'Pan Integral', 'Kg', 52, 'Harina Integral', 500, 'Kg'],
               [53, 'Pan Integral', 'Kg', 26, 'Sal', 63, 'Kg'],
               [53, 'Pan Integral', 'Kg', 7, 'Leche', 651, 'Lts'],
-              [53, 'Pan Integral', 'Kg', 23, 'Harina', 15, 'Kg']
+              [53, 'Pan Integral', 'Kg', 23, 'Harina', 15, 'Kg'],
+              [53, 'Pan Integral', 'Kg', 38, 'Semillas Maravilla', 250,'Kg']
   ]
 
-  productsSku = [4, 6, 19, 20, 23, 26, 27, 38, 42, 53]
+  @productsSku = [4, 6, 19, 20, 23, 26, 27, 38, 42, 53]
+
+  def initialize()
+  end
 
   def self.getProducts
     return products
@@ -57,4 +61,16 @@ class ProductTable
 {"sku": 4, "name": "Aceite de Maravilla", "price": 412, stock=50}
 ]}'
   end
+
+  def self.lista_ingredientes_por_sku(sku)
+    #sku => necesario
+    totales_por_sku = {}
+    for i in @ingredients
+      if i[0] == sku.to_i
+        totales_por_sku[i[3]] = i[5]
+      end
+    end
+    return totales_por_sku
+  end
+
 end

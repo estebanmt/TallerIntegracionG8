@@ -121,6 +121,7 @@ class ApiB2b
       rescue => ex
         puts ex.message
       end
+
     end
 
     #OC para sku 8
@@ -145,6 +146,18 @@ class ApiB2b
         avisarOrdenCompra(idOC, "6")
       rescue => ex
         puts ex.message
+      end
+
+      if(APIBodega.getTotalStock("38")<250)
+        minMateriasPrimasProducto("38")
+        APIBodega.producir_Stock_Sin_Pago("38",250)
+      end
+      if(APIBodega.getTotalStock("7")<651)
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e680","7", "12345678901234", "651", "500", "b2b","COMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"3","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e684","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+        ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO,"5910c0910e42840004f6e686","7", "12345678901234", "651", "500", "b2b","CCOMPRASKU")
+
       end
     end
 
@@ -403,13 +416,3 @@ end
 # )
 
 #ApiB2b.minMateriasPrimasProducto("6")
-
-#ApiB2b.cantidadLote("6",113)
-#ApiB2b.materiasPrimasProducto("4", 100)
-#ApiB2b.materiasPrimasProducto("23", 100)
-#ApiB2b.materiasPrimasProducto("42", 100)
-#ApiB2b.materiasPrimasProducto("53", 100)
-#ApiB2b.materiasPrimasProducto("6", 100)
-#ApiB2b.numeroLote("6", 20)
-#ApiB2b.getPrecio("49","3")
-#ApiB2b.comprarProducto("49",100)

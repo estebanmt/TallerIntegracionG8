@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  # This line mounts Spree's routes at the root of your application.
+  # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
+  # If you would like to change where this engine is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
+  mount Spree::Core::Engine, at: '/'
+
   resources :warehouses
   resources :receipts
   resources :transactions
@@ -118,11 +125,13 @@ Rails.application.routes.draw do
   get 'inicializar/4', to: 'warehouses#initialize4'
   get 'inicializar/5', to: 'warehouses#initialize5'
   get 'inicializar/primas', to: 'warehouses#initializePrimas'
-  get 'order/19', to: 'warehouses#order19'
-  get 'order/20', to: 'warehouses#order20'
-  get 'order/26', to: 'warehouses#order26'
-  get 'order/27', to: 'warehouses#order27'
-  get 'order/38', to: 'warehouses#order38'
+  # get 'order/19', to: 'warehouses#order19'
+  # get 'order/20', to: 'warehouses#order20'
+  # get 'order/26', to: 'warehouses#order26'
+  # get 'order/27', to: 'warehouses#order27'
+  # get 'order/38', to: 'warehouses#order38'
+  get 'order/:id', to: 'warehouses#order_id'
+
 
 
 
