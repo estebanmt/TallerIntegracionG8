@@ -179,6 +179,9 @@ class APIBodega
     comprobante_de_pago = pagar_fabricacion(sku, @LOTE_SKU[0][sku.to_s])
     #"592bc3658794840004e952e4"
     response = producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
+    OrdenFabricacion.create(:sku => sku.to_s, :cantidad => response["cantidad"],
+    :monto => comprobante_de_pago["monto"], :_id => response["_id"],
+    :disponible => response["disponible"])
     #producir_Stock(sku, @LOTE_SKU[0][sku.to_s], "592bc3658794840004e952e4")
     #puts response
     return response
