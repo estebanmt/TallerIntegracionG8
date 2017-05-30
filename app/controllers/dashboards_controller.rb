@@ -81,10 +81,10 @@ class DashboardsController < ActionController::Base
   def encontrar_datos
     montos = {}
     for i in Transaction.all
-      if montos.key?(i["monto"]) #True
-        montos[i["monto"]] += 1
+      if montos.key?(i["amount"]) #True
+        montos[i["amount"]] += 1
       else
-        montos[i["monto"]] = 1
+        montos[i["amount"]] = 1
       end
     end
 
