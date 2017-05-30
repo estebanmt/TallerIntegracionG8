@@ -1,0 +1,2 @@
+class Payproxy < ApplicationRecord
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Payproxies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Boleta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payproxies.each do |payproxy| %>
+      <tr>
+        <td><%= payproxy.amount %></td>
+        <td><%= payproxy.boleta_id %></td>
+        <td><%= link_to 'Show', payproxy %></td>
+        <td><%= link_to 'Edit', edit_payproxy_path(payproxy) %></td>
+        <td><%= link_to 'Destroy', payproxy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payproxy', new_payproxy_path %>
