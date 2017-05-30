@@ -92,9 +92,21 @@ class ApiB2b
       precio3 = 300
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "3")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 3 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "5")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 5 creada id:" + idOC
     end
 
@@ -108,25 +120,40 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
-      puts "OC grupo 1 creada id:" + idOC
-      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      idOC = json_resultado['_id']
-      puts "OC grupo 3 creada id:" + idOC
-      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      idOC = json_resultado['_id']
-      puts "OC grupo 5 creada id:" + idOC
-      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      idOC = json_resultado['_id']
-      puts "OC grupo 7 creada id:" + idOC
-
-
-
       begin
-        avisarOrdenCompra(idOC, "6")
-        puts "NOtificacion envaida."
+        avisarOrdenCompra(idOC, "1")
+        puts "notify enviada" + idOC
       rescue => ex
         puts ex.message
       end
+      puts "OC grupo 1 creada id:" + idOC
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "3")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
+      puts "OC grupo 3 creada id:" + idOC
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "5")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
+      puts "OC grupo 5 creada id:" + idOC
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "7")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
+      puts "OC grupo 7 creada id:" + idOC
 
     end
 
@@ -140,22 +167,32 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO2, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
-      puts "OC grupo 2 creada id:" + idOC
-      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO4, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      idOC = json_resultado['_id']
-      puts "OC grupo 4 creada id:" + idOC
-      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO6, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
-      idOC = json_resultado['_id']
-      puts "OC grupo 6 creada id:" + idOC
-
-      idOC = json_resultado['_id']
-      puts idOC
-      #Aqui falta avisar orden COmpra, deberia funcionar, conseguir grupo q este bien su metodo de respuesta
       begin
-        avisarOrdenCompra(idOC, "6")
+        avisarOrdenCompra(idOC, "2")
+        puts "notify enviada" + idOC
       rescue => ex
         puts ex.message
       end
+      puts "OC grupo 2 creada id:" + idOC
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO4, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "4")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
+      puts "OC grupo 4 creada id:" + idOC
+      json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO6, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
+      idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "6")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
+      puts "OC grupo 6 creada id:" + idOC
+
     end
 
     #OC para sku 25
@@ -168,15 +205,39 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "1")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 1 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "3")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 3 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "5")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 5 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "7")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 7 creada id:" + idOC
     end
 
@@ -189,12 +250,30 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO1, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "1")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "grupo1 OC / SKU 49 id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO2, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "2")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "grupo2 OC / SKU 49 id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "3")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "grupo3 OC / SKU 49 id:" + idOC
     end
 
@@ -207,12 +286,30 @@ class ApiB2b
 
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO3, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "3")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 3 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO5, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "5")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 5 creada id:" + idOC
       json_resultado = ApiOrdenCompra.crearOrdenCompra(@ID_GRUPO, @ID_GRUPO7, sku_aux, 14964057609999, cantidad_aux, precio3, "b2b", "1")
       idOC = json_resultado['_id']
+      begin
+        avisarOrdenCompra(idOC, "7")
+        puts "notify enviada" + idOC
+      rescue => ex
+        puts ex.message
+      end
       puts "OC grupo 7 creada id:" + idOC
     end
 
@@ -232,8 +329,8 @@ class ApiB2b
         lotes = numeroLote("4", cantidad-cant4)
         cant38 = APIBodega.getTotalStock("38")
         if (190*lotes)-cant38 > 0
-          #APIBodega.producir_Stock_Sin_Pago("38", (190*lotes)-cant38)
-          validador = false
+            APIBodega.producirStockSku("38")
+            validador = false
         end
       end
     end
@@ -249,10 +346,10 @@ class ApiB2b
           comprarProducto("7",(300*lotes)-cant7)
           validador = false
         end
-        #if (100*lotes)-cant49>0
-        #  comprarProducto("49", (100*lotes)-cant49)
-        #  validador = false
-        #end
+        if (100*lotes)-cant49>0
+          comprarProducto("49", (100*lotes)-cant49)
+          validador = false
+        end
       end
     end
 
@@ -282,7 +379,7 @@ class ApiB2b
           validador = false
         end
         if (71*lotes)-cant20 > 0
-          #APIBodega.producir_Stock_Sin_Pago("20", (71*lotes)-cant20)
+          APIBodega.producirStockSku("20")
           validador = false
         end
         if (67*lotes)-cant25>0
@@ -308,15 +405,15 @@ class ApiB2b
           validador = false
         end
         if (15*lotes)-cant23 > 0
-          #APIBodega.producir_Stock_Sin_Pago("15", (15*lotes)-cant23)
+          APIBodega.producirStockSku("15")
           validador = false
         end
         if (63*lotes)-cant26 > 0
-          #APIBodega.producir_Stock_Sin_Pago("26", (63*lotes)-cant26)
+          APIBodega.producirStockSku("26")
           validador = false
         end
         if (250*lotes)-cant38 > 0
-          #APIBodega.producir_Stock_Sin_Pago("38", (250*lotes)-cant38)
+          APIBodega.producirStockSku("38")
           validador = false
         end
         if (500*lotes)-cant52>0
