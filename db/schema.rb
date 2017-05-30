@@ -55,16 +55,6 @@ ActiveRecord::Schema.define(version: 20170530081052) do
     t.string   "_id"
   end
 
-  create_table "orden_fabrics", force: :cascade do |t|
-    t.string   "sku"
-    t.integer  "cantidad"
-    t.string   "_id"
-    t.integer  "monto"
-    t.string   "disponible"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string   "_id"
     t.string   "canal"
@@ -82,6 +72,15 @@ ActiveRecord::Schema.define(version: 20170530081052) do
     t.string   "id_factura"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "payproxies", force: :cascade do |t|
+    t.decimal  "amount"
+    t.integer  "boleta_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "state"
+    t.index ["boleta_id"], name: "index_payproxies_on_boleta_id", unique: true, using: :btree
   end
 
   create_table "products", force: :cascade do |t|
