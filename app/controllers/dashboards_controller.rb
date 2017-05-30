@@ -27,20 +27,21 @@ class DashboardsController < ActionController::Base
     @ordenes_fabricacion = OrdenFabricacion.all
     @transactions = Transaction.all
     datos = encontrar_datos
+    exitosas = encontrar_exitosas
 
     @graph = Gchart.pie(  :size => '600x500',
-              :title => "Transacciones por monto",
+              :title => "Transacciones por monto: Monto - Status",
               :bg => 'efefef',
               :legend => datos.keys,
               :labels => datos.values,
               :data => datos.values)
 
     @graph1 = Gchart.pie(  :size => '600x500',
-              :title => "Transacciones por monto",
+              :title => "Transacciones segun exito",
               :bg => 'efefef',
-              :legend => datos.keys,
-              :labels => datos.values,
-              :data => datos.values)
+              :legend => ["Exitosas", "Fracasadas"],
+              :labels => exitosas,
+              :data => exitosas)
 
   end
 
@@ -81,14 +82,31 @@ class DashboardsController < ActionController::Base
   def encontrar_datos
     montos = {}
     for i in Transaction.all
-      if montos.key?(i["monto"]) #True
-        montos[i["monto"]] += 1
+      placeholder = ''
+      if i['exitosa'] == true
+        placeholder = " Exitosa"
       else
-        montos[i["monto"]] = 1
+        placeholder = " Fracasada"
+      end
+      if montos.key?(i["amount"].to_s+placeholder) #True
+        montos[i["amount"].to_s+placeholder] += 1
+      else
+        montos[i["amount"].to_s+placeholder] = 1
       end
     end
-
     return montos
+  end
+
+  def encontrar_exitosas
+    vuelto = [0,0]
+    for i in Transaction.all
+      if i["exitosa"]
+        vuelto[0] += 1
+      else
+        vuelto[1] += 1
+      end
+    end
+    return vuelto
   end
 
 

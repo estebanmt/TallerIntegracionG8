@@ -171,8 +171,8 @@ class APIBodega
   def self.producirStockSku(sku)
     #puts @LOTE_SKU[0][sku.to_s]
     comprobante_de_pago = pagar_fabricacion(sku, @LOTE_SKU[0][sku.to_s])
-    Transaction.create(:monto => comprobante_de_pago["monto"],
-    :origen => comprobante_de_pago["origen"], :destino => comprobante_de_pago["destino"],
+    Transaction.create(:amount => comprobante_de_pago["monto"],
+    :sender => comprobante_de_pago["origen"], :receiver => comprobante_de_pago["destino"],
     :_id => comprobante_de_pago["_id"], :exitosa => true)
     response = producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
     OrdenFabricacion.create(:sku => sku.to_s, :cantidad => response["cantidad"],

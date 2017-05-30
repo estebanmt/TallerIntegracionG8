@@ -91,9 +91,9 @@
     <% @transactions.each do |lib| %>
       <tr>
         <td><%= lib._id %></td>
-        <td><%= lib.monto %></td>
-        <td><%= lib.origen %></td>
-        <td><%= lib.destino %></td>
+        <td><%= lib.amount %></td>
+        <td><%= lib.sender %></td>
+        <td><%= lib.receiver %></td>
         <td><%= lib.exitosa %></td>
       </tr>
     <% end %>
