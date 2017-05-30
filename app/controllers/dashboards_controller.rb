@@ -1,4 +1,5 @@
 require 'api_bodega.rb'
+require 'googlecharts'
 class DashboardsController < ActionController::Base
   @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
   ##ACEITE MARA - CREMA - SEMOLA - CACAO - HARINA - SAL -LEVADURA - SEMILLAS_MARAVILLA - CEREAL_MAIZ - PAN INT
@@ -13,23 +14,33 @@ class DashboardsController < ActionController::Base
 
   def index
     @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-
     almacenes =  APIBodega.get_almacenes()
-    puts almacenes
     @ARREGLO_ALMACENES = Array.new
     for i in 0..almacenes.length-1
       @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
     end
-
-    puts @ARREGLO_SKUS
-    puts @ARREGLO_ALMACENES
 
     @dicc_skus = {}
     obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
     @lista_almacenes = []
     obtener_almacenes(@lista_almacenes)
     @ordenes_fabricacion = OrdenFabricacion.all
+    @transactions = Transaction.all
+    datos = encontrar_datos
 
+    @graph = Gchart.pie(  :size => '600x500',
+              :title => "Transacciones por monto",
+              :bg => 'efefef',
+              :legend => datos.keys,
+              :labels => datos.values,
+              :data => datos.values)
+
+    @graph1 = Gchart.pie(  :size => '600x500',
+              :title => "Transacciones por monto",
+              :bg => 'efefef',
+              :legend => datos.keys,
+              :labels => datos.values,
+              :data => datos.values)
 
   end
 
@@ -65,6 +76,19 @@ class DashboardsController < ActionController::Base
       lista << almanaque[i]["totalSpace"]
       lista_almacenes << lista
     end
+  end
+
+  def encontrar_datos
+    montos = {}
+    for i in Transaction.all
+      if montos.key?(i["monto"]) #True
+        montos[i["monto"]] += 1
+      else
+        montos[i["monto"]] = 1
+      end
+    end
+
+    return montos
   end
 
 

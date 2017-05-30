@@ -73,4 +73,34 @@
   </tbody>
 </table>
 
+<h1>TRANSACCIONES</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>MONTO</th>
+      <th>ORIGEN</th>
+      <th>DESTINO</th>
+      <th>EXITOSA</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |lib| %>
+      <tr>
+        <td><%= lib._id %></td>
+        <td><%= lib.monto %></td>
+        <td><%= lib.origen %></td>
+        <td><%= lib.destino %></td>
+        <td><%= lib.exitosa %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= image_tag @graph%>
+<%= image_tag @graph1%>
+
 <br>

@@ -127,6 +127,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    googlecharts (1.6.12)
     highline (1.6.21)
     hirb (0.7.3)
     htmlentities (4.3.4)
@@ -382,6 +383,7 @@ DEPENDENCIES
   capistrano-rails-db
   capistrano-rbenv (~> 2.1)
   coffee-rails (~> 4.2)
+  googlecharts
   hirb
   jbuilder (~> 2.5)
   jquery-rails
