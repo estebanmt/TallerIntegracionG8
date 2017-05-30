@@ -5,17 +5,13 @@ require 'digest'
 require 'json'
 
 class ApiOrdenCompra
-  @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/oc/'
+  @API_URL_OC = ENV["API_URL_OC"]
 
   @GET_OC = 'obtener/'
   @RECEIVE_OC = 'recepcionar/'
   @CREAR_OC = 'crear/'
   @ANULAR_OC = 'anular/'
   @RECHAZAR_OC = 'rechazar/'
-
-
-
-
 
   # Method that receives order notification from other group (invoked by /purchase_orders/:id)
   def self.notificarPedido(id)
@@ -124,9 +120,9 @@ class ApiOrdenCompra
 
 
     if @query_params != nil
-      @url = @API_URL_DEV + uri + "?" + @query_params
+      @url = @API_URL_OC + uri + "?" + @query_params
     else
-      @url = @API_URL_DEV + uri
+      @url = @API_URL_OC + uri
     end
     puts @url
 
@@ -145,7 +141,7 @@ class ApiOrdenCompra
     puts params
 
 
-    @url = @API_URL_DEV + uri
+    @url = @API_URL_OC + uri
     puts @url
 
     @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
@@ -160,7 +156,7 @@ class ApiOrdenCompra
     puts params
 
 
-    @url = @API_URL_DEV + uri
+    @url = @API_URL_OC + uri
     puts @url
     puts params
 

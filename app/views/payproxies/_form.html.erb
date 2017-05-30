@@ -1,0 +1,27 @@
+<%= form_for(payproxy) do |f| %>
+  <% if payproxy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(payproxy.errors.count, "error") %> prohibited this payproxy from being saved:</h2>
+
+      <ul>
+      <% payproxy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :boleta_id %>
+    <%= f.number_field :boleta_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :payproxies
   get 'api/publico/precios', to: 'products#index'
 
   # This line mounts Spree's routes at the root of your application.
@@ -17,6 +18,12 @@ Rails.application.routes.draw do
   resources :orders
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  #Indicar suceso de payment
+  get '/payproxies/:id/sucess', to: 'payproxies#sucess'
+
+
+  #Indicar fallo de payment
+  get '/payproxies/:id/fail', to: 'payproxies#fail'
 
   # Ruteos del enunciado
 

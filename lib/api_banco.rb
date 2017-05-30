@@ -6,8 +6,8 @@ require 'json'
 require './api_bodega.rb'
 
 class APIBanco
-  @CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
-  @CUENTA_BANCO = "590baa00d6b4ec0004902470"
+  @CUENTA_FABRICA =  ENV["CUENTA_FABRICA"]
+  @CUENTA_BANCO = ENV["CUENTA_BANCO"]
   @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
      "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
 

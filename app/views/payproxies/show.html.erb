@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payproxy.amount %>
+</p>
+
+<p>
+  <strong>Boleta:</strong>
+  <%= @payproxy.boleta_id %>
+</p>
+
+<%= link_to 'Edit', edit_payproxy_path(@payproxy) %> |
+<%= link_to 'Back', payproxies_path %>
