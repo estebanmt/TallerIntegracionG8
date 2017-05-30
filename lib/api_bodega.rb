@@ -5,16 +5,12 @@ require 'digest'
 require 'json'
 
 class APIBodega
-  # @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
-  # @BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
-  # @BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
-  # @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
-  # @BODEGA_PULMON = ENV["BODEGA_PULMON"]
-  @BODEGA_GENERAL =  '590baa77d6b4ec0004902cbf'
-  @BODEGA_GENERAL_2 = '590baa77d6b4ec0004902ea4'
-  @BODEGA_RECEPCION = '590baa77d6b4ec0004902cbd'
-  @BODEGA_DESPACHO = '590baa77d6b4ec0004902cbe'
-  @BODEGA_PULMON = '590baa77d6b4ec0004902ea5'
+  @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
+  @BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
+  @BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
+  @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+  @BODEGA_PULMON = ENV["BODEGA_PULMON"]
+
   @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
               [6, 'Crema', 'Lts', 49, 'Leche Descremada', 100, 'Lts'],
               [6, 'Crema', 'Lts', 7, 'Leche', 300, 'Lts'],
@@ -33,11 +29,9 @@ class APIBodega
      "26"=>144, "27"=> 620, "38"=> 30, "42"=> 200, "53"=> 620]
 
 
-  @key = '2T02j&xwE#tQA#e'
-  #@key = ENV["CLAVE_BODEGA"]
+  @key = ENV["CLAVE_BODEGA"]
 
-  @API_URL_DEV = 'https://integracion-2017-dev.herokuapp.com/bodega/'
-  #@API_URL_DEV = ENV["URL_API_BODEGA"]
+  @API_URL_BODEGA = ENV["URL_API_BODEGA"]
 
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
@@ -377,9 +371,9 @@ class APIBodega
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
 
     if @query_params != nil
-      @url = @API_URL_DEV + uri + "?" + @query_params
+      @url = @API_URL_BODEGA + uri + "?" + @query_params
     else
-      @url = @API_URL_DEV + uri
+      @url = @API_URL_BODEGA + uri
     end
 
     @response = RestClient::Request.execute(
@@ -397,7 +391,7 @@ class APIBodega
 
   def self.post_url(uri, params, authorization)
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
-    @url = @API_URL_DEV + uri
+    @url = @API_URL_BODEGA + uri
     @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     puts @response.code
@@ -415,7 +409,7 @@ class APIBodega
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
 
-    @url = @API_URL_DEV + uri
+    @url = @API_URL_BODEGA + uri
     #puts @url
 
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)

@@ -3,7 +3,7 @@ require "base64"
 require 'digest'
 
 class Security
-  @key = '2T02j&xwE#tQA#e'
+  @key = ENV["CLAVE_BODEGA"]
   def self.doHashSHA1(authorization)
     digest = OpenSSL::Digest.new('sha1')
 

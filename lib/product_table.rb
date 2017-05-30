@@ -2,7 +2,7 @@ require 'api_bodega'
 
 class ProductTable
 
-  @BODEGA_GENERAL =  '590baa77d6b4ec0004902cbf'
+  @BODEGA_GENERAL =  ENV["BODEGA_GENERAL"]
 
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
 
