@@ -427,7 +427,7 @@ class APIBodega
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
-    puts json
+    return json
   end
 
   def self.probando
