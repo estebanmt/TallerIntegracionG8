@@ -1,4 +1,5 @@
 require 'api_bodega'
+require 'json'
 
 class ProductTable
 
@@ -56,18 +57,18 @@ class ProductTable
 
     puts getStockFromJson('4', json)
 
-    return '[
-{"sku": 4, "name": "Aceite de Maravilla", "price": 412, "stock": ' + getStockFromJson('4', json) + '},
-{"sku": 6, "name": "Crema", "price": 514, "stock": ' + getStockFromJson('6', json) + '},
-{"sku": 19, "name": "Semola", "price": 116, "stock": ' + getStockFromJson('19', json) + '},
-{"sku": 20, "name": "Cacao", "price": 172, "stock": ' + getStockFromJson('20', json) + '},
-{"sku": 23, "name": "Harina", "price": 364, "stock": ' + getStockFromJson('23', json) + '},
-{"sku": 26, "name": "Sal", "price": 99, "stock": ' + getStockFromJson('26', json) + '},
-{"sku": 27, "name": "Levadura", "price": 232, "stock": ' + getStockFromJson('27', json) + '},
-{"sku": 38, "name": "Semillas Maravilla", "price": 379, "stock": ' + getStockFromJson('38', json) + '},
-{"sku": 42, "name": "Cereal Maiz", "price": 812, "stock": ' + getStockFromJson('42', json) + '},
-{"sku": 53, "name": "Pan Integral", "price": 934, "stock": ' + getStockFromJson('53', json) + '}
-]'
+    @response = '[{"sku": "4", "precio": 412, "stock": ' + getStockFromJson('4', json) + '},' +
+'{"sku": "6", "precio": 514, "stock": ' + getStockFromJson('6', json) + '},' +
+'{"sku": "19", "precio": 116, "stock": ' + getStockFromJson('19', json) + '},' +
+'{"sku": "20", "precio": 172, "stock": ' + getStockFromJson('20', json) + '},' +
+'{"sku": "23", "precio": 364, "stock": ' + getStockFromJson('23', json) + '},' +
+'{"sku": "26", "precio": 99, "stock": ' + getStockFromJson('26', json) + '},' +
+'{"sku": "27", "precio": 232, "stock": ' + getStockFromJson('27', json) + '},' +
+'{"sku": "38", "precio": 379, "stock": ' + getStockFromJson('38', json) + '},' +
+'{"sku": "42", "precio": 812, "stock": ' + getStockFromJson('42', json) + '},' +
+'{"sku": "53", "precio": 934, "stock": ' + getStockFromJson('53', json) + '}]'
+
+    return @response
   end
 
   def self.getStockFromJson(id, json)
