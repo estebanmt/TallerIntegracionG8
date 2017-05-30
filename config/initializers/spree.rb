@@ -9,6 +9,8 @@
 #
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
+
+
 Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
@@ -16,3 +18,5 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::User"
+Rails.application.config.spree.payment_methods << Spree::Gateway::IIC3103pay
+
