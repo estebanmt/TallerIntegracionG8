@@ -185,18 +185,17 @@ class APIBodega
 
   #Solo para productos elaborados, para materia prima llamar diurecto a producirStockSku
   def self.producir_lotes(sku, cantidad_lotes)
-    #puts "-"*100
-    #puts verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i)
-    #if verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i) #Si pasa, estamos OK
+    puts "-"*100
+    puts verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i)
+    if verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i) #Si pasa, estamos OK
     lista_totales_por_sku = lista_ingredientes_por_sku(sku)
     for k in 0..(cantidad_lotes.to_i - 1)
-      #for i in lista_totales_por_sku
-      #  puts mover_General_Despacho(i[0], i[1]) # i[0]:sku mat prima, i[1], cantid x lote de mat prima
-      #end
+      for i in lista_totales_por_sku
+        puts mover_General_Despacho(i[0], i[1]) # i[0]:sku mat prima, i[1], cantid x lote de mat prima
+      end
       puts producirStockSku(sku)
     end
-    #end
-
+    end
   end
 
   def self.get_almacenes ()
