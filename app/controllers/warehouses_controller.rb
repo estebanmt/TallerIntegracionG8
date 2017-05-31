@@ -127,6 +127,10 @@ end
     render json: @response
   end
 
+  def vaciar_recepcion
+    render json: APIBodega.vaciar_bodega_recepcion
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_warehouse

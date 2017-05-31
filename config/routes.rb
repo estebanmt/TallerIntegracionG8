@@ -142,5 +142,8 @@ Rails.application.routes.draw do
   get 'order/:id', to: 'warehouses#order_id'
   get 'order/:id/:lotes', to: 'warehouses#order_lotes'
 
+  # vaciar recepcion
+
+  get 'vaciar_recepcion', to: 'warehouses#vaciar_recepcion'
 
 end
