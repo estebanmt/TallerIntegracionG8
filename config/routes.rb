@@ -77,7 +77,7 @@ Rails.application.routes.draw do
   post 'cancel', to: 'invoices#cancel'
 
   # Crear boleta
-  get 'sii/boleta', to: 'invoices#pagar'
+  get 'sii/boleta/:id/:monto', to: 'invoices#pagar'
   get 'order/:id', to: 'warehouses#order_id'
 
 

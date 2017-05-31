@@ -157,7 +157,7 @@ class InvoicesController < ApplicationController
 
   def pagar
     puts "."*1000
-    @response = ApiPago.crear_boleta(params[:id_cliente], params[:monto].to_i)
+    @response = ApiPago.crear_boleta(params[:id], params[:monto].to_i)
   end
 
   private
