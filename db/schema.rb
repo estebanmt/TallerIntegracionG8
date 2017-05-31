@@ -55,16 +55,6 @@ ActiveRecord::Schema.define(version: 20170530201722) do
     t.string   "_id"
   end
 
-  create_table "orden_fabrics", force: :cascade do |t|
-    t.string   "sku"
-    t.integer  "cantidad"
-    t.string   "_id"
-    t.integer  "monto"
-    t.string   "disponible"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string   "_id"
     t.string   "canal"

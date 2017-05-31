@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40f1ad05-5f95-49aa-910b-6e6424cf13f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" afterPath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/api_env.yml" afterPath="$PROJECT_DIR$/config/api_env.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_pago.rb" afterPath="$PROJECT_DIR$/lib/api_pago.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/stock.rake" afterPath="$PROJECT_DIR$/lib/tasks/stock.rake" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -30,78 +33,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Capfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Capfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="api_bodega.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2160">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20170530201409_rename_back_to_amount.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
+      <file leaf-file-name="api_pago.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="480">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20170530201722_rename_back_to_receiver_sender.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
+      <file leaf-file-name="stock.rake" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/tasks/stock.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_orden_compra.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/api_orden_compra.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product_table.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/product_table.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="security.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/security.rb">
+      <file leaf-file-name="iic3103pay.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -113,9 +76,133 @@
       <file leaf-file-name="api_env.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/api_env.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+            <state relative-caret-position="525">
+              <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="invoices_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1935">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="warehouses_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-450">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/schema.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1496269661781" expanded="true" signature="776:53511" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="3027:3289" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="3334:3669" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="3714:3882" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="3934:4685" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="4739:5832" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="5881:6594" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="6648:7208" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="7260:7515" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="7570:8380" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="8439:8606" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="8657:9252" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="9310:9975" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="10028:11555" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="11609:11904" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="11969:12279" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="12334:12795" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="12859:13172" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="13228:13705" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="13764:14043" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="14092:17601" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="17666:18039" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="18097:18617" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="18668:19629" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="19683:19910" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="19959:20421" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="20484:20970" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="21036:21338" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="21399:21920" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="21971:23173" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="23231:23591" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="23661:24012" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="24072:24480" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="24543:24681" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="24745:25024" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="25087:25394" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="25452:25997" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="26050:27083" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="27136:27375" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="27437:27628" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="27687:27966" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="28019:28135" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="28192:28424" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="28474:28969" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="29033:29227" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="29289:29628" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="29685:30232" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="30303:30535" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="30599:30978" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="31033:32320" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="32373:32597" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="32645:32748" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="32800:34294" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="34356:34557" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="34626:35099" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="35163:35234" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="35293:35786" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="35843:36581" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="36643:36875" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="36931:37328" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="37377:37573" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="37627:38347" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="38405:39543" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="39601:39992" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="40050:40633" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="40699:40815" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="40877:41792" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="41853:42087" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="42143:43210" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="43259:43909" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="43960:44983" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="45030:45190" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="45247:45709" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="45761:46739" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="46792:47087" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="47136:48301" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="48352:48633" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="48681:50317" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="50368:51968" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="52023:52419" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="52467:52938" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="52987:53201" ph="do ... end" />
+                <marker date="1496269661781" expanded="true" signature="53248:53506" ph="do ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,6 +214,7 @@
       <find>d</find>
       <find>defe</find>
       <find>defer</find>
+      <find>get_url</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -145,6 +233,10 @@
       <list>
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/lib/api_bodega.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/stock.rake" />
+        <option value="$PROJECT_DIR$/config/api_env.yml" />
+        <option value="$PROJECT_DIR$/lib/api_pago.rb" />
+        <option value="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
       </list>
     </option>
   </component>
@@ -174,6 +266,7 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -210,14 +303,89 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spree" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gateway" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,9 +406,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/invoices_controller.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/warehouses_controller.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/config/routes.rb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/db/schema.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/db/seeds.rb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/api_bodega.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/api_pago.rb</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -662,6 +833,7 @@
       <workItem from="1496187901788" duration="31000" />
       <workItem from="1496187987800" duration="821000" />
       <workItem from="1496242326185" duration="1042000" />
+      <workItem from="1496243547426" duration="5159000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch remotes/origin/spree_iic3103pay'">
       <created>1496164037492</created>
@@ -698,26 +870,33 @@
       <option name="project" value="LOCAL" />
       <updated>1496188179276</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'remotes/origin/spree_iic3103pay'">
+      <created>1496243742863</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1496243742863</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5039000" />
+    <option name="totallyTimeSpent" value="10198000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25267094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -756,14 +935,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/deploy.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Capfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1054,30 +1225,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1098,15 +1245,179 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2160">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1935">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1496269661781" expanded="true" signature="776:53511" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="3027:3289" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="3334:3669" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="3714:3882" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="3934:4685" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="4739:5832" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="5881:6594" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="6648:7208" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="7260:7515" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="7570:8380" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="8439:8606" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="8657:9252" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="9310:9975" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="10028:11555" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="11609:11904" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="11969:12279" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="12334:12795" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="12859:13172" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="13228:13705" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="13764:14043" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="14092:17601" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="17666:18039" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="18097:18617" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="18668:19629" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="19683:19910" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="19959:20421" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="20484:20970" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="21036:21338" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="21399:21920" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="21971:23173" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="23231:23591" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="23661:24012" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="24072:24480" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="24543:24681" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="24745:25024" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="25087:25394" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="25452:25997" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="26050:27083" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="27136:27375" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="27437:27628" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="27687:27966" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="28019:28135" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="28192:28424" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="28474:28969" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="29033:29227" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="29289:29628" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="29685:30232" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="30303:30535" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="30599:30978" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="31033:32320" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="32373:32597" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="32645:32748" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="32800:34294" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="34356:34557" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="34626:35099" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="35163:35234" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="35293:35786" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="35843:36581" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="36643:36875" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="36931:37328" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="37377:37573" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="37627:38347" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="38405:39543" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="39601:39992" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="40050:40633" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="40699:40815" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="40877:41792" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="41853:42087" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="42143:43210" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="43259:43909" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="43960:44983" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="45030:45190" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="45247:45709" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="45761:46739" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="46792:47087" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="47136:48301" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="48352:48633" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="48681:50317" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="50368:51968" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="52023:52419" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="52467:52938" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="52987:53201" ph="do ... end" />
+            <marker date="1496269661781" expanded="true" signature="53248:53506" ph="do ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/stock.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />

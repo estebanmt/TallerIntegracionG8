@@ -13,7 +13,10 @@ namespace :stock do
       ids.push(almacenes[i]["_id"])
     end
     puts ids
-    puts ENV["CLAVE_BODEGA"]
+
+
+
+
   end
 
 end
