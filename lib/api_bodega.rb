@@ -185,15 +185,17 @@ class APIBodega
 
   #Solo para productos elaborados, para materia prima llamar diurecto a producirStockSku
   def self.producir_lotes(sku, cantidad_lotes)
-    if verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes) #Si pasa, estamos OK
-      lista_totales_por_sku = lista_ingredientes_por_sku(sku)
-      for k in 0..cantidad_lotes - 1
-        for i in lista_totales_por_sku
-          puts mover_General_Despacho(i[0], i[1]) # i[0]:sku mat prima, i[1], cantid x lote de mat prima
-        end
-        puts producirStockSku(sku)
-      end
+    #puts "-"*100
+    #puts verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i)
+    #if verificar_materia_prima_para_producto_elaborado(sku, cantidad_lotes.to_i) #Si pasa, estamos OK
+    lista_totales_por_sku = lista_ingredientes_por_sku(sku)
+    for k in 0..(cantidad_lotes.to_i - 1)
+      #for i in lista_totales_por_sku
+      #  puts mover_General_Despacho(i[0], i[1]) # i[0]:sku mat prima, i[1], cantid x lote de mat prima
+      #end
+      puts producirStockSku(sku)
     end
+    #end
 
   end
 
@@ -319,12 +321,6 @@ class APIBodega
   def self.mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku.to_s, @BODEGA_GENERAL)
     #puts stock
-    if stock.length == 0
-      return "No hay ese producto en la bodega GENERAL"
-    end
-    if stock.length < cantidad.to_i
-      return "No hay suficiente producto en bodega GENERAL"
-    end
     while stock.length != 0
       for i in 0..stock.length - 1
         if cantidad == 0
@@ -332,9 +328,9 @@ class APIBodega
         end
         mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
         cantidad -= 1
-        if i != 0 && i%50==0
-          puts 'DURMIENDOOOOOOOO'*10
-          sleep(25)
+        if i != 0 && i%40==0
+          #puts 'DURMIENDOOOOOOOO'*10
+          sleep(30)
         end
       end
       stock = get_stock(sku.to_s, @BODEGA_GENERAL)
