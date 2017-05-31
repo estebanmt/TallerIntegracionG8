@@ -7,10 +7,11 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
   end
 
   def method_type
-    'IIC3103pay'
+    'iic3103pay'
   end
 
   def purchase(amount, transaction_details, options = {})
+    puts "purchase #{amount}"
     ActiveMerchant::Billing::Response.new(true, 'success', {}, {})
   end
 
