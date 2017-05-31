@@ -30,3 +30,5 @@ URL_PAGO_TRANSFERENCIA: 'https://integracion-2017-dev.herokuapp.com/banco'
 API_URL_OC: 'https://integracion-2017-dev.herokuapp.com/oc/'
 
 
+API_URL_PAGO: 'https://integracion-2017-dev.herokuapp.com/web/pagoenlinea?'
+URL_PAY_PROXY: 'http://localhost:3000/payproxies/'
