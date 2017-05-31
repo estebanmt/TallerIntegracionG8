@@ -87,6 +87,7 @@ class WarehousesController < ApplicationController
     @response = APIBodega.producirStockSku(params[:id])
   end
 
+
 def order_lotes
   render json: APIBodega.producir_lotes(params[:id], params[:lotes])
 end

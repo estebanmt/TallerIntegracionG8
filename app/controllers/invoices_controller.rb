@@ -1,3 +1,5 @@
+require 'api_pago'
+
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :update, :destroy]
 
@@ -151,6 +153,11 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1
   def destroy
     @invoice.destroy
+  end
+
+  def pagar
+    puts "."*1000
+    @response = ApiPago.crear_boleta(params[:id_cliente], params[:monto].to_i)
   end
 
   private
