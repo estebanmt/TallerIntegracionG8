@@ -128,14 +128,12 @@ class APIBodega
   #############################################################################
 
 
-  @CUENTA_FABRICA =  "590baa00d6b4ec0004902460"
-  @CUENTA_BANCO = "590baa00d6b4ec0004902470"
+  @CUENTA_FABRICA =  ENV["CUENTA_FABRICA"]
+  @CUENTA_BANCO = ENV["CUENTA_BANCO"]
   @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
      "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
 
-  @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
-  @key_bodega = '2T02j&xwE#tQA#e'
-
+  @URL_PAGO_TRANSFERENCIA = ENV["URL_PAGO_TRANSFERENCIA"]
 
 
   def self.pagar_fabricacion(sku, cantidad_unitaria)
@@ -175,6 +173,8 @@ class APIBodega
     :sender => comprobante_de_pago["origen"], :receiver => comprobante_de_pago["destino"],
     :_id => comprobante_de_pago["_id"], :exitosa => true)
     response = producir_Stock(sku, @LOTE_SKU[0][sku.to_s], comprobante_de_pago["_id"])
+    puts response
+
     OrdenFabricacion.create(:sku => sku.to_s, :cantidad => response["cantidad"],
     :monto => comprobante_de_pago["monto"], :_id => response["_id"],
     :disponible => response["disponible"])
