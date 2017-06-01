@@ -13,7 +13,7 @@ class ApiPago
 
 
   def self.crear_boleta(id_cliente, monto)
-    params = params = {'proveedor' => '590baa00d6b4ec0004902469','cliente' => id_cliente, 'total' => monto}
+    params = params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
     #puts params
     response = put_url('/boleta', params)
     puts response

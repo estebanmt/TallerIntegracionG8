@@ -92,6 +92,14 @@ def order_lotes
   render json: APIBodega.producir_lotes(params[:id], params[:lotes])
 end
 
+def mover_general_despacho
+  render json: APIBodega.mover_General_Despacho(params[:sku], params[:cantidad].to_i)
+end
+
+def mover_pulmon_general
+  render json: APIBodega.mover_Pulmon_Recepcion_General(params[:sku], params[:cantidad].to_i)
+end
+
   # GET almacenes
   def getAlmacenes
     @auth = 'INTEGRACION grupo8:' + doHashSHA1('GET')

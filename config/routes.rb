@@ -143,7 +143,10 @@ Rails.application.routes.draw do
   get 'order/:id/:lotes', to: 'warehouses#order_lotes'
 
   # vaciar recepcion
-
   get 'vaciar_recepcion', to: 'warehouses#vaciar_recepcion'
+  # Mover desdde general a despacho
+  get 'mover_general_despacho/:sku/:cantidad', to: 'warehouses#mover_general_despacho'
+  # mover dede pulmon a general.
+  get 'mover_pulmon_general/:sku/:cantidad', to: 'warehouses#mover_pulmon_general'
 
 end
