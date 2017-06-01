@@ -148,5 +148,7 @@ Rails.application.routes.draw do
   get 'mover_general_despacho/:sku/:cantidad', to: 'warehouses#mover_general_despacho'
   # mover dede pulmon a general.
   get 'mover_pulmon_general/:sku/:cantidad', to: 'warehouses#mover_pulmon_general'
+  # Mover desdde despacho a general.
+  get 'mover_despacho_general/:sku/:cantidad', to: 'warehouses#mover_despacho_general'
 
 end
