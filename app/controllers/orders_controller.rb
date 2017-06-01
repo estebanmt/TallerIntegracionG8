@@ -24,6 +24,8 @@ class OrdersController < ApplicationController
   # PUT /purchase_orders/:id
   # A clientes (otros grupos)
   def notify
+    body = JSON.parse request.body.read
+    idBodegaCliente = @body[0]["id_store_reception"]
     json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
     ApiB2b.revisarOrdenCompra(json)
   end

@@ -105,6 +105,10 @@ def mover_pulmon_general
   render json: APIBodega.mover_Pulmon_Recepcion_General(params[:sku], params[:cantidad].to_i)
 end
 
+  def despachar
+    render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio], params[:almacenId], params[:oc])
+  end
+
   # GET almacenes
   def getAlmacenes
     @auth = 'INTEGRACION grupo8:' + doHashSHA1('GET')
