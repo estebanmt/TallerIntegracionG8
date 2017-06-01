@@ -1,5 +1,7 @@
 require 'api_bodega.rb'
 require 'googlecharts'
+require 'dashboard_lib'
+
 class DashboardsController < ActionController::Base
   @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
   ##ACEITE MARA - CREMA - SEMOLA - CACAO - HARINA - SAL -LEVADURA - SEMILLAS_MARAVILLA - CEREAL_MAIZ - PAN INT
@@ -43,11 +45,13 @@ class DashboardsController < ActionController::Base
               :labels => exitosas,
               :data => exitosas)
 
+    @stock_por_almacen = DashboardLib.get_almacen_data
   end
 
   def obtain_skus(lista_alma, diccionario)
     lista_alma.each do |alma|
       response = APIBodega.get_skusWithStock(alma)
+      puts response
       response.each do |ris|
         if diccionario[ris["_id"]] == nil
           diccionario[ris["_id"]] = ris["total"]
