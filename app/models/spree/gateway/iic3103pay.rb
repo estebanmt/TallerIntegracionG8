@@ -28,7 +28,7 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
   end
 
   def auto_capture?
-    true
+    false
   end
 
   def payment_profiles_supported?
@@ -49,5 +49,17 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
 
     ActiveMerchant::Billing::Response.new(response, 'success', {}, {})
   end
+
+  def authorize(amount, transaction_details, options = {})
+    puts "iic3103 - authorize #{amount}"
+
+    response = ApiPago.pay('1', 1000)
+
+    puts "iic3103 - pay = #{response}"
+
+
+    ActiveMerchant::Billing::Response.new(response, 'success', {}, {})
+  end
+
 
 end
