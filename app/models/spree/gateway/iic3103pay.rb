@@ -19,24 +19,25 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
     false
   end
 
-  def payment_source_class
-    Spree::DataCash
-  end
-
-  def auto_capture?
+  def confirmation_required?
     false
   end
 
-  def payment_profiles_supported?
+  def payment_source_class
+    Spree::CreditCard
+  end
+
+  def auto_capture?
     true
   end
 
+  def payment_profiles_supported?
+    false
+  end
 
   def method_type
     'iic3103pay'
   end
-
-
 
   def purchase(amount, transaction_details, options = {})
     puts "iic3103 - purchase #{amount}"
@@ -46,7 +47,7 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
     puts "iic3103 - pay = #{response}"
 
 
-    ActiveMerchant::Billing::Response.new(true, 'success', {}, {})
+    ActiveMerchant::Billing::Response.new(response, 'success', {}, {})
   end
 
 end

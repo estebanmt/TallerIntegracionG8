@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f1ad05-5f95-49aa-910b-6e6424cf13f5" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tasks/iic3103.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" afterPath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/api_env.yml" afterPath="$PROJECT_DIR$/config/api_env.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_pago.rb" afterPath="$PROJECT_DIR$/lib/api_pago.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/stock.rake" afterPath="$PROJECT_DIR$/lib/tasks/stock.rake" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -23,21 +23,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="deploy.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/deploy.rb">
+      <file leaf-file-name="iic3103pay.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api_bodega.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+      <file leaf-file-name="production.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="315">
+              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="46" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="development.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -46,8 +56,28 @@
       <file leaf-file-name="api_pago.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="660">
+              <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spree.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/initializers/spree.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gateway.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/gateway.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-513">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iic3103pay.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
+      <file leaf-file-name="iic3103.rake" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/tasks/iic3103.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -77,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/config/api_env.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
-              <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="16" />
+              <caret line="35" column="79" lean-forward="false" selection-start-line="35" selection-start-column="79" selection-end-line="35" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -86,123 +116,9 @@
       <file leaf-file-name="invoices_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1935">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="warehouses_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/warehouses_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-450">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1496269661781" expanded="true" signature="776:53511" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="3027:3289" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="3334:3669" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="3714:3882" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="3934:4685" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="4739:5832" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="5881:6594" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="6648:7208" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="7260:7515" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="7570:8380" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="8439:8606" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="8657:9252" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="9310:9975" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="10028:11555" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="11609:11904" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="11969:12279" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="12334:12795" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="12859:13172" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="13228:13705" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="13764:14043" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="14092:17601" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="17666:18039" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="18097:18617" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="18668:19629" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="19683:19910" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="19959:20421" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="20484:20970" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="21036:21338" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="21399:21920" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="21971:23173" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="23231:23591" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="23661:24012" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="24072:24480" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="24543:24681" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="24745:25024" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="25087:25394" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="25452:25997" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="26050:27083" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="27136:27375" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="27437:27628" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="27687:27966" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="28019:28135" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="28192:28424" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="28474:28969" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="29033:29227" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="29289:29628" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="29685:30232" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="30303:30535" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="30599:30978" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="31033:32320" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="32373:32597" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="32645:32748" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="32800:34294" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="34356:34557" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="34626:35099" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="35163:35234" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="35293:35786" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="35843:36581" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="36643:36875" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="36931:37328" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="37377:37573" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="37627:38347" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="38405:39543" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="39601:39992" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="40050:40633" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="40699:40815" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="40877:41792" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="41853:42087" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="42143:43210" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="43259:43909" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="43960:44983" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="45030:45190" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="45247:45709" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="45761:46739" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="46792:47087" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="47136:48301" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="48352:48633" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="48681:50317" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="50368:51968" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="52023:52419" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="52467:52938" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="52987:53201" ph="do ... end" />
-                <marker date="1496269661781" expanded="true" signature="53248:53506" ph="do ... end" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -215,6 +131,7 @@
       <find>defe</find>
       <find>defer</find>
       <find>get_url</find>
+      <find>purchase</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -231,11 +148,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/lib/api_bodega.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/stock.rake" />
         <option value="$PROJECT_DIR$/config/api_env.yml" />
+        <option value="$PROJECT_DIR$/config/deploy.rb" />
+        <option value="$PROJECT_DIR$/config/initializers/spree.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/iic3103.rake" />
         <option value="$PROJECT_DIR$/lib/api_pago.rb" />
+        <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
       </list>
     </option>
@@ -247,8 +167,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1055" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -265,8 +186,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="RailsProjectView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,6 +256,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="initializers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deploy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -385,127 +360,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/invoices_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/warehouses_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/config/routes.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/db/schema.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/api_bodega.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/api_pago.rb</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/tasks" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -834,6 +699,7 @@
       <workItem from="1496187987800" duration="821000" />
       <workItem from="1496242326185" duration="1042000" />
       <workItem from="1496243547426" duration="5159000" />
+      <workItem from="1496281947508" duration="3073000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch remotes/origin/spree_iic3103pay'">
       <created>1496164037492</created>
@@ -881,18 +747,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10198000" />
+    <option name="totallyTimeSpent" value="13271000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="824" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25486112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -935,51 +801,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Capfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_banco.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/api_orden_compra.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,31 +856,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1496281913000" expanded="true" signature="105:325" ph=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb" />
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb" />
     <entry file="file://$PROJECT_DIR$/lib/api_orden_compra.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1075,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,31 +919,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1496281913000" expanded="true" signature="105:325" ph=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb" />
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb" />
     <entry file="file://$PROJECT_DIR$/lib/api_orden_compra.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,7 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,47 +1018,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state relative-caret-position="15">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201722_rename_back_to_receiver_sender.rb" />
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170530201409_rename_back_to_amount.rb" />
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1935">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,7 +1048,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1297,91 +1058,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
           <folding>
-            <marker date="1496269661781" expanded="true" signature="776:53511" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3027:3289" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3334:3669" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3714:3882" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3934:4685" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="4739:5832" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="5881:6594" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="6648:7208" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="7260:7515" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="7570:8380" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="8439:8606" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="8657:9252" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="9310:9975" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="10028:11555" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="11609:11904" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="11969:12279" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="12334:12795" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="12859:13172" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="13228:13705" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="13764:14043" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="14092:17601" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="17666:18039" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="18097:18617" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="18668:19629" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="19683:19910" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="19959:20421" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="20484:20970" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21036:21338" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21399:21920" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21971:23173" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="23231:23591" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="23661:24012" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24072:24480" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24543:24681" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24745:25024" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="25087:25394" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="25452:25997" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="26050:27083" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27136:27375" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27437:27628" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27687:27966" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28019:28135" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28192:28424" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28474:28969" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29033:29227" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29289:29628" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29685:30232" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="30303:30535" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="30599:30978" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="31033:32320" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32373:32597" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32645:32748" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32800:34294" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="34356:34557" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="34626:35099" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35163:35234" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35293:35786" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35843:36581" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="36643:36875" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="36931:37328" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="37377:37573" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="37627:38347" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="38405:39543" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="39601:39992" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40050:40633" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40699:40815" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40877:41792" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="41853:42087" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="42143:43210" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="43259:43909" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="43960:44983" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45030:45190" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45247:45709" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45761:46739" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="46792:47087" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="47136:48301" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="48352:48633" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="48681:50317" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="50368:51968" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52023:52419" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52467:52938" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52987:53201" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="53248:53506" ph="do ... end" />
+            <marker date="1496281913000" expanded="true" signature="105:325" ph=" ... end" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="79" lean-forward="false" selection-start-line="35" selection-start-column="79" selection-end-line="35" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1393,34 +1096,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_bodega.rb">
+    <entry file="file://$PROJECT_DIR$/lib/tasks/iic3103.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="16" />
+        <state relative-caret-position="75">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="660">
+          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/spree.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/gateway.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-513">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="46" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="22" />
           <folding />
         </state>
       </provider>

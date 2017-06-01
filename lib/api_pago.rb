@@ -44,8 +44,11 @@ class ApiPago
     boleta_id = get_boleta_id(id_cliente, monto)
     response = get_pago(boleta_id)
 
+    result = true;
+
     puts "iic3103 - Pay #{response}"
 
+    return response
   end
 
   def self.put_url(uri, params)#, authorization)
