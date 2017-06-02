@@ -42,6 +42,10 @@ class PayproxiesController < ApplicationController
   # GET /payproxies/new
   def new
     @payproxy = Payproxy.new
+
+    #redirect_to("https://integracion-2017-dev.herokuapp.com/web/pagoenlinea?callbackUrl=http://integra17-8.ing.puc.cl/payproxies//5930d58f401ad500042015be/sucess&cancelUrl=http://integra17-8.ing.puc.cl/payproxies//5930d58f401ad500042015be/fail&boletaId=5930d58f401ad500042015be&")
+
+
   end
 
   # GET /payproxies/1/edit
@@ -52,6 +56,7 @@ class PayproxiesController < ApplicationController
   # POST /payproxies.json
   def create
     @payproxy = Payproxy.new(payproxy_params)
+    redirect_to("https://integracion-2017-dev.herokuapp.com/web/pagoenlinea?callbackUrl=http://integra17-8.ing.puc.cl/payproxies//5930d58f401ad500042015be/sucess&cancelUrl=http://integra17-8.ing.puc.cl/payproxies//5930d58f401ad500042015be/fail&boletaId=5930d58f401ad500042015be&")
 
     respond_to do |format|
       if @payproxy.save

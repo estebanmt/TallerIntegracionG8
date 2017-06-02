@@ -4,6 +4,7 @@ require "base64"
 require 'digest'
 require 'json'
 require 'uri'
+require 'turbolinks/redirection'
 
 class ApiPago
 
@@ -26,27 +27,29 @@ class ApiPago
   end
 
   def self.get_boleta_id(id_cliente, monto)
-
     response = crear_boleta(id_cliente, monto)
+    boleta_id = response["_id"]
     return boleta_id;
-  end
-
-  def self.get_pago(boleta_id)
-    url_ok = URI.encode(@URL_PAY_PROXY + '/' + boleta_id + '/' + 'sucess')
-    url_fail = URI.encode(@URL_PAY_PROXY + '/' + boleta_id + '/' + 'fail')
-
-    params = {'callbackUrl' => url_ok, 'cancelUrl' => url_fail, 'boletaId' => boleta_id}
-
-
-    return get_url('pagoenlinea', params, nil)
-
   end
 
   def self.pay(id_cliente, monto)
 
     boleta_id = get_boleta_id(id_cliente, monto)
 
-    #@payproxy = Payproxy.new({"amount" => monto, "boleta_id" => boleta_id, "state" => 0})
+    url_ok = URI.escape(@URL_PAY_PROXY + '/' + boleta_id + '/' + 'sucess')
+    url_fail = URI.escape(@URL_PAY_PROXY + '/' + boleta_id + '/' + 'fail')
+
+    @url = @API_URL_PAGO + '/pagoenlinea?' + 'callbackUrl=' + url_ok + '&' + 'cancelUrl' + url_fail + '&' + 'boletaId=' + boleta_id
+
+    puts "url_pago #{@url}"
+
+    params = {'amount' => monto, 'url' => @url, 'boletaId' => boleta_id}
+
+    #response =  post_payproxy('', params)
+
+    response = redirect_to(@url)
+
+    @payproxy = Payproxy.create({"amount" => monto, "boleta_id" => boleta_id, "state" => 0})
     @payproxy = Payproxy.find_by_boleta_id(1)
     @payproxy.update_attribute(:state, 0)
 
@@ -72,6 +75,19 @@ class ApiPago
     return json
   end
 
+  def self.post_payproxy(uri, params)#, authorization)
+    #puts params
+    #@auth = 'INTEGRACION grupo8:'.concat(authorization)
+    # puts @auth
+    @url = @URL_PAY_PROXY + uri
+    puts "payproxy #{@url}"
+    @response= RestClient.post @url, params.to_json, :content_type => 'application/json'
+    #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    return json
+  end
+
   def self.query_params(params)
     if params != nil
       queryParams = "";
@@ -85,29 +101,5 @@ class ApiPago
     end
   end
 
-  def self.get_url(uri, params, authorization)
-    #puts params
-
-    @query_params = query_params(params)
-    puts @query_params
-
-    if @query_params != nil
-      @url = @API_URL_PAGO + uri + "?" + @query_params
-    else
-      @url = @API_URL_PAGO + uri
-    end
-
-    @response = RestClient::Request.execute(
-        method: :get,
-        url: @url,
-        headers: {'Content-Type' => 'application/json',
-                  "Authorization" => @auth})
-
-    # TODO more error checking (500 error, etc)
-    #json = JSON.parse(@response.body)
-    #puts json
-    #return json
-
-  end
 
 end
