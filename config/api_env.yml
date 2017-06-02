@@ -31,6 +31,6 @@ API_URL_OC: 'https://integracion-2017-dev.herokuapp.com/oc/'
 
 
 #api_pago
-API_URL_PAGO: 'https://integracion-2017-dev.herokuapp.com/web/pagoenlinea?'
-URL_PAY_PROXY: 'http://localhost:3000/payproxies/'
+API_URL_PAGO: 'https://integracion-2017-dev.herokuapp.com/web/'
+URL_PAY_PROXY: 'http://integra17-8.ing.puc.cl/payproxies/'
 API_URL_FACTURAS: 'https://integracion-2017-dev.herokuapp.com/sii' ##Produccion
