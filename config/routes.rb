@@ -152,5 +152,6 @@ Rails.application.routes.draw do
   get 'mover_despacho_general/:sku/:cantidad', to: 'warehouses#mover_despacho_general'
 
   get 'despachar_orden/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar'
+  get 'despachar_aceptar/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_aceptar'
 
 end

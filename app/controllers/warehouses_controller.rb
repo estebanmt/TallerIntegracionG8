@@ -4,6 +4,7 @@ require "base64"
 require 'digest'
 require 'api_b2b'
 require 'api_bodega'
+require 'api_orden_compra'
 
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :update, :destroy]
@@ -107,6 +108,11 @@ end
 
   def despachar
     render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio], params[:almacenId], params[:oc])
+  end
+
+  def despachar_aceptar
+    ApiOrdenCompra.recepcionarOrdenCompra(params[:oc])
+    render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio].to_i, params[:almacenId], params[:oc])
   end
 
   # GET almacenes
