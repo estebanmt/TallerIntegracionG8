@@ -11,12 +11,12 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
     self.class
   end
 
-  #def provider_class
-  #  Spree::Gateway::IIC3103pay
-  #end
+  def provider_class
+    Spree::Gateway::IIC3103pay
+  end
 
   def source_required?
-    false
+    true
   end
 
   def confirmation_required?
@@ -28,7 +28,7 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
   end
 
   def auto_capture?
-    false
+    true
   end
 
   def payment_profiles_supported?

@@ -8,7 +8,7 @@ require 'uri'
 class ApiPago
 
   @API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
-  @API_URL_PAGO = ENV["URL_API_PAGO"]
+  @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
 
 
@@ -37,13 +37,19 @@ class ApiPago
 
     params = {'callbackUrl' => url_ok, 'cancelUrl' => url_fail, 'boletaId' => boleta_id}
 
-    return get_url(@API_URL_PAGO, params, hmac)
+
+    return get_url('pagoenlinea', params, nil)
 
   end
 
   def self.pay(id_cliente, monto)
 
     boleta_id = get_boleta_id(id_cliente, monto)
+
+    #@payproxy = Payproxy.new({"amount" => monto, "boleta_id" => boleta_id, "state" => 0})
+    @payproxy = Payproxy.find_by_boleta_id(1)
+    @payproxy.update_attribute(:state, 0)
+
     response = get_pago(boleta_id)
 
     result = true;
@@ -58,7 +64,7 @@ class ApiPago
     #@auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
     @url = @API_URL_FACTURAS + uri
-    #puts @url
+    puts @url
     @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
     #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
@@ -85,12 +91,10 @@ class ApiPago
     @query_params = query_params(params)
     puts @query_params
 
-    @auth = 'INTEGRACION grupo8:'.concat(authorization)
-
     if @query_params != nil
-      @url = @API_URL_BODEGA + uri + "?" + @query_params
+      @url = @API_URL_PAGO + uri + "?" + @query_params
     else
-      @url = @API_URL_BODEGA + uri
+      @url = @API_URL_PAGO + uri
     end
 
     @response = RestClient::Request.execute(
@@ -100,9 +104,9 @@ class ApiPago
                   "Authorization" => @auth})
 
     # TODO more error checking (500 error, etc)
-    json = JSON.parse(@response.body)
-    puts json
-    return json
+    #json = JSON.parse(@response.body)
+    #puts json
+    #return json
 
   end
 

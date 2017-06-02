@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="40f1ad05-5f95-49aa-910b-6e6424cf13f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" afterPath="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/api_env.yml" afterPath="$PROJECT_DIR$/config/api_env.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_pago.rb" afterPath="$PROJECT_DIR$/lib/api_pago.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -18,56 +21,81 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TallerIntegracionG8@Development__TallerIntegracionG8.coverage" NAME="Development: TallerIntegracionG8 Coverage Results" MODIFIED="1496323713258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TallerIntegracionG8" />
+    <SUITE FILE_PATH="coverage/TallerIntegracionG8@Development__TallerIntegracionG8.coverage" NAME="Development: TallerIntegracionG8 Coverage Results" MODIFIED="1496370646017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TallerIntegracionG8" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="iic3103pay.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="iic3103pay.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="53" column="29" lean-forward="false" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+            <state relative-caret-position="511">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gateway.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/gateway.rb">
+      <file leaf-file-name="api_pago.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            <state relative-caret-position="382">
+              <caret line="106" column="5" lean-forward="false" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+              <folding>
+                <marker date="1496370873199" expanded="true" signature="117:2722" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="287:487" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="532:642" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="674:970" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="1005:1356" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="1389:1497" ph="##..." />
+                <marker date="1496370873199" expanded="true" signature="1389:1811" ph="##..." />
+                <marker date="1496370873199" expanded="true" signature="1639:1751" ph="##..." />
+                <marker date="1496370873199" expanded="true" signature="1844:2138" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="1849:2132" ph="if ... end" />
+                <marker date="1496370873199" expanded="true" signature="1908:2072" ph="do ... end" />
+                <marker date="1496370873199" expanded="true" signature="2186:2717" ph=" ... end" />
+                <marker date="1496370873199" expanded="true" signature="2274:2402" ph="if ... end" />
+                <marker date="1496370873199" expanded="true" signature="2596:2710" ph="##..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="payproxy.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/payproxy.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="payment_method.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment_method.rb">
+      <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-263">
-              <caret line="8" column="98" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+            <state relative-caret-position="-900">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order.rb">
+      <file leaf-file-name="payproxies_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/payproxies_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1412">
-              <caret line="189" column="22" lean-forward="false" selection-start-line="189" selection-start-column="22" selection-end-line="189" selection-end-column="22" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blank.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.1/lib/active_support/core_ext/object/blank.rb">
+      <file leaf-file-name="rails.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+            <state relative-caret-position="-208">
+              <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -77,27 +105,37 @@
         <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="182">
-              <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iic3103.rake" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/tasks/iic3103.rake">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="11" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processing.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="processing.rb" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="173">
               <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transition.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/state_machines-0.4.0/lib/state_machines/transition.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api_env.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/api_env.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="33" column="62" lean-forward="false" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -112,6 +150,9 @@
       <find>defer</find>
       <find>get_url</find>
       <find>purchase</find>
+      <find>hmc</find>
+      <find>hmac</find>
+      <find>URL_API_PAGO</find>
       <find>source</find>
     </findStrings>
     <dirStrings>
@@ -132,9 +173,10 @@
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/lib/api_bodega.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/stock.rake" />
+        <option value="$PROJECT_DIR$/config/environments/development.rb" />
+        <option value="$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb" />
         <option value="$PROJECT_DIR$/config/api_env.yml" />
         <option value="$PROJECT_DIR$/lib/api_pago.rb" />
-        <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb" />
       </list>
     </option>
@@ -153,6 +195,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-10" />
     <option name="width" value="1920" />
     <option name="height" value="1055" />
   </component>
@@ -214,6 +257,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -307,6 +364,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TallerIntegracionG8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -330,12 +405,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/modules.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/dashboards_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/dashboards/index.html.erb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/config/environments/development.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/orders_controller.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/warehouses_controller.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/config/routes.rb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/api_pago.rb</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -344,8 +416,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/dashboard_lib.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/tasks/iic3103.rake</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -760,7 +830,7 @@
       <workItem from="1496187901788" duration="31000" />
       <workItem from="1496187987800" duration="821000" />
       <workItem from="1496242326185" duration="1042000" />
-      <workItem from="1496243547426" duration="11265000" />
+      <workItem from="1496243547426" duration="22548000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch remotes/origin/spree_iic3103pay'">
       <created>1496164037492</created>
@@ -811,26 +881,33 @@
       <option name="project" value="LOCAL" />
       <updated>1496273532867</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ajustes pago">
+      <created>1496324871718</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1496324871718</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16304000" />
+    <option name="totallyTimeSpent" value="27587000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
+    <frame x="-10" y="0" width="1920" height="1055" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -861,7 +938,8 @@
     <MESSAGE value="remove whenever from deploy because cap production deploy dont work" />
     <MESSAGE value="set master for deploy" />
     <MESSAGE value="Merge remote-tracking branch 'remotes/origin/spree_iic3103pay'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'remotes/origin/spree_iic3103pay'" />
+    <MESSAGE value="ajustes pago" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes pago" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -891,110 +969,44 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>11</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb</url>
+          <line>53</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>13</line>
-          <option name="timeStamp" value="13" />
+          <line>83</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>23</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/lib/api_pago.rb</url>
+          <line>104</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>96</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/lib/api_pago.rb</url>
+          <line>46</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>22</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/app/controllers/payproxies_controller.rb</url>
+          <line>12</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>47</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>49</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>58</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>50</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb</url>
-          <line>52</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>99</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>103</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>105</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>110</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb</url>
-          <line>18</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/app/controllers/payproxies_controller.rb</url>
+          <line>27</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="31" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/product_table.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/security.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Capfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1051,98 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1496269661781" expanded="true" signature="776:53511" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3027:3289" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3334:3669" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3714:3882" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="3934:4685" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="4739:5832" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="5881:6594" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="6648:7208" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="7260:7515" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="7570:8380" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="8439:8606" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="8657:9252" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="9310:9975" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="10028:11555" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="11609:11904" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="11969:12279" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="12334:12795" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="12859:13172" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="13228:13705" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="13764:14043" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="14092:17601" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="17666:18039" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="18097:18617" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="18668:19629" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="19683:19910" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="19959:20421" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="20484:20970" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21036:21338" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21399:21920" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="21971:23173" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="23231:23591" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="23661:24012" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24072:24480" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24543:24681" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="24745:25024" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="25087:25394" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="25452:25997" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="26050:27083" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27136:27375" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27437:27628" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="27687:27966" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28019:28135" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28192:28424" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="28474:28969" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29033:29227" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29289:29628" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="29685:30232" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="30303:30535" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="30599:30978" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="31033:32320" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32373:32597" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32645:32748" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="32800:34294" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="34356:34557" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="34626:35099" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35163:35234" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35293:35786" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="35843:36581" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="36643:36875" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="36931:37328" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="37377:37573" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="37627:38347" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="38405:39543" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="39601:39992" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40050:40633" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40699:40815" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="40877:41792" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="41853:42087" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="42143:43210" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="43259:43909" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="43960:44983" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45030:45190" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45247:45709" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="45761:46739" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="46792:47087" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="47136:48301" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="48352:48633" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="48681:50317" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="50368:51968" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52023:52419" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52467:52938" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="52987:53201" ph="do ... end" />
-            <marker date="1496269661781" expanded="true" signature="53248:53506" ph="do ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/stock.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1156,31 +1076,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="50" column="19" lean-forward="false" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
-          <folding>
-            <marker date="1496295932783" expanded="true" signature="1016:1186" ph=" ... end" />
-            <marker date="1496295932783" expanded="true" signature="1219:1327" ph="##..." />
-            <marker date="1496295932783" expanded="true" signature="1219:1642" ph="##..." />
-            <marker date="1496295932783" expanded="true" signature="1470:1582" ph="##..." />
-            <marker date="1496295932783" expanded="true" signature="1675:1969" ph=" ... end" />
-            <marker date="1496295932783" expanded="true" signature="1680:1963" ph="if ... end" />
-            <marker date="1496295932783" expanded="true" signature="1739:1903" ph="do ... end" />
-            <marker date="1496295932783" expanded="true" signature="2162:2294" ph="if ... end" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1405,34 +1300,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/gateway.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activesupport-5.0.1/lib/active_support/core_ext/object/blank.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="53" column="29" lean-forward="false" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment_method.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-263">
-          <caret line="8" column="98" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
           <folding />
         </state>
       </provider>
@@ -1453,10 +1324,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/state_machines-0.4.0/lib/state_machines/transition.rb">
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment_method.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
-          <caret line="345" column="0" lean-forward="false" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/gateway.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/api_env.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="33" column="62" lean-forward="false" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1464,15 +1351,86 @@
     <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/order/payments.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
-          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/state_machines-0.4.0/lib/state_machines/transition.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.0.1/lib/rails.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-208">
+          <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/spree_core-3.2.1/app/models/spree/payment/processing.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="173">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/payproxy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/payproxies_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/api_pago.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="106" column="5" lean-forward="false" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+          <folding>
+            <marker date="1496370873199" expanded="true" signature="117:2722" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="287:487" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="532:642" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="674:970" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="1005:1356" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="1389:1497" ph="##..." />
+            <marker date="1496370873199" expanded="true" signature="1389:1811" ph="##..." />
+            <marker date="1496370873199" expanded="true" signature="1639:1751" ph="##..." />
+            <marker date="1496370873199" expanded="true" signature="1844:2138" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="1849:2132" ph="if ... end" />
+            <marker date="1496370873199" expanded="true" signature="1908:2072" ph="do ... end" />
+            <marker date="1496370873199" expanded="true" signature="2186:2717" ph=" ... end" />
+            <marker date="1496370873199" expanded="true" signature="2274:2402" ph="if ... end" />
+            <marker date="1496370873199" expanded="true" signature="2596:2710" ph="##..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/spree/gateway/iic3103pay.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
