@@ -30,7 +30,11 @@ class DashboardsController < ActionController::Base
     @transactions = Transaction.all
     datos = encontrar_datos
     exitosas = encontrar_exitosas
-
+    boletas = encontrar_datos_boletas
+    pendientes = encontrar_pendientes
+    puts "."*100
+    puts boletas
+    puts "."*100
     @graph = Gchart.pie(  :size => '600x500',
               :title => "Transacciones por monto: Monto - Status",
               :bg => 'efefef',
@@ -44,6 +48,22 @@ class DashboardsController < ActionController::Base
               :legend => ["Exitosas", "Fracasadas"],
               :labels => exitosas,
               :data => exitosas)
+
+
+    @graph2 = Gchart.pie(  :size => '600x500',
+              :title => "Boletas por monto: Monto - Status",
+              :bg => 'efefef',
+              :legend => boletas.keys,
+              :labels => boletas.values,
+              :data => boletas.values)
+
+    @graph3 = Gchart.pie(  :size => '600x500',
+              :title => "Boletas segun exito",
+              :bg => 'efefef',
+              :legend => ["Exitosas", "Fracasadas"],
+              :labels => pendientes,
+              :data => pendientes)
+
 
     @stock_por_almacen = DashboardLib.get_almacen_data
   end
@@ -101,10 +121,40 @@ class DashboardsController < ActionController::Base
     return montos
   end
 
+  def encontrar_datos_boletas
+    montos = {}
+    for i in Invoice.all
+      placeholder = ''
+      if i['status'] == 'pendiente'
+        placeholder = " Pendiente"
+      else
+        placeholder = " Exitosa"
+      end
+      if montos.key?(i["total_amount"].to_s+placeholder) #True
+        montos[i["total_amount"].to_s+placeholder] += 1
+      else
+        montos[i["total_amount"].to_s+placeholder] = 1
+      end
+    end
+    return montos
+  end
+
   def encontrar_exitosas
     vuelto = [0,0]
     for i in Transaction.all
       if i["exitosa"]
+        vuelto[0] += 1
+      else
+        vuelto[1] += 1
+      end
+    end
+    return vuelto
+  end
+
+  def encontrar_pendientes
+    vuelto = [0,0]
+    for i in Invoice.all
+      if i["pendiente"]
         vuelto[0] += 1
       else
         vuelto[1] += 1
