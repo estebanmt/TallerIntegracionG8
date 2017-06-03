@@ -20,7 +20,7 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
   end
 
   def confirmation_required?
-    false
+    true
   end
 
   def payment_source_class
@@ -28,7 +28,7 @@ class Spree::Gateway::IIC3103pay  < Spree::Gateway
   end
 
   def auto_capture?
-    true
+    auto
   end
 
   def payment_profiles_supported?

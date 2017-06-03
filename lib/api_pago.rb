@@ -47,19 +47,13 @@ class ApiPago
 
     #response =  post_payproxy('', params)
 
-    response = redirect_to(@url)
+    #response = redirect_to(@url)
 
-    @payproxy = Payproxy.create({"amount" => monto, "boleta_id" => boleta_id, "state" => 0})
+    #@payproxy = Payproxy.create({"amount" => monto, "boleta_id" => boleta_id, "state" => 0})
     @payproxy = Payproxy.find_by_boleta_id(1)
     @payproxy.update_attribute(:state, 0)
 
-    response = get_pago(boleta_id)
-
-    result = true;
-
-    puts "iic3103 - Pay #{response}"
-
-    return response
+    puts "iic3103 - Salindo"
   end
 
   def self.put_url(uri, params)#, authorization)
