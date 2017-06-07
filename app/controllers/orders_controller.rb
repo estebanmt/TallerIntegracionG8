@@ -6,7 +6,7 @@ require 'api_orden_compra'
 require 'api_b2b'
 require 'json'
 
-class OrdersController < ApplicationController
+class OrdersController < ApiController
   before_action :set_order, only: [:show, :update, :destroy]
   #before_action :render_message, unless: :check_header
 
@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
   def test
     @body = JSON.parse request.body.read
     puts @body[0]["test"]
+    render json: 'hello'
   end
 
   # POST /purchase_orders/:id  ..... realizar pedido a cliente
