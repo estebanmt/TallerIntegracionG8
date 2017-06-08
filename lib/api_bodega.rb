@@ -287,7 +287,6 @@ class APIBodega
    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
    return put_url(@PRODUCIR_STOCK, params, hmac)
-
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)

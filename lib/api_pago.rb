@@ -8,13 +8,14 @@ require 'turbolinks/redirection'
 
 class ApiPago
 
-  @API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
+  #@API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
+  @API_URL_FACTURAS = 'https://integracion-2017-dev.herokuapp.com/sii/'
   @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
 
 
   def self.crear_boleta(id_cliente, monto)
-    params = params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
+    params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
     #puts params
     response = put_url('/boleta', params)
     Invoice.create(:client => response["cliente"], :gross_amount => response["bruto"],
@@ -26,8 +27,41 @@ class ApiPago
     return response
   end
 
+  #MEtodo para get una factura
+  def self.get_factura(id_factura)
+    response = get_url(id_factura)
+    puts response
+    return response
+  end
+
+  #MEtodo que acepta factura (Paga factura) a la api profesor... /factura/aceptar/:id_factura
+  def self.pagar_factura (id_factura)
+    params = {'id' => id_factura}
+    response = post_url('pay/', params)
+    puts response
+    return response
+  end
+
+  #MEtodo que rechaza factura a la api profesor
+  def self.rechazar_factura (id_factura)
+    params = {'id' => id_factura}
+    response = post_url('reject/', params)
+    puts response
+    return response
+  end
+
+  #Metodo que crea factura en la api profesor... PUT /
+  def self.crear_factura (id_oc)
+    params = {'oc' => id_oc}
+    response = put_url('', params)
+    puts response
+    puts response["oc"]
+    puts response["oc"]["estado"]
+  end
+
+
   def self.get_boleta_id(id_cliente, monto)
-    response = crear_boleta(id_cliente, monto)
+rails    response = crear_boleta(id_cliente, monto)
     boleta_id = response["_id"]
     return boleta_id;
   end
@@ -62,13 +96,40 @@ class ApiPago
     return response
   end
 
+  def self.get_url(id_factura)
+
+    @url = @API_URL_FACTURAS + id_factura
+    puts @url
+
+    @response = RestClient::Request.execute(
+        method: :get,
+        url: @url,
+        headers: {'Content-Type' => 'application/json'})
+
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+    return json
+  end
+
   def self.put_url(uri, params)#, authorization)
     #puts params
     #@auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
     @url = @API_URL_FACTURAS + uri
-    puts @url
     @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
+    #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    return json
+  end
+
+  def self.post_url(uri, params)#, authorization)
+    #puts params
+    #@auth = 'INTEGRACION grupo8:'.concat(authorization)
+    # puts @auth
+    @url = @API_URL_FACTURAS + uri
+    @response= RestClient.post @url, params.to_json, :content_type => 'application/json'
     #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
@@ -103,3 +164,4 @@ class ApiPago
 
 
 end
+
