@@ -75,7 +75,7 @@ class ApiOrdenCompra
   # Method that returns an order
   def self.getOrdenCompra(id)
     params = nil
-    response = get_url(@GET_OC + id, params)
+    response = get_url(@GET_OC + id, params)[0]
     return response
   end
 

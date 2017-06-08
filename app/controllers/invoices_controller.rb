@@ -31,8 +31,8 @@ class InvoicesController < ApplicationController
 
   #Metodo que recibe notificacion de otro grupo que nos hizo una factura... PUT /invoices/:id_factura
   def notifyFactura
-    ApiPago.recibir_notificacion_factura(params[:id_factura], params[:bank_account])
-
+    response = ApiPago.recibir_notificacion_factura(params[:id_factura], params[:bank_account])
+    render json: response
   end
 
 

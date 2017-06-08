@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :warehouses
   resources :receipts
   resources :transactions
-  resources :invoices
   resources :products
   resources :orders
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -81,6 +80,7 @@ Rails.application.routes.draw do
 
   #REcibir notificacion de factura
   put 'invoices/:id_factura', to: 'invoices#notifyFactura'
+  get 'invoices/:id_factura', to: 'invoices#notifyFactura'
 
   # Crear boleta
   get 'sii/boleta/:id/:monto', to: 'invoices#pagar'
@@ -106,17 +106,7 @@ Rails.application.routes.draw do
   delete 'purchase_order/:id', to: 'orders#reject'
   patch 'purchase_orders/:id/rejected', to: 'orders#reject'
 
-  # Enviar nueva factura
-  put 'invoices', to: 'invoices#receive'
-  put 'invoices/:id', to: 'invoices#receive'
 
-  # Informar aceptacion orden de compra
-  post 'invoices/:id', to: 'invoices#accept'
-  patch 'invoices/:id/accepted', to: 'invoices#accept'
-
-  # Informar rechazo factura
-  delete 'invoices/:id', to: 'invoices#reject'
-  patch 'invoices/:id/rejected', to: 'invoices#reject'
 
   # Informar envio de productos
   patch 'invoices/:id/delivered', to: 'invoices#delivered'
