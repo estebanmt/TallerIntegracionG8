@@ -8,8 +8,7 @@ require 'turbolinks/redirection'
 
 class ApiPago
 
-  #@API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
-  @API_URL_FACTURAS = 'https://integracion-2017-dev.herokuapp.com/sii/'
+  @API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
   @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
 
@@ -54,15 +53,17 @@ class ApiPago
   def self.crear_factura (id_oc)
     params = {'oc' => id_oc}
     response = put_url('', params)
-    puts response
     puts response["oc"]
-    puts response["oc"]["estado"]
     return response
   end
 
+  #MEtodo que recibe notificacion de otro grupo, q nos hizo una factura.
+  def self.recibir_notificacion_factura(id_factura, bank_account)
+
+  end
 
   def self.get_boleta_id(id_cliente, monto)
-rails    response = crear_boleta(id_cliente, monto)
+    response = crear_boleta(id_cliente, monto)
     boleta_id = response["_id"]
     return boleta_id;
   end

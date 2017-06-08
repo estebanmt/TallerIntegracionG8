@@ -48,35 +48,41 @@ class OrdersController < ApiController
   #METODO que envia OC a todos los grupos para comprar un sku especifico, con cantidad.
 
   def comprar_producto
-    ApiB2b.comprarProducto(params[:sku], params[:cantidad])
+    response = ApiB2b.comprarProducto(params[:sku], params[:cantidad])
+    render json: response
   end
 
   #METODOS API PROFESOR
 
     # POST /recepcionar/:id
     def receive
-      ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
+      response = ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
+      render json: response
     end
 
     # POST /rechazar/:id
     def reject_order
-      ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
+      response = ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
+      render json: response
     end
 
     # DELETE /anular/:id
     def cancel_order
-      ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
+      response = ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
+      render json: response
     end
 
     # Metodo temporal para mock de GET /obtener/:id
     def show_order
-      ApiOrdenCompra.getOrdenCompra(params[:id])
+      response = ApiOrdenCompra.getOrdenCompra(params[:id])
+      render json: response
     end
 
     # PUT /crear
     def create_order
-      ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
+      response = ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
                                       params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
+      render json: response
     end
 
 

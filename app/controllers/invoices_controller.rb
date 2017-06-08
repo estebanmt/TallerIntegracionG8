@@ -7,37 +7,34 @@ class InvoicesController < ApplicationController
 
   # MEtodo que crea factura... PUT /
   def create
-    ApiPago.crear_factura(params[:id_oc])
+    response = ApiPago.crear_factura(params[:id_oc])
+    render json: response
   end
 
   #METODO que obtiene una factura... GET /:id
   def get
-    ApiPago.get_factura(params[:id_factura])
+    response = ApiPago.get_factura(params[:id_factura])
+    render json: response
   end
 
   #METODO que acepta una factura... PUT /pay
   def accept
-    ApiPago.pagar_factura(params[:id_factura])
+    response = ApiPago.pagar_factura(params[:id_factura])
+    render json: response
   end
 
   #METODO que rechaza una factura... PUT /reject
   def reject
-    ApiPago.rechazar_factura(params[:id_factura])
+    response = ApiPago.rechazar_factura(params[:id_factura])
+    render json: response
   end
 
-  # PATCH/PUT /invoices/1
-  def update
-    if @invoice.update(invoice_params)
-      render json: @invoice
-    else
-      render json: @invoice.errors, status: :unprocessable_entity
-    end
+  #Metodo que recibe notificacion de otro grupo que nos hizo una factura... PUT /invoices/:id_factura
+  def notifyFactura
+    ApiPago.recibir_notificacion_factura(params[:id_factura], params[:bank_account])
+
   end
 
-  # DELETE /invoices/1
-  def destroy
-    @invoice.destroy
-  end
 
   def pagar
     puts "."*1000
@@ -52,6 +49,6 @@ class InvoicesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def invoice_params
-      params.require(:invoice).permit(:id_oc, :id_factura)
+      params.require(:invoice).permit(:id_oc, :id_factura, :bank_account)
     end
 end

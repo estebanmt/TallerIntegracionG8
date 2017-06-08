@@ -76,8 +76,7 @@ class ApiOrdenCompra
   def self.getOrdenCompra(id)
     params = nil
     response = get_url(@GET_OC + id, params)
-    puts "aaa"
-    puts response
+    return response
   end
 
   # Method that changes order status to "aceptada"

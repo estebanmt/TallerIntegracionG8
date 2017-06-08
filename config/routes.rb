@@ -79,6 +79,8 @@ Rails.application.routes.draw do
   #ACeptar factura
   get 'factura/aceptar/:id_factura', to: 'invoices#accept'
 
+  #REcibir notificacion de factura
+  put 'invoices/:id_factura', to: 'invoices#notifyFactura'
 
   # Crear boleta
   get 'sii/boleta/:id/:monto', to: 'invoices#pagar'
