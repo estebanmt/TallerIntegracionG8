@@ -57,6 +57,7 @@ class ApiPago
     puts response
     puts response["oc"]
     puts response["oc"]["estado"]
+    return response
   end
 
 
