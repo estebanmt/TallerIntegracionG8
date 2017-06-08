@@ -24,16 +24,21 @@ class OrdersController < ApiController
   # PUT /purchase_orders/:id
   # A clientes (otros grupos)
   def notify
-    body = JSON.parse request.body.read
+    @body = JSON.parse request.body.read
     idBodegaCliente = @body[0]["id_store_reception"]
-    json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
-    ApiB2b.revisarOrdenCompra(json)
+    puts idBodegaCliente
+    puts params[:id]
+    puts 'todo bien hasta antes de apib2b'
+    # json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
+    ApiB2b.revisarOrdenCompra(params[:id], idBodegaCliente)
+    puts 'llego al final'
   end
 
   def test
     @body = JSON.parse request.body.read
     puts @body[0]["test"]
-    render json: 'hello'
+    puts 'hello'*100
+    render json: @body
   end
 
   # POST /purchase_orders/:id  ..... realizar pedido a cliente
