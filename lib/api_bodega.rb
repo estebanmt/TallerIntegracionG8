@@ -225,7 +225,9 @@ class APIBodega
   def self.mover_Stock_Bodega(productoId, almacenId, oc, precio)
     hmac = doHashSHA1('POST'.concat(productoId).concat(almacenId))
     params = {'almacenId' => almacenId, 'productoId' => productoId, 'oc' => oc, 'precio' => precio}
-    return post_url(@MOVE_STOCK_BODEGA, params, hmac)
+    a = post_url(@MOVE_STOCK_BODEGA, params, hmac)
+    puts a
+    return a
   end
 
 #Mover pra b2c
@@ -237,13 +239,12 @@ class APIBodega
 
 #Mueve los productos de general a recepcion y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
-    for i in 0..cantidad-1
-    end
     mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     for i in stock
-    puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+      mover_Stock_Bodega(i["_id"], direccion, oc, precio)
     end
+    return true
   end
 
   def self.encontrar_sku_total(stock, sku)
@@ -286,7 +287,6 @@ class APIBodega
    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
    return put_url(@PRODUCIR_STOCK, params, hmac)
-
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)

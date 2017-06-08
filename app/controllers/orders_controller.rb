@@ -24,16 +24,17 @@ class OrdersController < ApiController
   # PUT /purchase_orders/:id
   # A clientes (otros grupos)
   def notify
-    body = JSON.parse request.body.read
+    @body = JSON.parse request.body.read
     idBodegaCliente = @body[0]["id_store_reception"]
-    json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
-    ApiB2b.revisarOrdenCompra(json)
+    # json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
+    ApiB2b.revisarOrdenCompra(params[:id], idBodegaCliente)
   end
 
   def test
     @body = JSON.parse request.body.read
     puts @body[0]["test"]
-    render json: 'hello'
+    puts 'hello'*100
+    render json: @body
   end
 
   # POST /purchase_orders/:id  ..... realizar pedido a cliente
@@ -44,34 +45,44 @@ class OrdersController < ApiController
   #  def rechazarOrdenCliente end
 
 
+  #METODO que envia OC a todos los grupos para comprar un sku especifico, con cantidad.
 
+  def comprar_producto
+    response = ApiB2b.comprarProducto(params[:sku], params[:cantidad])
+    render json: response
+  end
 
   #METODOS API PROFESOR
 
     # POST /recepcionar/:id
     def receive
-      ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
+      response = ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
+      render json: response
     end
 
     # POST /rechazar/:id
     def reject_order
-      ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
+      response = ApiOrdenCompra.rechazarOrdenCompra(params[:_id], params[:rechazo])
+      render json: response
     end
 
     # DELETE /anular/:id
     def cancel_order
-      ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
+      response = ApiOrdenCompra.anularOrdenCompra(params[:_id], params[:anulacion])
+      render json: response
     end
 
     # Metodo temporal para mock de GET /obtener/:id
     def show_order
-      ApiOrdenCompra.getOrdenCompra(params[:id])
+      response = ApiOrdenCompra.getOrdenCompra(params[:id])
+      render json: response
     end
 
     # PUT /crear
     def create_order
-      ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
+      response = ApiOrdenCompra.crearOrdenCompra(params[:cliente], params[:proveedor], params[:sku], params[:fechaEntrega],
                                       params[:cantidad], params[:precioUnitario], params[:canal],params[:notas])
+      render json: response
     end
 
 

@@ -5,6 +5,7 @@ require 'digest'
 require 'json'
 require 'uri'
 require 'turbolinks/redirection'
+require_relative 'api_orden_compra'
 
 class ApiPago
 
@@ -12,9 +13,18 @@ class ApiPago
   @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
 
+  #ids de los grupos
+  @ID_GRUPO = ENV["ID_GRUPO"]
+  @ID_GRUPO1 = ENV["ID_GRUPO1"]
+  @ID_GRUPO2 = ENV["ID_GRUPO2"]
+  @ID_GRUPO3 = ENV["ID_GRUPO3"]
+  @ID_GRUPO4 = ENV["ID_GRUPO4"]
+  @ID_GRUPO5 = ENV["ID_GRUPO5"]
+  @ID_GRUPO6 = ENV["ID_GRUPO6"]
+  @ID_GRUPO7 = ENV["ID_GRUPO7"]
 
   def self.crear_boleta(id_cliente, monto)
-    params = params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
+    params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
     #puts params
     response = put_url('/boleta', params)
     Invoice.create(:client => response["cliente"], :gross_amount => response["bruto"],
@@ -24,6 +34,76 @@ class ApiPago
     puts Invoice.all
     #puts response
     return response
+  end
+
+  #MEtodo para get una factura    .... /factura/:id_factura
+  def self.get_factura(id_factura)
+    response = get_url(id_factura)
+    puts response
+    return response[0]
+  end
+
+  #MEtodo que acepta factura (Paga factura) a la api profesor... /factura/aceptar/:id_factura
+  def self.pagar_factura (id_factura)
+    params = {'id' => id_factura}
+    response = post_url('pay/', params)
+    puts response
+    return response
+  end
+
+  #MEtodo que rechaza factura a la api profesor  ... /factura/rechazar/:id_factura
+  def self.rechazar_factura (id_factura)
+    params = {'id' => id_factura}
+    response = post_url('reject/', params)
+    puts response
+    return response
+  end
+
+  #Metodo que crea factura en la api profesor... /factura/crear/:id_oc
+  def self.crear_factura (id_oc)
+    params = {'oc' => id_oc}
+    response = put_url('', params)
+    puts response["oc"]
+    return response
+  end
+
+  #MEtodo que recibe notificacion de otro grupo, q nos hizo una factura.
+  def self.recibir_notificacion_factura(id_factura, bank_account)
+
+    begin
+      factura = get_factura(id_factura)
+    rescue => ex
+      return {"error": ex.message}
+    end
+
+    puts factura
+    puts factura["cliente"]
+    puts @ID_GRUPO
+
+    if factura["cliente"] != @ID_GRUPO
+      return {"error": "Factura no corresponde a cliente."}
+    end
+
+    if factura["proveedor"] != @ID_GRUPO1 && factura["proveedor"] != @ID_GRUPO2 && factura["proveedor"] != @ID_GRUPO3 && factura["proveedor"] != @ID_GRUPO4 &&
+        factura["proveedor"] != @ID_GRUPO5 && factura["proveedor"] != @ID_GRUPO6 && factura["proveedor"] != @ID_GRUPO7
+        return {"error": "Factura no corresponde a ningun proveedor."}
+    end
+
+    begin
+      oc = ApiOrdenCompra.getOrdenCompra(factura["oc"])
+    rescue => ex
+      return {"error": "Error en oc: " + ex.message}
+    end
+
+    if oc["cliente"] != @ID_GRUPO
+      return {"error": "OC no corresponde a cliente."}
+    end
+
+    if oc["estado"] == "aceptada"
+      return {"accept":"true"}
+    end
+    return oc
+
   end
 
   def self.get_boleta_id(id_cliente, monto)
@@ -62,13 +142,40 @@ class ApiPago
     return response
   end
 
+  def self.get_url(id_factura)
+
+    @url = @API_URL_FACTURAS + id_factura
+    puts @url
+
+    @response = RestClient::Request.execute(
+        method: :get,
+        url: @url,
+        headers: {'Content-Type' => 'application/json'})
+
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    puts json
+    return json
+  end
+
   def self.put_url(uri, params)#, authorization)
     #puts params
     #@auth = 'INTEGRACION grupo8:'.concat(authorization)
     # puts @auth
     @url = @API_URL_FACTURAS + uri
-    puts @url
     @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
+    #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    return json
+  end
+
+  def self.post_url(uri, params)#, authorization)
+    #puts params
+    #@auth = 'INTEGRACION grupo8:'.concat(authorization)
+    # puts @auth
+    @url = @API_URL_FACTURAS + uri
+    @response= RestClient.post @url, params.to_json, :content_type => 'application/json'
     #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
@@ -103,3 +210,4 @@ class ApiPago
 
 
 end
+
