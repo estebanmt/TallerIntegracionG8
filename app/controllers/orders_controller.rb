@@ -44,7 +44,11 @@ class OrdersController < ApiController
   #  def rechazarOrdenCliente end
 
 
+  #METODO que envia OC a todos los grupos para comprar un sku especifico, con cantidad.
 
+  def comprar_producto
+    ApiB2b.comprarProducto(params[:sku], params[:cantidad])
+  end
 
   #METODOS API PROFESOR
 

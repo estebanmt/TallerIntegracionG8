@@ -239,6 +239,7 @@ class APIBodega
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
     for i in 0..cantidad-1
     end
+
     mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     for i in stock
@@ -286,7 +287,6 @@ class APIBodega
    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
    return put_url(@PRODUCIR_STOCK, params, hmac)
-
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)

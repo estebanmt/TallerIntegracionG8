@@ -467,7 +467,7 @@ class ApiB2b
 
   #Retorna lista de precios de un proveedor
   def self.getListaPrecio(proveedor)
-    @url = 'http://integra17-' + proveedor + '.ing.puc.cl/api/publico/precios'
+    @url = 'http://dev.integra17-' + proveedor + '.ing.puc.cl/api/publico/precios'
     @response = RestClient::Request.execute(
         method: :get,
         url: @url,
@@ -481,7 +481,7 @@ class ApiB2b
   #Metodo que avisa a otro grupo que se le creo una OC. Se envia PUT a purchase_orders/:id
   def self.avisarOrdenCompra(id, proveedor)
 
-    @url = 'http://integra17-' + proveedor + '.ing.puc.cl/purchase_orders/' + id
+    @url = 'http://dev.integra17-' + proveedor + '.ing.puc.cl/purchase_orders/' + id
 
     puts @url
     @response= RestClient.put @url, {:id => id}, :content_type => 'application/json'
