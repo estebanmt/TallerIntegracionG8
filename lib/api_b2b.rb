@@ -53,6 +53,7 @@ class ApiB2b
       rechazarOrden(idOrden, 'Id de cliente invalida')
       return
     end
+    puts "id cliente valido"
 
     # revisar que fecha limite sea mayor que actual
 
@@ -61,25 +62,28 @@ class ApiB2b
       rechazarOrden(idOrden, 'Canal invalido. Debe ser "b2b"')
       return
     end
+    puts "canal corresponde a 'b2b'"
 
     # revisar que precioUnitario > 0
     if json["precioUnitario"] <= 0
       rechazarOrden(idOrden, 'Precio unitarios es muy bajo')
       return
     end
+    "precio es > 0"
 
     # Si pasa todas las pruebas se acepta la orden
     # iniciarProduccion(json)
 
     # Se intenta despachar la orden
-    if APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
+    begin
       aceptarOrden(idOrden)
-      puts "ACEPTADA"
-    else
+      APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
+      # aceptarOrden(idOrden)
+      puts "OC ACEPTADA"
+    rescue
       rechazarOrden(idOrden, 'No se pudo realizar despacho')
-      puts "RECHAZADA"
+      puts "OC RECHAZADA"
     end
-    puts 'HELPPPPPPPPPPPP'
 
   end
 

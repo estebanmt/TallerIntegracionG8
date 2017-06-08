@@ -26,12 +26,8 @@ class OrdersController < ApiController
   def notify
     @body = JSON.parse request.body.read
     idBodegaCliente = @body[0]["id_store_reception"]
-    puts idBodegaCliente
-    puts params[:id]
-    puts 'todo bien hasta antes de apib2b'
     # json = ApiOrdenCompra.getOrdenCompra(params[:_id])[0]
     ApiB2b.revisarOrdenCompra(params[:id], idBodegaCliente)
-    puts 'llego al final'
   end
 
   def test
