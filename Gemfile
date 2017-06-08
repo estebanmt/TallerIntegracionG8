@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'net-ssh'
+gem 'net-sftp'
 # hirb gem to visualize tables
 gem 'hirb'
 
