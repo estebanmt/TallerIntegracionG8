@@ -22,9 +22,11 @@ class ApiB2b
   @ID_GRUPOS = [ @ID_GRUPO1, @ID_GRUPO2, @ID_GRUPO3, @ID_GRUPO4, @ID_GRUPO5, @ID_GRUPO6, @ID_GRUPO7 ]
 
 
-  def self.revisarOrdenCompra(json)
+  def self.revisarOrdenCompra(ordenId, idBodegaCliente)
     puts "INICIO"
+    json = ApiOrdenCompra.getOrdenCompra(ordenId)[0]
     idOrden = json["_id"]
+    puts json
 
     # revisar que o/c existe
     # revisar que estado sea "creada"
@@ -70,7 +72,69 @@ class ApiB2b
     # iniciarProduccion(json)
 
     # Se intenta despachar la orden
-    if APIBodega.despacharOrden(json["sku"], json["precio_unitario"], json["_id"], json["cantidad"], json["cliente"])
+    if APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
+      aceptarOrden(idOrden)
+      puts "ACEPTADA"
+    else
+      rechazarOrden(idOrden, 'No se pudo realizar despacho')
+      puts "RECHAZADA"
+    end
+    puts 'HELPPPPPPPPPPPP'
+
+  end
+
+  # Revisa orden de sistema FTP y la acepta/rechaza
+  def self.revisarOrdenFtp(ordenId)
+    puts "INICIO"
+    json = ApiOrdenCompra.getOrdenCompra(ordenId)[0]
+    idOrden = json["_id"]
+    puts json
+
+    # revisar que o/c existe
+    # revisar que estado sea "creada"
+    if json["estado"] != 'creada'
+      rechazarOrden(idOrden, 'Estado de orden no es "creada"')
+      return
+    end
+    puts "estado valido"
+    puts ProductTable.getProductsSku
+    if not ProductTable.getProductsSku.include? json["sku"]
+      rechazarOrden(idOrden, 'Este grupo no fabrica: ' + json["sku"])
+      return
+    end
+    puts "sku valido"
+
+    if json["proveedor"] != @ID_GRUPO
+      rechazarOrden(idOrden, 'Id proveedor no corresponde a este grupo')
+      return
+    end
+    puts "proveedor valido"
+
+    # revisar que id cliente sea legitima
+    if not @ID_GRUPOS.include? json["cliente"]
+      rechazarOrden(idOrden, 'Id de cliente invalida')
+      return
+    end
+
+    # revisar que fecha limite sea mayor que actual
+
+    # revisar que canal sea b2b
+    if json["canal"] != 'b2b'
+      rechazarOrden(idOrden, 'Canal invalido. Debe ser "b2b"')
+      return
+    end
+
+    # revisar que precioUnitario > 0
+    if json["precioUnitario"] <= 0
+      rechazarOrden(idOrden, 'Precio unitarios es muy bajo')
+      return
+    end
+
+    # Si pasa todas las pruebas se acepta la orden
+    # iniciarProduccion(json)
+
+    # Se intenta despachar la orden
+    if APIBodega.despachar_Orden(json["sku"], json["precio_unitario"], json["_id"], json["cantidad"], json["cliente"])
       aceptarOrden(idOrden)
     else
       rechazarOrden(idOrden, 'No se pudo realizar despacho')
