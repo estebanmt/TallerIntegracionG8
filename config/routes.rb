@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :warehouses
   resources :receipts
   resources :transactions
+  resources :invoices
   resources :products
   resources :orders
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -29,24 +30,20 @@ Rails.application.routes.draw do
   # Crear orden de compra
   get 'dashboard', to: 'dashboards#index'
 
-  put 'oc/crear', to: 'orders#create_order'
+  put 'crear', to: 'orders#create_order'
 
   # Recepcionar orden de compra
-  post 'oc/recepcionar/:id', to: 'orders#receive'
+  post 'recepcionar/:id', to: 'orders#receive'
 
   # Rechazar orden de compra
-  post 'oc/rechazar/:id', to: 'orders#reject_order'
+  post 'rechazar/:id', to: 'orders#reject_order'
 
   # Anular orden de compra
-  post 'oc/anular/:id', to: 'orders#cancel_order'
+  post 'anular/:id', to: 'orders#cancel_order'
 
   # Obtener order de compra
   # get 'obtener/:id', to: 'orders#show'
-  get 'oc/obtener/:id', to: 'orders#show_order'
-
-  #RUteo comprar Producto a otros grupos
-  get 'comprarproducto/:sku/:cantidad', to: 'orders#comprar_producto'
-  get 'comprarproducto/:sku/:cantidad', to: 'orders#comprar_producto'
+  get 'obtener/:id', to: 'orders#show_order'
 
   # Ruteos del banco
 
@@ -66,21 +63,18 @@ Rails.application.routes.draw do
 
   # Ruteos de facturas
 
-  # Crear factura
-  get 'factura/crear/:id_oc', to: 'invoices#create'
+  # Emitir factura
+  post '', to: 'invoices#generate'
 
-  #GEt factura
-  get 'factura/:id_factura', to: 'invoices#get'
+  # Obtener factura
+  # get ':id', to: 'invoices#show'
+  get '1', to: 'invoices#show_invoice'
 
-  #Rechazar factura
-  get 'factura/rechazar/:id_factura', to: 'invoices#reject'
+  # Rechazar factura
+  post 'reject', to: 'invoices#reject'
 
-  #ACeptar factura
-  get 'factura/aceptar/:id_factura', to: 'invoices#accept'
-
-  #REcibir notificacion de factura
-  put 'invoices/:id_factura', to: 'invoices#notifyFactura'
-  get 'invoices/:id_factura', to: 'invoices#notifyFactura'
+  # Anular factura
+  post 'cancel', to: 'invoices#cancel'
 
   # Crear boleta
   get 'sii/boleta/:id/:monto', to: 'invoices#pagar'
@@ -95,7 +89,7 @@ Rails.application.routes.draw do
 
 
   # Notificar orden de compra (otro grupo notifica que creo una o/c para nosotros)
-  put 'purchase_orders/:id', to: 'orders#notify'
+  #put 'purchase_orders/:id', to: 'orders#notify'
   put 'test/test', to: 'orders#test'
 
   # Informar aceptacion de orden de compra
@@ -106,7 +100,17 @@ Rails.application.routes.draw do
   delete 'purchase_order/:id', to: 'orders#reject'
   patch 'purchase_orders/:id/rejected', to: 'orders#reject'
 
+  # Enviar nueva factura
+  put 'invoices', to: 'invoices#receive'
+  put 'invoices/:id', to: 'invoices#receive'
 
+  # Informar aceptacion orden de compra
+  post 'invoices/:id', to: 'invoices#accept'
+  patch 'invoices/:id/accepted', to: 'invoices#accept'
+
+  # Informar rechazo factura
+  delete 'invoices/:id', to: 'invoices#reject'
+  patch 'invoices/:id/rejected', to: 'invoices#reject'
 
   # Informar envio de productos
   patch 'invoices/:id/delivered', to: 'invoices#delivered'
@@ -149,6 +153,6 @@ Rails.application.routes.draw do
 
   get 'despachar_orden/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar'
   get 'despachar_aceptar/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_aceptar'
-  get 'distribuidores', to: 'orders#obtenerOrdenesDistribuidores'
+  get 'distribuidores', to: 'orders#distribuidores'
 
 end

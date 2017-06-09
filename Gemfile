@@ -73,6 +73,7 @@ gem 'rake-assets'
 gem "whenever", require: false
 
 gem 'rest-client', '~> 1.8'
+gem 'httparty'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

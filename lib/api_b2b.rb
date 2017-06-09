@@ -21,6 +21,9 @@ class ApiB2b
 
   @ID_GRUPOS = [ @ID_GRUPO1, @ID_GRUPO2, @ID_GRUPO3, @ID_GRUPO4, @ID_GRUPO5, @ID_GRUPO6, @ID_GRUPO7 ]
 
+  @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
+  @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+
 
   def self.revisarOrdenCompra(ordenId, idBodegaCliente)
     puts "INICIO"
@@ -90,16 +93,12 @@ class ApiB2b
   # Revisa orden de sistema FTP y la acepta/rechaza
   def self.revisarOrdenFtp(ordenId)
     puts "INICIO"
-    json = ApiOrdenCompra.getOrdenCompra(ordenId)[0]
-    idOrden = json["_id"]
+    json = ApiOrdenCompra.getOrdenCompra(ordenId)
+    puts "---------------------------INICIO JSON-------------------------------"
     puts json
+    puts "----------------------------FIN JSON---------------------------------"
+    idOrden = json["_id"]
 
-    # revisar que o/c existe
-    # revisar que estado sea "creada"
-    if json["estado"] != 'creada'
-      rechazarOrden(idOrden, 'Estado de orden no es "creada"')
-      return
-    end
     puts "estado valido"
     puts ProductTable.getProductsSku
     if not ProductTable.getProductsSku.include? json["sku"]
@@ -108,40 +107,38 @@ class ApiB2b
     end
     puts "sku valido"
 
-    if json["proveedor"] != @ID_GRUPO
-      rechazarOrden(idOrden, 'Id proveedor no corresponde a este grupo')
-      return
-    end
-    puts "proveedor valido"
-
-    # revisar que id cliente sea legitima
-    if not @ID_GRUPOS.include? json["cliente"]
-      rechazarOrden(idOrden, 'Id de cliente invalida')
-      return
-    end
-
     # revisar que fecha limite sea mayor que actual
-
-    # revisar que canal sea b2b
-    if json["canal"] != 'b2b'
-      rechazarOrden(idOrden, 'Canal invalido. Debe ser "b2b"')
-      return
-    end
-
-    # revisar que precioUnitario > 0
-    if json["precioUnitario"] <= 0
-      rechazarOrden(idOrden, 'Precio unitarios es muy bajo')
-      return
-    end
 
     # Si pasa todas las pruebas se acepta la orden
     # iniciarProduccion(json)
 
-    # Se intenta despachar la orden
-    if APIBodega.despachar_Orden(json["sku"], json["precio_unitario"], json["_id"], json["cantidad"], json["cliente"])
-      aceptarOrden(idOrden)
-    else
-      rechazarOrden(idOrden, 'No se pudo realizar despacho')
+    # Se verifica que hayan suficientes productos
+    cantidad_productos = APIBodega.get_skusWithStock(@BODEGA_GENERAL)
+    cantidad_sku = 0
+    for prod in cantidad_productos
+      if prod["_id"].to_s == json["sku"].to_s
+        cantidad_sku = prod ["total"].to_i
+      end
+    end
+
+    cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
+
+    if cantidad_por_despachar == 0
+      return puts "Ya se despacho completamente"
+    end
+
+    if  cantidad_sku.to_i >= cantidad_por_despachar
+
+
+      # Se intenta despachar la orden
+      despachado = APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
+      if despachado
+        # Se acepta la orden
+        aceptarOrden(idOrden)
+      else
+        # Se rechaza la orden
+        rechazarOrden(idOrden, 'No se pudo realizar despacho')
+      end
     end
 
   end

@@ -3,12 +3,14 @@ require 'openssl'
 require "base64"
 require 'digest'
 require 'json'
+require 'httparty'
 
 class APIBodega
   @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
   @BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
   @BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+  #@BODEGA_DESPACHO = '590baa77d6b4ec0004902cbe'
   @BODEGA_PULMON = ENV["BODEGA_PULMON"]
 
   @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
@@ -30,8 +32,10 @@ class APIBodega
 
 
   @key = ENV["CLAVE_BODEGA"]
+  #@key = "2T02j&xwE#tQA#e"
 
   @API_URL_BODEGA = ENV["URL_API_BODEGA"]
+  #@API_URL_BODEGA = 'https://integracion-2017-dev.herokuapp.com/bodega/'
 
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
@@ -210,7 +214,7 @@ class APIBodega
   end
 
   def self.get_stock(sku, almacenId)
-    hmac = doHashSHA1('GET'.concat(almacenId + sku))
+    hmac = doHashSHA1('GET'.concat(almacenId.to_s + sku.to_s))
     params = {'almacenId' => almacenId, 'sku' => sku}
     return get_url(@GET_STOCK, params, hmac)
   end
@@ -225,24 +229,41 @@ class APIBodega
   def self.mover_Stock_Bodega(productoId, almacenId, oc, precio)
     hmac = doHashSHA1('POST'.concat(productoId).concat(almacenId))
     params = {'almacenId' => almacenId, 'productoId' => productoId, 'oc' => oc, 'precio' => precio}
-    a = post_url(@MOVE_STOCK_BODEGA, params, hmac)
-    puts a
-    return a
+    return post_url(@MOVE_STOCK_BODEGA, params, hmac)
   end
 
 #Mover pra b2c
   def self.despachar_Stock(productoId, direccion, precio, oc)
-    hmac = doHashSHA1('DELETE'.concat(productoId + direccion + precio + oc))
+    hmac = doHashSHA1('DELETE'.concat(productoId.to_s + direccion.to_s + precio.to_s + oc.to_s))
     params = {'productoId' => productoId, 'direccion' => direccion, 'precio' => precio, 'oc' => oc}
-    return get_url(@DESPACHAR_STOCK, params, hmac)
+    return delete_url(@DESPACHAR_STOCK, params, hmac)
   end
 
-#Mueve los productos de general a recepcion y despues los despacha al almacen del otro grupo
+#Mueve los productos de general a despacho y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
+    for i in 0..cantidad-1
+    end
     mover_General_Despacho(sku, cantidad)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     for i in stock
-      mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    end
+  end
+
+#Mueve los productos de general a despacho y despues los despacha al distribuidor
+  def self.despachar_Orden_Distribuidor(sku, cantidad, precio, oc, direccion)
+    mover_General_Despacho(sku, cantidad)
+    stock = get_stock(sku, @BODEGA_DESPACHO)
+    while cantidad > 0
+      for i in stock
+        if cantidad > 0
+          puts  despachar_Stock(i["_id"], direccion, precio.to_s, oc)
+          puts cantidad -= 1
+        else
+          return
+        end
+      end
+      stock = get_stock(sku, @BODEGA_DESPACHO)
     end
     return true
   end
@@ -287,6 +308,7 @@ class APIBodega
    params = {'sku' => sku, 'cantidad' => cantidad, 'trxId' => trxId}
    #OrdenFabricacion.create(sku: sku.to_s, cantidad: cantidad.to_s)
    return put_url(@PRODUCIR_STOCK, params, hmac)
+
   end
 
   def self.get_Cuenta_Fabrica(sku, cantidad, trxId)
@@ -326,9 +348,9 @@ class APIBodega
           return 'Hello there, finished moving'
         end
         mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
-        cantidad -= 1
+        puts cantidad -= 1
         if i != 0 && i%40==0
-          #puts 'DURMIENDOOOOOOOO'*10
+          puts 'DURMIENDOOOOOOOO'*10
           sleep(30)
         end
       end
@@ -345,7 +367,7 @@ class APIBodega
           return 'Hello there, finished moving'
         end
         mover_Stock(stock[i]["_id"],@BODEGA_GENERAL)
-        cantidad -= 1
+        puts cantidad -= 1
         if i != 0 && i%40==0
           puts 'DURMIENDOOOOOOOO'*10
           sleep(15)
@@ -402,6 +424,8 @@ class APIBodega
       @url = @API_URL_BODEGA + uri
     end
 
+    #puts @url
+
     @response = RestClient::Request.execute(
         method: :get,
         url: @url,
@@ -418,12 +442,14 @@ class APIBodega
   def self.post_url(uri, params, authorization)
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     @url = @API_URL_BODEGA + uri
-    @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
-    # TODO more error checking (500 error, etc)
-    puts @response.code
-    while @response.code != 200
-      puts "-"*200
+    begin
       @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # TODO more error checking (500 error, etc)
+      puts "response code " + @response.code.to_s
+    rescue
+      puts "--------------------INTENTANDO NUEVAMENTE--------------------------"
+      retry
+      #@response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     end
     json = JSON.parse(@response.body)
     #puts json
@@ -444,10 +470,30 @@ class APIBodega
     return json
   end
 
+  def self.delete_url(uri, params, authorization)
+    #puts json = params.to_json
+    #puts @query_params_extra
+    #puts @query_params
+
+    @auth = 'INTEGRACION grupo8:'.concat(authorization)
+
+    @url = @API_URL_BODEGA + uri
+
+    @response = HTTParty.delete(@url, {:headers => {'Content-Type' => 'application/json', "Authorization" => @auth},
+                                       :body => params.to_json})
+
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    #puts json
+    return json
+
+  end
+
   def self.probando
     puts "GOLA"
   end
 
 end
 #puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
-#puts APIBodega.producirStockSku(19)
+#puts APIBodega.producirStockSku(38)
+#puts APIBodega.despachar_Orden_Distribuidor("26",310,297,"5936f1aa42c7c100043f31b2","distribuidor")

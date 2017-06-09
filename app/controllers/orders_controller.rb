@@ -4,6 +4,7 @@ require "base64"
 require 'digest'
 require 'api_orden_compra'
 require 'api_b2b'
+require 'api_distribuidores'
 require 'json'
 
 class OrdersController < ApiController
@@ -85,6 +86,10 @@ class OrdersController < ApiController
       render json: response
     end
 
+    def distribuidores
+      APIDistribuidores.revisar_Ordenes_DEV
+
+    end
 
 
 
