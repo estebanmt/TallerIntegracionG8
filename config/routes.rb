@@ -154,5 +154,6 @@ Rails.application.routes.draw do
   get 'despachar_orden/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar'
   get 'despachar_aceptar/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_aceptar'
   get 'distribuidores', to: 'orders#distribuidores'
+  get 'transaccionar/:monto/:destino', to: 'invoices#transaccionar'
 
 end

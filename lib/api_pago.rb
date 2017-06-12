@@ -13,6 +13,7 @@ class ApiPago
   @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
   @CUENTA_BANCO = ENV["CUENTA_BANCO"]
+  @URL_PAGO_TRANSFERENCIA = ENV["URL_PAGO_TRANSFERENCIA"]
 
   #ids de los grupos
   @ID_GRUPO = ENV["ID_GRUPO"]
@@ -210,11 +211,27 @@ class ApiPago
   end
 
   def self.transferir(monto, destino)
-    hmac = doHashSHA1('PUT')
-    params = {'monto' => monto, 'origen' => @CUENTA_BANCO, 'destino' => destino}
-    response = put_url_banco("/trx", params, hmac)
+    puts "-"*100
+    puts destino
+    params = {'monto' => monto.to_s, 'origen' => @CUENTA_BANCO, 'destino' => destino.to_s}
+    response = put_url_banco("/trx", params)
+    puts response
     return response
   end
+
+  def self.put_url_banco(uri, params)#, authorization)
+    #puts params
+    #@auth = 'INTEGRACION grupo8:'.concat(authorization)
+    # puts @auth
+    @url = @URL_PAGO_TRANSFERENCIA + uri
+    puts params
+    puts @url
+    @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json
+    # TODO more error checking (500 error, etc)
+    json = JSON.parse(@response.body)
+    return json
+  end
+
 
 
 end
