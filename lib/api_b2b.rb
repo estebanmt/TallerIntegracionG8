@@ -121,6 +121,10 @@ class ApiB2b
       end
     end
 
+    if json["estado"] == "rechazada"
+      return puts 'orden rechazada'
+    end
+
     cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
 
     if cantidad_por_despachar <= 0
