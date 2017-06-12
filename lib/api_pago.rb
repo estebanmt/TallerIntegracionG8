@@ -12,6 +12,7 @@ class ApiPago
   @API_URL_FACTURAS = ENV["API_URL_FACTURAS"]
   @API_URL_PAGO = ENV["API_URL_PAGO"]
   @URL_PAY_PROXY = ENV["URL_PAY_PROXY"]
+  @CUENTA_BANCO = ENV["CUENTA_BANCO"]
 
   #ids de los grupos
   @ID_GRUPO = ENV["ID_GRUPO"]
@@ -208,6 +209,12 @@ class ApiPago
     end
   end
 
+  def self.transferir(monto, destino)
+    hmac = doHashSHA1('PUT')
+    params = {'monto' => monto, 'origen' => @CUENTA_BANCO, 'destino' => destino}
+    response = put_url_banco("/trx", params, hmac)
+    return response
+  end
+
 
 end
-
