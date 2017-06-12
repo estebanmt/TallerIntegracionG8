@@ -41,6 +41,11 @@ class InvoicesController < ApplicationController
     @response = ApiPago.crear_boleta(params[:id], params[:monto].to_i)
   end
 
+  def transaccionar
+    puts "."*1000
+    @response = ApiPago.transferir(params[:monto].to_i, params[:destino].to_s)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
