@@ -45,8 +45,8 @@ class ApiPago
     return response[0]
   end
 
-  #MEtodo que acepta factura (Paga factura) a la api profesor... /factura/aceptar/:id_factura
-  def self.pagar_factura (id_factura)
+  #MEtodo que acepta factura a la api profesor... /factura/aceptar/:id_factura
+  def self.aceptar_factura (id_factura)
     params = {'id' => id_factura}
     response = post_url('pay/', params)
     puts response
@@ -91,6 +91,10 @@ class ApiPago
         return {"error": "Factura no corresponde a ningun proveedor."}
     end
 
+    if factura["estado"] != "pendiente"
+      return {"error": "Factura ya procesada."}
+    end
+
     begin
       oc = ApiOrdenCompra.getOrdenCompra(factura["oc"])
     rescue => ex
@@ -101,10 +105,18 @@ class ApiPago
       return {"error": "OC no corresponde a cliente."}
     end
 
+
     if oc["estado"] == "aceptada"
+      begin
+        response = transferir(factura["total"], bank_account)
+      rescue => ex
+        return {error:"Problemas al transferir. Dato bancario incorrecto."}
+      end
+      aceptar_factura(factura["_id"])
       return {"accept":"true"}
+    else
+      return {"error":"OC no esta aceptada."}
     end
-    return oc
 
   end
 

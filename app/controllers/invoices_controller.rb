@@ -19,7 +19,7 @@ class InvoicesController < ApplicationController
 
   #METODO que acepta una factura... PUT /pay
   def accept
-    response = ApiPago.pagar_factura(params[:id_factura])
+    response = ApiPago.aceptar_factura(params[:id_factura])
     render json: response
   end
 

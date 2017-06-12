@@ -63,18 +63,34 @@ Rails.application.routes.draw do
 
   # Ruteos de facturas
 
+  #Crear factura
+  get 'factura/crear/:id_oc', to: 'invoices#create'
+
+  #Aceptar factura
+  get 'factura/aceptar/:id_factura', to: 'invoices#accept'
+
+  #Rechazar factura
+  get 'factura/rechazar/:id_factura', to: 'invoices#reject'
+
+  #Get factura
+  get 'factura/:id_factura', to: 'invoices#get'
+
+  #NOtify factura
+  get 'invoices/:id_factura/:bank_account', to: 'invoices#notifyFactura'
+  put 'invoices/:id_factura', to: 'invoices#notifyFactura'
+
   # Emitir factura
-  post '', to: 'invoices#generate'
+  #post '', to: 'invoices#generate'
 
   # Obtener factura
   # get ':id', to: 'invoices#show'
-  get '1', to: 'invoices#show_invoice'
+  #get '1', to: 'invoices#show_invoice'
 
   # Rechazar factura
-  post 'reject', to: 'invoices#reject'
+  #post 'reject', to: 'invoices#reject'
 
   # Anular factura
-  post 'cancel', to: 'invoices#cancel'
+  #post 'cancel', to: 'invoices#cancel'
 
   # Crear boleta
   get 'sii/boleta/:id/:monto', to: 'invoices#pagar'
