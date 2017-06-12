@@ -1,0 +1,2 @@
+class Odistribuidore < ApplicationRecord
+end
