@@ -128,13 +128,16 @@ class ApiB2b
     end
 
     if  cantidad_sku.to_i >= cantidad_por_despachar
+      # Se acepta la orden
+      puts "Se acepta la orden"
+      aceptarOrden(idOrden)
       begin
         # Se intenta despachar la orden
-        if despachado = APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
-          # Se acepta la orden
-          aceptarOrden(idOrden)
-        end
-      rescue ExceptionName
+        APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
+        puts "Revisar el estado"
+        puts ApiOrdenCompra.getOrdenCompra(ordenId)
+      rescue
+        puts "Entrando a Rescue"
         # Se consulta cuantas unidades quedan por despachar
         json = ApiOrdenCompra.getOrdenCompra(ordenId)
         cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
