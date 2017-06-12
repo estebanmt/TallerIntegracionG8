@@ -56,7 +56,7 @@ class OrdersController < ApiController
   #METODOS API PROFESOR
 
     # POST /recepcionar/:id
-    def receive
+    def receive_order
       response = ApiOrdenCompra.recepcionarOrdenCompra(params[:_id])
       render json: response
     end

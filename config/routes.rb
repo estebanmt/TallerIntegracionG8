@@ -33,13 +33,16 @@ Rails.application.routes.draw do
   put 'crear', to: 'orders#create_order'
 
   # Recepcionar orden de compra
-  post 'recepcionar/:id', to: 'orders#receive'
+  post 'oc/recepcionar/:id', to: 'orders#receive_order'
+  get 'oc/recepcionar/:id', to: 'orders#receive_order'
 
   # Rechazar orden de compra
-  post 'rechazar/:id', to: 'orders#reject_order'
+  post 'oc/rechazar/:id', to: 'orders#reject_order'
+  get 'oc/rechazar/:id', to: 'orders#reject_order'
 
   # Anular orden de compra
-  post 'anular/:id', to: 'orders#cancel_order'
+  post 'oc/anular/:id', to: 'orders#cancel_order'
+  get 'oc/anular/:id', to: 'orders#cancel_order'
 
   # Obtener order de compra
   # get 'obtener/:id', to: 'orders#show'
