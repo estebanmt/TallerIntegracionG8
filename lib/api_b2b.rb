@@ -72,7 +72,7 @@ class ApiB2b
       rechazarOrden(idOrden, 'Precio unitarios es muy bajo')
       return
     end
-    "precio es > 0"
+    puts "precio es > 0"
 
     # Si pasa todas las pruebas se acepta la orden
     # iniciarProduccion(json)
