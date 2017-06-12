@@ -1,6 +1,7 @@
 require 'api_bodega.rb'
 require 'googlecharts'
 require 'dashboard_lib'
+require 'api_distribuidores.rb'
 
 class DashboardsController < ActionController::Base
   @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
@@ -66,6 +67,8 @@ class DashboardsController < ActionController::Base
 
 
     @stock_por_almacen = DashboardLib.get_almacen_data
+
+    #@OCEstados = APIDistribuidores.estado_Ordenes
   end
 
   def obtain_skus(lista_alma, diccionario)
