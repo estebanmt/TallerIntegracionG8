@@ -123,24 +123,25 @@ class ApiB2b
 
     cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
 
-    if cantidad_por_despachar == 0
+    if cantidad_por_despachar <= 0
       return puts "Ya se despacho completamente"
     end
 
     if  cantidad_sku.to_i >= cantidad_por_despachar
-
-
-      # Se intenta despachar la orden
-      despachado = APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
-      if despachado
-        # Se acepta la orden
-        aceptarOrden(idOrden)
-      else
-        # Se rechaza la orden
-        rechazarOrden(idOrden, 'No se pudo realizar despacho')
+      begin
+        # Se intenta despachar la orden
+        if despachado = APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
+          # Se acepta la orden
+          aceptarOrden(idOrden)
+        end
+      rescue ExceptionName
+        # Se consulta cuantas unidades quedan por despachar
+        json = ApiOrdenCompra.getOrdenCompra(ordenId)
+        cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
+        #se intenta seguir despachando
+        retry
       end
     end
-
   end
 
   #Metodo que compre producto a otro grupo

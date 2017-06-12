@@ -2,12 +2,15 @@ require 'net/sftp'
 require 'net/ssh'
 require 'json'
 require 'active_support/core_ext/hash'
+require 'api_orden_compra'
 
 
 class APIDistribuidores
   @OCDistribuidoresHASH = Array.new
+  @API_URL = ENV["URL_DISTRIBUIDORES"]
   @API_URL_OC_DEV = "https://integracion-2017-dev.herokuapp.com/oc/"
   @API_URL_OC_PROD = "https://integracion-2017.herokuapp.com/oc/"
+  @OCEstados = {}
 
 #Descarga las oc de distribuidores en DEV
   def self.OCDistribuidoresXMLDEV
@@ -80,6 +83,19 @@ class APIDistribuidores
     self.OCDistribuidoresHASHDEV
     #Revisamos
     self.revisar_Ordenes
+  end
+
+  def self.estado_Ordenes
+    self.OCDistribuidoresHASHDEV
+    for oc in @OCDistribuidoresHASH
+      begin
+      orden_compra = ApiOrdenCompra.getOrdenCompra(oc["order"]["id"])
+      @OCEstados[orden_compra["_id"]] = orden_compra["estado"]
+      rescue
+        retry
+      end
+    end
+    return @OCEstados
   end
 end
 
