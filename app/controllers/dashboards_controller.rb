@@ -69,6 +69,14 @@ class DashboardsController < ActionController::Base
     @stock_por_almacen = DashboardLib.get_almacen_data
 
     @OCEstados = Odistribuidore.all
+    @OCEstados_estados = Odistribuidore.all.group(:estado).count
+
+    @graph4 = Gchart.pie(  :size => '600x500',
+              :title => "OC Distribuidores",
+              :bg => 'efefef',
+              :legend => @OCEstados_estados.keys,
+              :labels => @OCEstados_estados.values,
+              :data => @OCEstados_estados.values)
 
   end
 
