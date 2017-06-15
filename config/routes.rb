@@ -172,7 +172,9 @@ Rails.application.routes.draw do
 
   get 'despachar_orden/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar'
   get 'despachar_aceptar/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_aceptar'
-  get 'distribuidores', to: 'orders#distribuidores'
+  get 'distribuidores_dev', to: 'orders#distribuidores_dev'
+  get 'distribuidores_prod', to: 'orders#distribuidores_prod'
   get 'transaccionar/:monto/:destino', to: 'invoices#transaccionar'
+  get 'estado_distribuidores_dev', to: 'orders#estado_distribuidores_dev'
 
 end

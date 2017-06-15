@@ -10,7 +10,6 @@ class APIDistribuidores
   @API_URL = ENV["URL_DISTRIBUIDORES"]
   @API_URL_OC_DEV = "https://integracion-2017-dev.herokuapp.com/oc/"
   @API_URL_OC_PROD = "https://integracion-2017.herokuapp.com/oc/"
-  @OCEstados = {}
 
 #Descarga las oc de distribuidores en DEV
   def self.OCDistribuidoresXMLDEV
@@ -81,22 +80,45 @@ class APIDistribuidores
     self.OCDistribuidoresXMLDEV
     #Hasheamos
     self.OCDistribuidoresHASHDEV
+    #Actualizamos el modelo
+    self.estado_Ordenes_DEV
     #Revisamos
     self.revisar_Ordenes
   end
 
-  def self.estado_Ordenes
+  def self.revisar_Ordenes_PROD
+    self.OCDistribuidoresXMLPROD
+    self.OCDistribuidoresHASHPROD
+    self.estado_Ordenes_PROD
+    self.revisar_Ordenes_PROD
+  end
+
+  def self.estado_Ordenes_DEV
     self.OCDistribuidoresHASHDEV
+    Odistribuidore.delete_all
     for oc in @OCDistribuidoresHASH
       begin
       orden_compra = ApiOrdenCompra.getOrdenCompra(oc["order"]["id"])
-      @OCEstados[orden_compra["_id"]] = orden_compra["estado"]
+      puts Odistribuidore.create("_id": orden_compra["_id"], "estado": orden_compra["estado"])
       rescue
         retry
       end
     end
-    return @OCEstados
   end
+
+  def self.estado_Ordenes_PROD
+    self.OCDistribuidoresHASHPROD
+    Odistribuidore.delete_all
+    for oc in @OCDistribuidoresHASH
+      begin
+      orden_compra = ApiOrdenCompra.getOrdenCompra(oc["order"]["id"])
+      puts Odistribuidore.create("_id": orden_compra["_id"], "estado": orden_compra["estado"])
+      rescue
+        retry
+      end
+    end
+  end
+
 end
 
 #APIDistribuidores.OCDistribuidoresXMLDEV

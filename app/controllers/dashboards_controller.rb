@@ -68,7 +68,8 @@ class DashboardsController < ActionController::Base
 
     @stock_por_almacen = DashboardLib.get_almacen_data
 
-    #@OCEstados = APIDistribuidores.estado_Ordenes
+    @OCEstados = Odistribuidore.all
+
   end
 
   def obtain_skus(lista_alma, diccionario)

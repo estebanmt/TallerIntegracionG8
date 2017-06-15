@@ -86,11 +86,17 @@ class OrdersController < ApiController
       render json: response
     end
 
-    def distribuidores
+    def distribuidores_dev
       APIDistribuidores.revisar_Ordenes_DEV
-
     end
 
+    def distribuidores_prod
+      APIDistribuidores.revisar_Ordenes_PROD
+    end
+
+    def estado_distribuidores_dev
+      APIDistribuidores.estado_Ordenes_DEV
+    end
 
 
   private
