@@ -22,8 +22,11 @@ class ApiB2b
 
   @ID_GRUPOS = [ @ID_GRUPO1, @ID_GRUPO2, @ID_GRUPO3, @ID_GRUPO4, @ID_GRUPO5, @ID_GRUPO6, @ID_GRUPO7 ]
 
+
   @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+  #@BODEGA_GENERAL = "5910c0ba0e42840004f6ec42"
+  #@BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
 
 
   def self.revisarOrdenCompra(ordenId, idBodegaCliente)
@@ -122,12 +125,15 @@ class ApiB2b
 
     # Se verifica que hayan suficientes productos
     cantidad_productos = APIBodega.get_skusWithStock(@BODEGA_GENERAL)
+    puts cantidad_productos
     cantidad_sku = 0
     for prod in cantidad_productos
       if prod["_id"].to_s == json["sku"].to_s
         cantidad_sku = prod ["total"].to_i
       end
     end
+
+    puts "cantidad_sku: " + cantidad_sku.to_s
 
     if json["estado"] == "rechazada"
       return puts 'orden rechazada'

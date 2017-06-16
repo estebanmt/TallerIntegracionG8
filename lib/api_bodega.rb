@@ -10,8 +10,19 @@ class APIBodega
   @BODEGA_GENERAL_2 = ENV["BODEGA_GENERAL_2"]
   @BODEGA_RECEPCION = ENV["BODEGA_RECEPCION"]
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
-  #@BODEGA_DESPACHO = '590baa77d6b4ec0004902cbe'
   @BODEGA_PULMON = ENV["BODEGA_PULMON"]
+
+  ##Produccion
+  # @BODEGA_GENERAL = "5910c0ba0e42840004f6ec42"
+  # @BODEGA_GENERAL_2 = "5910c0ba0e42840004f6ecd2"
+  # @BODEGA_RECEPCION = "5910c0ba0e42840004f6ec40"
+  # @BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
+  # @BODEGA_PULMON = "5910c0ba0e42840004f6ecd3"
+  # @key = "kyQqh8B9HPj$Te"
+  # @API_URL_BODEGA = 'https://integracion-2017-prod.herokuapp.com/bodega/'
+  # @GET_CUENTA_FABRICA = "5910c0910e42840004f6e67e"
+  # @URL_PAGO_TRANSFERENCIA = "https://integracion-2017-dev.herokuapp.com/banco"
+  # @CUENTA_BANCO = "5910c0910e42840004f6e68d"
 
   @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
               [6, 'Crema', 'Lts', 49, 'Leche Descremada', 100, 'Lts'],
@@ -32,10 +43,8 @@ class APIBodega
 
 
   @key = ENV["CLAVE_BODEGA"]
-  #@key = "2T02j&xwE#tQA#e"
 
   @API_URL_BODEGA = ENV["URL_API_BODEGA"]
-  #@API_URL_BODEGA = 'https://integracion-2017-dev.herokuapp.com/bodega/'
 
   @URI_GET_ALMACENES = 'almacenes'
   @GET_SKUS_WITH_STOCK = 'skusWithStock'
@@ -311,9 +320,9 @@ class APIBodega
 
   end
 
-  def self.get_Cuenta_Fabrica(sku, cantidad, trxId)
+  def self.get_Cuenta_Fabrica
     hmac = doHashSHA1('GET')
-    return get_url(@DESPACHAR_STOCK, nil, hmac)
+    return get_url(@GET_CUENTA_FABRICA, nil, hmac)
   end
 
   def self.mover_Recepcion_General(sku)
@@ -494,6 +503,8 @@ class APIBodega
   end
 
 end
-#puts APIBodega.get_skusWithStock('590baa77d6b4ec0004902cbf')
+#puts APIBodega.get_almacenes
+#puts APIBodega.get_skusWithStock("5910c0ba0e42840004f6ec42")
 #puts APIBodega.producirStockSku(38)
 #puts APIBodega.despachar_Orden_Distribuidor("26",310,297,"5936f1aa42c7c100043f31b2","distribuidor")
+#puts APIBodega.get_Cuenta_Fabrica

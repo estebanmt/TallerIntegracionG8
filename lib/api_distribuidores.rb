@@ -97,6 +97,7 @@ class APIDistribuidores
   end
 
   def self.estado_Ordenes_DEV
+    self.OCDistribuidoresXMLDEV
     self.OCDistribuidoresHASHDEV
     Odistribuidore.delete_all
     for oc in @OCDistribuidoresHASH
@@ -110,6 +111,7 @@ class APIDistribuidores
   end
 
   def self.estado_Ordenes_PROD
+    self.OCDistribuidoresXMLPROD
     self.OCDistribuidoresHASHPROD
     Odistribuidore.delete_all
     for oc in @OCDistribuidoresHASH
