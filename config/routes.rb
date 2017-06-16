@@ -108,7 +108,7 @@ Rails.application.routes.draw do
 
 
   # Notificar orden de compra (otro grupo notifica que creo una o/c para nosotros)
-  put 'purchase_orders/:id', to: 'orders#notify'
+  #put 'purchase_orders/:id', to: 'orders#notify'
   put 'test/test', to: 'orders#test'
 
   # Informar aceptacion de orden de compra
@@ -176,5 +176,6 @@ Rails.application.routes.draw do
   get 'distribuidores_prod', to: 'orders#distribuidores_prod'
   get 'transaccionar/:monto/:destino', to: 'invoices#transaccionar'
   get 'estado_distribuidores_dev', to: 'orders#estado_distribuidores_dev'
+  get 'estado_distribuidores_prod', to: 'orders#estado_distribuidores_prod'
 
 end
