@@ -28,6 +28,7 @@ class APIDistribuidores
 
 #Descarga las oc de distribuidores en PROD
   def self.OCDistribuidoresXMLPROD
+    puts "Entra a XMLPROD"
     host = 'integra17.ing.puc.cl'
     user = 'grupo8'
     pass = 'PKMSLpV6U8ex3ACZ'
@@ -55,12 +56,17 @@ class APIDistribuidores
 
 #Hashea los XML para poder trabajarlos más facilmente
   def self.OCDistribuidoresHASHPROD
+    puts "Entrando OCDistribuidoresHASHPROD"
     @OCDistribuidoresHASH = Array.new
-    files = Dir.glob("../public/OCDistribuidoresXMLPROD/*.xml")
+    puts @OCDistribuidoresHASH
+    files = Dir.glob("public/OCDistribuidoresXMLPROD/*.xml")
+    puts "files"
     for f in files
       ochash = Hash.from_xml(File.read(f))
+      puts ochash
       @OCDistribuidoresHASH.push(ochash)
     end
+    puts "Saliendo HASH PROD"
   end
 
 #Llama a ApiB2b.revisarOrdenFtp para cada id de las oc de distribuidores
@@ -78,8 +84,6 @@ class APIDistribuidores
   def self.revisar_Ordenes_DEV
     #descargamos ocs en dev
     self.OCDistribuidoresXMLDEV
-    #Hasheamos
-    self.OCDistribuidoresHASHDEV
     #Actualizamos el modelo
     self.estado_Ordenes_DEV
     #Revisamos
@@ -89,8 +93,7 @@ class APIDistribuidores
   def self.revisar_Ordenes_PROD
     self.OCDistribuidoresXMLPROD
     self.OCDistribuidoresHASHPROD
-    self.estado_Ordenes_PROD
-    self.revisar_Ordenes_PROD
+    self.revisar_Ordenes
   end
 
   def self.estado_Ordenes_DEV
@@ -111,6 +114,7 @@ class APIDistribuidores
     Odistribuidore.delete_all
     for oc in @OCDistribuidoresHASH
       begin
+        puts "----------------Revisando orden----------------------------"
       orden_compra = ApiOrdenCompra.getOrdenCompra(oc["order"]["id"])
       puts Odistribuidore.create("_id": orden_compra["_id"], "estado": orden_compra["estado"])
       rescue
