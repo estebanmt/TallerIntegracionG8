@@ -178,4 +178,7 @@ Rails.application.routes.draw do
   get 'estado_distribuidores_dev', to: 'orders#estado_distribuidores_dev'
   get 'estado_distribuidores_prod', to: 'orders#estado_distribuidores_prod'
 
+  get 'auto_distribuidores_dev', to: 'orders#auto_distribuidores_dev'
+  get 'auto_distribuidores_prod', to: 'orders#auto_distribuidores_prod'
+
 end

@@ -125,6 +125,18 @@ class APIDistribuidores
     end
   end
 
+  def self.auto_Revisar_Ordenes_DEV
+    revisar_Ordenes_DEV
+    estado_Ordenes_DEV
+    sleep 3600
+  end
+
+  def self.auto_Revisar_Ordenes_PROD
+    revisar_Ordenes_PROD
+    estado_Ordenes_PROD
+    sleep 3600
+  end
+
 end
 
 #APIDistribuidores.OCDistribuidoresXMLDEV
