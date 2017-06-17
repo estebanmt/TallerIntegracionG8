@@ -118,7 +118,8 @@ class APIDistribuidores
       begin
         puts "----------------Revisando orden----------------------------"
       orden_compra = ApiOrdenCompra.getOrdenCompra(oc["order"]["id"])
-      puts Odistribuidore.create("_id": orden_compra["_id"], "estado": orden_compra["estado"])
+      puts Odistribuidore.create("_id": orden_compra["_id"], "estado": orden_compra["estado"],
+       "ammount": orden_compra["cantidad"], "sku": orden_compra["sku"])
       rescue
         retry
       end
