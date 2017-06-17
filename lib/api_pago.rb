@@ -28,7 +28,7 @@ class ApiPago
   def self.crear_boleta(id_cliente, monto)
     params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
     #puts params
-    response = put_url('/boleta', params)
+    response = put_url('boleta', params)
     Invoice.create(:client => response["cliente"], :gross_amount => response["bruto"],
     :iva => response["iva"], :total_amount => response["total"],
     :status => response["estado"], :order_id => response["oc"])

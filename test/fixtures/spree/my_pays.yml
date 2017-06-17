@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  live: false
+  event_code: MyString
+  psp_reference: MyString
+  original_reference: MyString
+  merchant_reference: MyString
+  merchant_account_code: MyString
+  event_date: 2017-06-15 10:30:34
+  success: false
+  payment_method: MyString
+  operations: MyString
+  reason: MyText
+  currency: MyString
+  value: 1
+  processed: false
+
+two:
+  live: false
+  event_code: MyString
+  psp_reference: MyString
+  original_reference: MyString
+  merchant_reference: MyString
+  merchant_account_code: MyString
+  event_date: 2017-06-15 10:30:34
+  success: false
+  payment_method: MyString
+  operations: MyString
+  reason: MyText
+  currency: MyString
+  value: 1
+  processed: false

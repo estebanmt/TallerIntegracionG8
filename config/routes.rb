@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :spree do
+    resources :my_pays
+  end
   resources :payproxies
   get 'api/publico/precios', to: 'products#index'
 
@@ -8,7 +11,13 @@ Rails.application.routes.draw do
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
-  mount Spree::Core::Engine, at: '/'
+  mount Spree::Core::Engine, at: '/spree'
+  Spree::Core::Engine.routes.draw do
+    get '/spree_coinbase/redirect', :to => "coinbase#redirect", :as => :spree_coinbase_redirect
+    post '/spree_coinbase/callback', :to => "coinbase#callback", :as => :spree_coinbase_callback
+    get '/spree_coinbase/cancel', :to => "coinbase#cancel", :as => :spree_coinbase_cancel
+    get '/spree_coinbase/success', :to => "coinbase#success", :as => :spree_coinbase_success
+  end
 
   resources :warehouses
   resources :receipts

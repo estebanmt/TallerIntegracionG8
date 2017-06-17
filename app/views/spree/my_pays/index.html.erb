@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spree My Pays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Live</th>
+      <th>Event code</th>
+      <th>Psp reference</th>
+      <th>Original reference</th>
+      <th>Merchant reference</th>
+      <th>Merchant account code</th>
+      <th>Event date</th>
+      <th>Success</th>
+      <th>Payment method</th>
+      <th>Operations</th>
+      <th>Reason</th>
+      <th>Currency</th>
+      <th>Value</th>
+      <th>Processed</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spree_my_pays.each do |spree_my_pay| %>
+      <tr>
+        <td><%= spree_my_pay.live %></td>
+        <td><%= spree_my_pay.event_code %></td>
+        <td><%= spree_my_pay.psp_reference %></td>
+        <td><%= spree_my_pay.original_reference %></td>
+        <td><%= spree_my_pay.merchant_reference %></td>
+        <td><%= spree_my_pay.merchant_account_code %></td>
+        <td><%= spree_my_pay.event_date %></td>
+        <td><%= spree_my_pay.success %></td>
+        <td><%= spree_my_pay.payment_method %></td>
+        <td><%= spree_my_pay.operations %></td>
+        <td><%= spree_my_pay.reason %></td>
+        <td><%= spree_my_pay.currency %></td>
+        <td><%= spree_my_pay.value %></td>
+        <td><%= spree_my_pay.processed %></td>
+        <td><%= link_to 'Show', spree_my_pay %></td>
+        <td><%= link_to 'Edit', edit_spree_my_pay_path(spree_my_pay) %></td>
+        <td><%= link_to 'Destroy', spree_my_pay, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spree My Pay', new_spree_my_pay_path %>
