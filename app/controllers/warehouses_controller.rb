@@ -154,6 +154,15 @@ end
     render json: APIBodega.vaciar_bodega_recepcion
   end
 
+  def despachar_ftp
+    begin
+      APIBodega.despachar_Orden_Distribuidor(params[:sku], params[:cantidad],params[:precio], params[:oc], "")
+      render json: "funciona"
+    rescue
+      render json: "no funciona"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_warehouse
