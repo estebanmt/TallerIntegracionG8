@@ -156,7 +156,7 @@ end
 
   def despachar_ftp
     begin
-      APIBodega.despachar_Orden_Distribuidor(params[:sku], params[:cantidad],params[:precio], params[:oc], "")
+      APIBodega.despachar_Orden_Distribuidor(params[:sku], params[:cantidad].to_i,params[:precio].to_i, params[:oc], "")
       render json: "funciona"
     rescue
       render json: "no funciona"
