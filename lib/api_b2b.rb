@@ -149,7 +149,7 @@ class ApiB2b
       # Se acepta la orden
       puts "Se acepta la orden"
       aceptarOrden(idOrden)
-      ApiPago.crear_factura(idOrden)
+      # ApiPago.crear_factura(idOrden)
       begin
         # Se intenta despachar la orden
         APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
