@@ -32,10 +32,14 @@ module Spree
 
       order.payments.clear
       payment = order.payments.create
-      payment.started_processing
+
       payment.amount = order.total
       payment.payment_method = gateway
       payment.source = transaction
+
+      order.next
+
+      payment.started_processing
 
       order.save
 
@@ -80,19 +84,15 @@ module Spree
       end
 
       # Make payment pending -> make order complete -> make payment complete -> update order
-      payment.pend!
-      order.next
-      if !order.complete?
-        render text: "Could not transition order: %s" % order.errors
-        return
-      end
       payment.complete!
-      #order.update!
-
+      order.next
 
       if order.complete?
         session[:order_id] = nil # Reset cart
         redirect_to spree.order_path(order), :notice => Spree.t(:order_processed_successfully)
+      else
+          redirect_to checkout_state_path(order.state)
+
       end
 
       # If order not complete, wait for callback to come in... (page will automatically refresh, see view)
