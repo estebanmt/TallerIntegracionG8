@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   #Get factura
   get 'factura/:id_factura', to: 'invoices#get'
 
-  #NOtify factura
+  #Recibir notificacion de factura
   get 'invoices/:id_factura/:bank_account', to: 'invoices#notifyFactura'
   put 'invoices/:id_factura', to: 'invoices#notifyFactura'
 
