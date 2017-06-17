@@ -163,6 +163,7 @@ class ApiB2b
         #se intenta seguir despachando
         retry
       end
+      return puts "OC aceptada con exito. Factura creada con exito."
     end
   end
 
