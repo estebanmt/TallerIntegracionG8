@@ -1,4 +1,4 @@
-class PayproxiesController < StoreController
+class PayproxiesController < ApplicationController
   before_action :set_payproxy, only: [:show, :edit, :update, :destroy]
 
   # GET /payproxies
