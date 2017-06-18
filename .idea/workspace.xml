@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f1ad05-5f95-49aa-910b-6e6424cf13f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spree/checkout/payment/_coinbase.html.erb" afterPath="$PROJECT_DIR$/app/views/spree/checkout/payment/_coinbase.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -1031,7 +1029,7 @@
       <workItem from="1497713918754" duration="138000" />
       <workItem from="1497714150350" duration="20944000" />
       <workItem from="1497745348743" duration="414000" />
-      <workItem from="1497747619325" duration="33000" />
+      <workItem from="1497747619325" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch remotes/origin/spree_iic3103pay'">
       <created>1496164037492</created>
@@ -1117,11 +1115,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497745535265</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Merge remote-tracking branch 'remotes/origin/s4_spree_gateway_1'">
+      <created>1497747660183</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1497747660183</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81938000" />
+    <option name="totallyTimeSpent" value="81953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="0" />
