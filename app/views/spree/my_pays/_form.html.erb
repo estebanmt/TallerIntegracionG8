@@ -1,0 +1,87 @@
+<%= form_for(spree_my_pay) do |f| %>
+  <% if spree_my_pay.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spree_my_pay.errors.count, "error") %> prohibited this spree_my_pay from being saved:</h2>
+
+      <ul>
+      <% spree_my_pay.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :live %>
+    <%= f.check_box :live %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_code %>
+    <%= f.text_field :event_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :psp_reference %>
+    <%= f.text_field :psp_reference %>
+  </div>
+
+  <div class="field">
+    <%= f.label :original_reference %>
+    <%= f.text_field :original_reference %>
+  </div>
+
+  <div class="field">
+    <%= f.label :merchant_reference %>
+    <%= f.text_field :merchant_reference %>
+  </div>
+
+  <div class="field">
+    <%= f.label :merchant_account_code %>
+    <%= f.text_field :merchant_account_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_date %>
+    <%= f.datetime_select :event_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :success %>
+    <%= f.check_box :success %>
+  </div>
+
+  <div class="field">
+    <%= f.label :payment_method %>
+    <%= f.text_field :payment_method %>
+  </div>
+
+  <div class="field">
+    <%= f.label :operations %>
+    <%= f.text_field :operations %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reason %>
+    <%= f.text_area :reason %>
+  </div>
+
+  <div class="field">
+    <%= f.label :currency %>
+    <%= f.text_field :currency %>
+  </div>
+
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.number_field :value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :processed %>
+    <%= f.check_box :processed %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
