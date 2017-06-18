@@ -90,8 +90,8 @@ class ApiB2b
       puts "OC ACEPTADA"
       puts "hello"*100
       puts jsonFactura
-      puts jsonFactura["_id"]
-      puts Factura.create("_id": jsonFactura["_id"])
+      puts Factura.create("_id": jsonFactura["_id"], "cliente": jsonFactura["cliente"],
+                          "total": jsonFactura["total"].to_i, "oc": jsonFactura["oc"])
       ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
 
 
