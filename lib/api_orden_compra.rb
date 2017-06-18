@@ -5,8 +5,8 @@ require 'digest'
 require 'json'
 
 class ApiOrdenCompra
-  #@API_URL_OC = ENV["API_URL_OC"]
-  @API_URL_OC = 'https://integracion-2017-prod.herokuapp.com/oc/'
+  @API_URL_OC = ENV["API_URL_OC"]
+  #@API_URL_OC = 'https://integracion-2017-prod.herokuapp.com/oc/'
 
   @GET_OC = 'obtener/'
   @RECEIVE_OC = 'recepcionar/'
