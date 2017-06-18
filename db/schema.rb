@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170617220140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "adyen_notifications", force: :cascade do |t|
     t.boolean  "live",                             default: false, null: false
@@ -460,14 +459,10 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.string   "number"
     t.string   "cvv_response_code"
     t.string   "cvv_response_message"
-    t.hstore   "webpay_params"
-    t.string   "webpay_trx_id"
-    t.boolean  "accepted"
     t.index ["number"], name: "index_spree_payments_on_number", using: :btree
     t.index ["order_id"], name: "index_spree_payments_on_order_id", using: :btree
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id", using: :btree
     t.index ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type", using: :btree
-    t.index ["webpay_trx_id"], name: "index_spree_payments_on_webpay_trx_id", using: :btree
   end
 
   create_table "spree_preferences", force: :cascade do |t|

@@ -25,8 +25,8 @@ class ApiB2b
 
   @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
-  #@BODEGA_GENERAL = "5910c0ba0e42840004f6ec42"
-  #@BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
+  # @BODEGA_GENERAL = "5910c0ba0e42840004f6ec42"
+  # @BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
 
 
   def self.revisarOrdenCompra(ordenId, idBodegaCliente)
@@ -110,6 +110,15 @@ class ApiB2b
     puts "----------------------------FIN JSON---------------------------------"
     idOrden = json["_id"]
 
+    #Verificamos el estado
+    if json["estado"] == "rechazada"
+      return puts 'orden rechazada'
+    end
+
+    if json["estado"] == "finalizada"
+      return puts 'orden finalizada'
+    end
+
     puts "estado valido"
     puts ProductTable.getProductsSku
     if not ProductTable.getProductsSku.include? json["sku"]
@@ -135,9 +144,6 @@ class ApiB2b
 
     puts "cantidad_sku: " + cantidad_sku.to_s
 
-    if json["estado"] == "rechazada"
-      return puts 'orden rechazada'
-    end
 
     cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
 
@@ -149,20 +155,20 @@ class ApiB2b
       # Se acepta la orden
       puts "Se acepta la orden"
       aceptarOrden(idOrden)
-      # ApiPago.crear_factura(idOrden)
-      begin
+      #ApiPago.crear_factura(idOrden)
+      #begin
         # Se intenta despachar la orden
         APIBodega.despachar_Orden_Distribuidor(json["sku"],  cantidad_por_despachar, json["precioUnitario"], json["_id"], json["cliente"])
         puts "Revisar el estado"
         puts ApiOrdenCompra.getOrdenCompra(ordenId)
-      rescue
-        puts "Entrando a Rescue"
+      #rescue
+      #  puts "Entrando a Rescue"
         # Se consulta cuantas unidades quedan por despachar
-        json = ApiOrdenCompra.getOrdenCompra(ordenId)
-        cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
+      #  json = ApiOrdenCompra.getOrdenCompra(ordenId)
+      #  cantidad_por_despachar = json["cantidad"].to_i - json["cantidadDespachada"].to_i
         #se intenta seguir despachando
-        retry
-      end
+      #  retry
+      #end
       return puts "OC aceptada con exito. Factura creada con exito."
     end
   end
