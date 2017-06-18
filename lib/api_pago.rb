@@ -25,6 +25,15 @@ class ApiPago
   @ID_GRUPO6 = ENV["ID_GRUPO6"]
   @ID_GRUPO7 = ENV["ID_GRUPO7"]
 
+  # urls de los grupos
+  @URL_GRUPO1 = ENV["URL_GRUPO1"]
+  @URL_GRUPO2 = ENV["URL_GRUPO2"]
+  @URL_GRUPO3 = ENV["URL_GRUPO3"]
+  @URL_GRUPO4 = ENV["URL_GRUPO4"]
+  @URL_GRUPO5 = ENV["URL_GRUPO5"]
+  @URL_GRUPO6 = ENV["URL_GRUPO6"]
+  @URL_GRUPO7 = ENV["URL_GRUPO7"]
+
   def self.crear_boleta(id_cliente, monto)
     params = {'proveedor' => ENV["ID_GRUPO"],'cliente' => id_cliente, 'total' => monto}
     #puts params
@@ -67,6 +76,41 @@ class ApiPago
     response = put_url('', params)
     puts response["oc"]
     return response
+  end
+
+  # Envia notificacion a otro grupo de que se creo una factura para su pedido
+  def self.enviar_notificacion_fatura(id_factura, id_otro_grupo)
+    urlOtroGrupo = get_url_from_grupo_id(id_otro_grupo)
+    @url = urlOtroGrupo.to_s + "/invoices/" + id_factura.to_s
+    params = {'bank_account' => @CUENTA_BANCO}
+    puts @url
+    begin
+      @response= RestClient.put @url, params.to_json, :content_type => 'application/json'
+      puts @response
+      puts "notificacion a otro grupo ok"
+    rescue
+      puts "fallo request a otro grupo"
+    end
+
+
+  end
+
+  # Obtiene la url de un grupo a partir de su id
+  def self.get_url_from_grupo_id(idOtroGrupo)
+    case idOtroGrupo
+      when @ID_GRUPO1
+        return @URL_GRUPO1
+      when @ID_GRUPO2
+        return @URL_GRUPO2
+      when @ID_GRUPO3
+        return @URL_GRUPO3
+      when @ID_GRUPO4
+        return @URL_GRUPO4
+      when @ID_GRUPO5
+        return @URL_GRUPO6
+      when @ID_GRUPO7
+        return @URL_GRUPO8
+    end
   end
 
   #MEtodo que recibe notificacion de otro grupo, q nos hizo una factura.
@@ -193,6 +237,7 @@ class ApiPago
     #, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
+    puts json
     return json
   end
 

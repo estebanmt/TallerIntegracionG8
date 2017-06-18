@@ -56,79 +56,81 @@
 
 <h1>ORDENES DE FABRICACION</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>SKU</th>
-      <th>CANTIDAD</th>
-      <th>MONTO</th>
-      <th>DISPONIBLE</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ordenes_fabricacion.each do |lib| %>
+<div class="panel" style="width: 650px; height: 250px; overflow: scroll;">
+  <table>
+    <thead>
       <tr>
-        <td><%= lib._id %></td>
-        <td><%= lib.sku %></td>
-        <td><%= lib.cantidad %></td>
-        <td><%= lib.monto %></td>
-        <td><%= lib.disponible %></td>
+        <th>ID</th>
+        <th>SKU</th>
+        <th>CANTIDAD</th>
+        <th>MONTO</th>
+        <th>DISPONIBLE</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @ordenes_fabricacion.each do |lib| %>
+        <tr>
+          <td><%= lib._id %></td>
+          <td><%= lib.sku %></td>
+          <td><%= lib.cantidad %></td>
+          <td><%= lib.monto %></td>
+          <td><%= lib.disponible %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <h1>TRANSACCIONES</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>MONTO</th>
-      <th>ORIGEN</th>
-      <th>DESTINO</th>
-      <th>EXITOSA</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @transactions.each do |lib| %>
+<div class="panel" style="width: 750px; height: 250px; overflow: scroll;">
+  <table>
+    <thead>
       <tr>
-        <td><%= lib._id %></td>
-        <td><%= lib.amount %></td>
-        <td><%= lib.sender %></td>
-        <td><%= lib.receiver %></td>
-        <td><%= lib.exitosa %></td>
+        <th>ID</th>
+        <th>MONTO</th>
+        <th>ORIGEN</th>
+        <th>DESTINO</th>
+        <th>EXITOSA</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @transactions.each do |lib| %>
+        <tr>
+          <td><%= lib._id %></td>
+          <td><%= lib.amount %></td>
+          <td><%= lib.sender %></td>
+          <td><%= lib.receiver %></td>
+          <td><%= lib.exitosa %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <h1>ORDENES DISTRIBUIDORES</h1>
-
-  <div class="panel" style="height: 250px; overflow: scroll;">
-    <table>
-      <thead>
+<div class="panel" style="width: 300px; height: 250px; overflow: scroll;">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ESTADO</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @OCEstados.each do |lib| %>
         <tr>
-          <th>ID</th>
-          <th>ESTADO</th>
-          <th colspan="3"></th>
+          <td><%= lib._id %></td>
+          <td><%= lib.estado %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @OCEstados.each do |lib| %>
-          <tr>
-            <td><%= lib._id %></td>
-            <td><%= lib.estado %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 
 <%= image_tag @graph%>
@@ -136,5 +138,6 @@
 <br>
 <%= image_tag @graph2%>
 <%= image_tag @graph3%>
-
+<br>
+<%= image_tag @graph4%>
 <br>

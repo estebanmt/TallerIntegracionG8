@@ -21,6 +21,15 @@ ID_GRUPO5: '590baa00d6b4ec0004902466'
 ID_GRUPO6: '590baa00d6b4ec0004902467'
 ID_GRUPO7: '590baa00d6b4ec0004902468'
 
+URL_GRUPO1: 'dev.integra17-1.ing.puc.cl/api'
+URL_GRUPO2: 'dev.integra17-2.ing.puc.cl'
+URL_GRUPO3: 'dev.integra17-3.ing.puc.cl'
+URL_GRUPO4: 'dev.integra17-4.ing.puc.cl'
+URL_GRUPO5: 'dev.integra17-5.ing.puc.cl'
+URL_GRUPO6: 'dev.integra17-6.ing.puc.cl'
+URL_GRUPO7: 'dev.integra17-7.ing.puc.cl/api'
+
+
 #api_banco
 CUENTA_FABRICA:  "590baa00d6b4ec0004902460"
 CUENTA_BANCO: "590baa00d6b4ec0004902470"

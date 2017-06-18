@@ -6,6 +6,7 @@ require 'json'
 require_relative 'api_bodega'
 require_relative 'api_orden_compra'
 require_relative 'product_table'
+require_relative 'api_pago'
 
 class ApiB2b
 
@@ -21,15 +22,18 @@ class ApiB2b
 
   @ID_GRUPOS = [ @ID_GRUPO1, @ID_GRUPO2, @ID_GRUPO3, @ID_GRUPO4, @ID_GRUPO5, @ID_GRUPO6, @ID_GRUPO7 ]
 
+
   @BODEGA_GENERAL = ENV["BODEGA_GENERAL"]
   @BODEGA_DESPACHO = ENV["BODEGA_DESPACHO"]
+  #@BODEGA_GENERAL = "5910c0ba0e42840004f6ec42"
+  #@BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
 
 
   def self.revisarOrdenCompra(ordenId, idBodegaCliente)
     puts "INICIO"
-    json = ApiOrdenCompra.getOrdenCompra(ordenId)[0]
-    idOrden = json["_id"]
+    json = ApiOrdenCompra.getOrdenCompra(ordenId)
     puts json
+    idOrden = json['_id']
 
     # revisar que o/c existe
     # revisar que estado sea "creada"
@@ -80,12 +84,19 @@ class ApiB2b
     # Se intenta despachar la orden
     begin
       aceptarOrden(idOrden)
+      jsonFactura = ApiPago.crear_factura(idOrden)
       APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
       # aceptarOrden(idOrden)
       puts "OC ACEPTADA"
+      puts "hello"*100
+      puts jsonFactura
+      puts jsonFactura["_id"]
+      ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
+
+
     rescue
-      rechazarOrden(idOrden, 'No se pudo realizar despacho')
-      puts "OC RECHAZADA"
+      # rechazarOrden(idOrden, 'No se pudo realizar despacho')
+      puts "DESPACHO FALLO"
     end
 
   end
@@ -114,12 +125,15 @@ class ApiB2b
 
     # Se verifica que hayan suficientes productos
     cantidad_productos = APIBodega.get_skusWithStock(@BODEGA_GENERAL)
+    puts cantidad_productos
     cantidad_sku = 0
     for prod in cantidad_productos
       if prod["_id"].to_s == json["sku"].to_s
         cantidad_sku = prod ["total"].to_i
       end
     end
+
+    puts "cantidad_sku: " + cantidad_sku.to_s
 
     if json["estado"] == "rechazada"
       return puts 'orden rechazada'

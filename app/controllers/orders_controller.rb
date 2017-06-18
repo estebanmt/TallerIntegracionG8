@@ -98,6 +98,18 @@ class OrdersController < ApiController
       APIDistribuidores.estado_Ordenes_DEV
     end
 
+    def estado_distribuidores_prod
+      APIDistribuidores.estado_Ordenes_PROD
+    end
+
+    def auto_distribuidores_dev
+      APIDistribuidores.auto_Revisar_Ordenes_DEV
+    end
+
+    def auto_distribuidores_prod
+      APIDistribuidores.auto_Revisar_Ordenes_PROD
+    end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
