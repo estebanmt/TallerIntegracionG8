@@ -91,6 +91,7 @@ class ApiB2b
       puts "hello"*100
       puts jsonFactura
       puts jsonFactura["_id"]
+      puts Factura.create("_id": jsonFactura["_id"])
       ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
 
 

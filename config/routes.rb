@@ -37,7 +37,12 @@ Rails.application.routes.draw do
   # Ruteos del enunciado
 
   # Crear orden de compra
+
+  # Dashboard principal
   get 'dashboard', to: 'dashboards#index'
+
+  # Dashboard de IDs factura
+  get 'dashboard/facturas', to: 'dashboards#facturas'
 
   put 'crear', to: 'orders#create_order'
 

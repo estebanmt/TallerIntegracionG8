@@ -175,5 +175,9 @@ class DashboardsController < ActionController::Base
     return vuelto
   end
 
+  def facturas
+    @facturas = Factura.all
+  end
+
 
 end

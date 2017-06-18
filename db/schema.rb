@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617220140) do
+ActiveRecord::Schema.define(version: 20170618214456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["psp_reference", "event_code", "success"], name: "adyen_notification_uniqueness", unique: true, using: :btree
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.string   "_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

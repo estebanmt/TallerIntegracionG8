@@ -1,0 +1,25 @@
+<h1>FACTURAS</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @facturas.each do |fac| %>
+  <tr>
+    <td><%= fac._id %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% @facturas.each do |fac| %>
+    <tr>
+      <td><% fac._id %></td>
+    </tr>
+<% end %>
+
+<h1>End</h1>
