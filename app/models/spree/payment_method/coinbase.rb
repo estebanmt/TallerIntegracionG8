@@ -5,7 +5,7 @@ module Spree
     preference :use_off_site_payment_page, :boolean
 
     def auto_capture?
-      false
+      true
     end
 
     def provider_class

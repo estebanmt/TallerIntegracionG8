@@ -86,6 +86,10 @@ module Spree
       # Make payment pending -> make order complete -> make payment complete -> update order
       payment.complete!
       order.next
+      if !order.complete?
+        order.next
+      end
+
 
       if order.complete?
         session[:order_id] = nil # Reset cart
