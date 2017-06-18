@@ -14,6 +14,27 @@ ActiveRecord::Schema.define(version: 20170617220140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "adyen_notifications", force: :cascade do |t|
+    t.boolean  "live",                             default: false, null: false
+    t.string   "event_code",            limit: 40,                 null: false
+    t.string   "psp_reference",         limit: 50,                 null: false
+    t.string   "original_reference"
+    t.string   "merchant_reference",                               null: false
+    t.string   "merchant_account_code",                            null: false
+    t.datetime "event_date",                                       null: false
+    t.boolean  "success",                          default: false, null: false
+    t.string   "payment_method"
+    t.string   "operations"
+    t.text     "reason"
+    t.string   "currency",              limit: 3
+    t.integer  "value"
+    t.boolean  "processed",                        default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["psp_reference", "event_code", "success"], name: "adyen_notification_uniqueness", unique: true, using: :btree
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -63,16 +84,6 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.integer  "monto"
     t.string   "disponible"
     t.string   "_id"
-  end
-
-  create_table "orden_fabrics", force: :cascade do |t|
-    t.string   "sku"
-    t.integer  "cantidad"
-    t.string   "_id"
-    t.integer  "monto"
-    t.string   "disponible"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -195,6 +206,12 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.index ["id", "type"], name: "index_spree_calculators_on_id_and_type", using: :btree
   end
 
+  create_table "spree_coinbase_transactions", force: :cascade do |t|
+    t.string "button_id"
+    t.string "order_id"
+    t.string "secret_token"
+  end
+
   create_table "spree_countries", force: :cascade do |t|
     t.string   "iso_name"
     t.string   "iso"
@@ -291,6 +308,25 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type", using: :btree
+  end
+
+  create_table "spree_my_pays", force: :cascade do |t|
+    t.boolean  "live"
+    t.string   "event_code"
+    t.string   "psp_reference"
+    t.string   "original_reference"
+    t.string   "merchant_reference"
+    t.string   "merchant_account_code"
+    t.datetime "event_date"
+    t.boolean  "success"
+    t.string   "payment_method"
+    t.string   "operations"
+    t.text     "reason"
+    t.string   "currency"
+    t.integer  "value"
+    t.boolean  "processed"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "spree_option_type_prototypes", force: :cascade do |t|
@@ -424,10 +460,14 @@ ActiveRecord::Schema.define(version: 20170617220140) do
     t.string   "number"
     t.string   "cvv_response_code"
     t.string   "cvv_response_message"
+    t.hstore   "webpay_params"
+    t.string   "webpay_trx_id"
+    t.boolean  "accepted"
     t.index ["number"], name: "index_spree_payments_on_number", using: :btree
     t.index ["order_id"], name: "index_spree_payments_on_order_id", using: :btree
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id", using: :btree
     t.index ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type", using: :btree
+    t.index ["webpay_trx_id"], name: "index_spree_payments_on_webpay_trx_id", using: :btree
   end
 
   create_table "spree_preferences", force: :cascade do |t|
