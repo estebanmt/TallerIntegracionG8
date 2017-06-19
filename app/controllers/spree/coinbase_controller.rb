@@ -1,5 +1,6 @@
 require 'rest_client'
 require 'api_pago'
+require 'api_bodega'
 require 'cgi'
 require 'addressable/uri'
 
@@ -17,9 +18,14 @@ module Spree
         return
       end
 
+
+
+
       pago = ::ApiPago.new
 
       boleta_id = ::ApiPago.get_boleta_id(1, order.total.round)
+
+
 
       secret_token = SecureRandom.base64(30)
 
@@ -32,15 +38,11 @@ module Spree
 
       order.payments.clear
       payment = order.payments.create
-
+      payment.started_processing
       payment.amount = order.total
       payment.payment_method = gateway
       payment.source = transaction
-
       order.next
-
-      payment.started_processing
-
       order.save
 
       url_ok = CGI::escape(spree_coinbase_success_url(:payment_method_id => params[:payment_method_id], :order_num => order.number, :boleta_id => boleta_id))
@@ -93,6 +95,9 @@ module Spree
 
       if order.complete?
         session[:order_id] = nil # Reset cart
+
+        mover_skus(order, params[:boleta_id])
+
         redirect_to spree.order_path(order), :notice => Spree.t(:order_processed_successfully)
       else
           redirect_to checkout_state_path(order.state),
@@ -148,6 +153,20 @@ module Spree
       json = JSON.parse(@response.body)
       #puts json
       return json
+
+    end
+
+    def mover_skus (order, boleta_id)
+      order.line_items.each do |item|
+
+        puts "sku #{item.sku} single_money #{item.single_money} quantity #{item.quantity} money #{item.money} "
+
+          for i in 1..item.quantity
+            puts "mover stoke para item #{i} sku #{item.sku} single_money #{item.single_money} money #{item.money}  oc/boleta #{boleta_id}"
+            puts ::APIBodega.despachar_Stock(item.sku, " callle a", item.single_money, boleta_id)
+          end
+
+      end
 
     end
 
