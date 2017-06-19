@@ -259,6 +259,19 @@ class APIBodega
     end
   end
 
+  def self.despachar_Orden_Despacho(sku, cantidad, precio, direccion, oc)
+    stock = get_stock(sku, @BODEGA_DESPACHO)
+    count = 0
+    for i in stock
+      puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+      count = count + 1
+      sleep 1
+      if count >= cantidad
+        return
+      end
+    end
+  end
+
 #Mueve los productos de general a despacho y despues los despacha al distribuidor
   def self.despachar_Orden_Distribuidor(sku, cantidad, precio, oc, direccion)
     mover_General_Despacho(sku, cantidad)

@@ -110,6 +110,10 @@ end
     render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio], params[:almacenId], params[:oc])
   end
 
+  def despachar_despacho
+    render json: APIBodega.despachar_Orden_Despacho(params[:sku],params[:cantidad].to_i,params[:precio], params[:almacenId], params[:oc])
+  end
+
   def despachar_aceptar
     ApiOrdenCompra.recepcionarOrdenCompra(params[:oc])
     render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio].to_i, params[:almacenId], params[:oc])
