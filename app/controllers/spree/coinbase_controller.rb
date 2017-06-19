@@ -68,7 +68,7 @@ module Spree
       end
 
       redirect_to edit_order_checkout_url(order, :state => 'payment'),
-                  :notice => Spree.t(:spree_coinbase_checkout_cancelled)
+                  :notice => "Pagamento Cancelado"
     end
 
     def success
@@ -95,7 +95,8 @@ module Spree
         session[:order_id] = nil # Reset cart
         redirect_to spree.order_path(order), :notice => Spree.t(:order_processed_successfully)
       else
-          redirect_to checkout_state_path(order.state)
+          redirect_to checkout_state_path(order.state),
+                      :notice => "Pagamento incompleto, intentar nuevamente"
 
       end
 
