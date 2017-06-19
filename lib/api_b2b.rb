@@ -85,14 +85,16 @@ class ApiB2b
     begin
       aceptarOrden(idOrden)
       jsonFactura = ApiPago.crear_factura(idOrden)
-      APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
-      # aceptarOrden(idOrden)
       puts "OC ACEPTADA"
-      puts "hello"*100
       puts jsonFactura
       puts Factura.create("_id": jsonFactura["_id"], "cliente": jsonFactura["cliente"],
                           "total": jsonFactura["total"].to_i, "oc": jsonFactura["oc"])
+
+
+      APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
+      # aceptarOrden(idOrden)
       ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
+
 
 
     rescue
