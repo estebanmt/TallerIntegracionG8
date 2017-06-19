@@ -241,7 +241,13 @@ class APIBodega
     return post_url(@MOVE_STOCK_BODEGA, params, hmac)
   end
 
-#Mover pra b2c
+  def self.despachar_stock_spree(sku, direccion, precio, oc)
+    mover_General_Despacho(sku, 1)
+    stock = get_stock(sku.to_s, @BODEGA_DESPACHO)
+    despachar_Stock(stock[0]["_id"], direccion, precio, oc)
+  end
+
+  #Mover pra b2c
   def self.despachar_Stock(productoId, direccion, precio, oc)
     hmac = doHashSHA1('DELETE'.concat(productoId.to_s + direccion.to_s + precio.to_s + oc.to_s))
     params = {'productoId' => productoId, 'direccion' => direccion, 'precio' => precio, 'oc' => oc}

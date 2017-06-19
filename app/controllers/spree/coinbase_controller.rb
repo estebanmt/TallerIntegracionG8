@@ -150,7 +150,7 @@ module Spree
         puts "sku #{item.sku} single_money #{item.single_money} quantity #{item.quantity} money #{item.money} "
         for i in 1..item.quantity
           puts "mover stoke para item #{i} sku #{item.sku} single_money #{item.single_money} money #{item.money}  oc/boleta #{boleta_id}"
-          puts ::APIBodega.despachar_Stock(item.sku, " callle a", item.single_money, boleta_id)
+          puts ::APIBodega.despachar_stock_spree(item.sku, " callle a", item.price.to_i, boleta_id)
           puts "Dormir ..................."
           sleep(10)
         end
