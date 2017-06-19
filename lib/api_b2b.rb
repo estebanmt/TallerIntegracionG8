@@ -49,18 +49,18 @@ class ApiB2b
     end
     puts "sku valido"
 
-    if json["proveedor"] != @ID_GRUPO
-      rechazarOrden(idOrden, 'Id proveedor no corresponde a este grupo')
-      return
-    end
-    puts "proveedor valido"
+    # if json["proveedor"] != @ID_GRUPO
+    #   rechazarOrden(idOrden, 'Id proveedor no corresponde a este grupo')
+    #   return
+    # end
+    # puts "proveedor valido"
 
     # revisar que id cliente sea legitima
-    if not @ID_GRUPOS.include? json["cliente"]
-      rechazarOrden(idOrden, 'Id de cliente invalida')
-      return
-    end
-    puts "id cliente valido"
+    # if not @ID_GRUPOS.include? json["cliente"]
+    #   rechazarOrden(idOrden, 'Id de cliente invalida')
+    #   return
+    # end
+    # puts "id cliente valido"
 
     # revisar que fecha limite sea mayor que actual
 
