@@ -43,6 +43,7 @@ module Spree
       payment.payment_method = gateway
       payment.source = transaction
       order.next
+      payment.complete!
       order.save
 
       url_ok = CGI::escape(spree_coinbase_success_url(:payment_method_id => params[:payment_method_id], :order_num => order.number, :boleta_id => boleta_id))
@@ -86,7 +87,7 @@ module Spree
       end
 
       # Make payment pending -> make order complete -> make payment complete -> update order
-      payment.complete!
+
       order.next
       if !order.complete?
         order.next
