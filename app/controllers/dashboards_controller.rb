@@ -179,5 +179,8 @@ class DashboardsController < ActionController::Base
     @facturas = Factura.all
   end
 
+  def ordenes
+    @ordenes = Ocompra.all
+  end
 
 end

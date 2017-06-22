@@ -1,0 +1,2 @@
+class Ocompra < ApplicationRecord
+end

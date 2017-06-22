@@ -1,0 +1,29 @@
+<h1>ORDENES DE COMPRA</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>SKU</th>
+    <th>CANTIDAD</th>
+    <th>PRECIO UNITARIO</th>
+    <th>CLIENTE</th>
+    <th>ID BODEGA CLIENTE</th>
+    <th>FECHA CREACION</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @ordenes.each do |ord| %>
+      <tr>
+        <td><%= ord._id %></td>
+        <td><%= ord.sku %></td>
+        <td><%= ord.cantidad %></td>
+        <td><%= ord.precioUnitario %></td>
+        <td><%= ord.cliente %></td>
+        <td><%= ord.id_store_reception %></td>
+        <td><%= ord.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -10,6 +10,9 @@ require_relative 'api_pago'
 
 class ApiB2b
 
+  # maximo de cantidad para que oc de materia prima se acepte AUTOMATICAMENTE
+  @MAX_PRIMA = 200
+
   #ids de los grupos
   @ID_GRUPO = ENV["ID_GRUPO"]
   @ID_GRUPO1 = ENV["ID_GRUPO1"]
@@ -29,6 +32,7 @@ class ApiB2b
   # @BODEGA_DESPACHO = "5910c0ba0e42840004f6ec41"
 
 
+  # Revisa orden de sistema b2b y lo acepta/rechaza
   def self.revisarOrdenCompra(ordenId, idBodegaCliente)
     puts "INICIO"
     json = ApiOrdenCompra.getOrdenCompra(ordenId)
@@ -78,28 +82,42 @@ class ApiB2b
     end
     puts "precio es > 0"
 
+    if json["cantidad"] > 1000
+      rechazarOrden(idOrden, 'No se aceptan ordenes de mas de 1000 unidades')
+    end
+    puts "cantidad aceptable"
+
     # Si pasa todas las pruebas se acepta la orden
     # iniciarProduccion(json)
 
-    # Se intenta despachar la orden
-    begin
-      aceptarOrden(idOrden)
-      jsonFactura = ApiPago.crear_factura(idOrden)
-      puts "OC ACEPTADA"
-      puts jsonFactura
-      puts Factura.create("_id": jsonFactura["_id"], "cliente": jsonFactura["cliente"],
-                          "total": jsonFactura["total"].to_i, "oc": jsonFactura["oc"])
+    # Se crea la orden en la DB
+    puts Ocompra.create("_id": idOrden, "sku": json["sku"], "cantidad": json["cantidad"].to_i,
+                        "cliente": json["cliente"], "precioUnitario": json["precioUnitario"],
+                        "id_store_reception": idBodegaCliente)
+
+    # Si la orden es por materia prima y menor que cierta cantidad, se acepta e intenta despachar la orden
+    # En cualquier otro caso se puede acceder a las o/c desde /dashboard/ordenes para responderlas manualmente
+    if json["cantidad"] <= @MAX_PRIMA and ProductTable.getMateriaPrimaSku.include? json["sku"]
+      begin
+        aceptarOrden(idOrden)
+        jsonFactura = ApiPago.crear_factura(idOrden)
+        puts "OC ACEPTADA"
+        puts jsonFactura
+        puts Factura.create("_id": jsonFactura["_id"], "cliente": jsonFactura["cliente"],
+                            "total": jsonFactura["total"].to_i, "oc": jsonFactura["oc"])
 
 
-      APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i, idBodegaCliente, json["_id"])
-      # aceptarOrden(idOrden)
-      ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
+        APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i,
+                                  idBodegaCliente, json["_id"])
+        # aceptarOrden(idOrden)
+        ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
 
 
 
-    rescue
-      # rechazarOrden(idOrden, 'No se pudo realizar despacho')
-      puts "DESPACHO FALLO"
+      rescue
+        # rechazarOrden(idOrden, 'No se pudo realizar despacho')
+        puts "DESPACHO FALLO"
+      end
     end
 
   end
@@ -175,6 +193,24 @@ class ApiB2b
       return puts "OC aceptada con exito. Factura creada con exito."
     end
   end
+
+  # Para una id de oc intenta: crear factura, guardar en DB, despachar orden y enviar notificacion de factura
+  def self.aceptarFacturarDespacharB2b(idOrden, idBodegaCliente)
+    begin
+    aceptarOrden(idOrden)
+      jsonFactura = ApiPago.crear_factura(idOrden)
+      puts Factura.create("_id": jsonFactura["_id"], "cliente": jsonFactura["cliente"],
+                          "total": jsonFactura["total"].to_i, "oc": jsonFactura["oc"])
+      APIBodega.despachar_Orden(json["sku"], json["cantidad"].to_i, json["precioUnitario"].to_i,
+                                idBodegaCliente, json["_id"])
+      ApiPago.enviar_notificacion_fatura(jsonFactura["_id"], json["cliente"])
+      puts "DESPACHO EXITOSO"
+    rescue
+      puts "DESPACHO FALLO"
+    end
+
+  end
+
 
   #Metodo que compre producto a otro grupo
   def self.comprarProducto(sku, cantidad)

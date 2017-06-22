@@ -48,6 +48,8 @@ class ProductTable
 
   @productsSku = [4, 6, 19, 20, 23, 26, 27, 38, 42, 53]
 
+
+
   def initialize()
   end
 
@@ -57,6 +59,10 @@ class ProductTable
 
   def self.getIngredients
     return ingredients
+  end
+
+  def self.getMateriaPrimaSku
+    return ['19', '20', '26', '27', '38']
   end
 
   def self.getProductsSku

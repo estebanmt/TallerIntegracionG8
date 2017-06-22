@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   # Dashboard de IDs factura
   get 'dashboard/facturas', to: 'dashboards#facturas'
 
+  # Dashboard de IDs de oc
+  get 'dashboard/ordenes', to: 'dashboards#ordenes'
+
   put 'crear', to: 'orders#create_order'
 
   # Recepcionar orden de compra
@@ -189,6 +192,7 @@ Rails.application.routes.draw do
   get 'despachar_orden/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar'
   get 'despachar_orden_desde_despacho/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_despacho'
   get 'despachar_aceptar/:sku/:cantidad/:precio/:almacenId/:oc', to: 'warehouses#despachar_aceptar'
+  get 'aceptar_facturar_despachar/:oc/:almacenId', to: 'warehouses#aceptar_facturar_despachar'
   get 'despachar_ftp/:sku/:cantidad/:precio/:oc', to: 'warehouses#despachar_ftp'
 
   get 'distribuidores_dev', to: 'orders#distribuidores_dev'

@@ -119,6 +119,10 @@ end
     render json: APIBodega.despachar_Orden(params[:sku],params[:cantidad].to_i,params[:precio].to_i, params[:almacenId], params[:oc])
   end
 
+  def aceptar_facturar_despachar
+    ApiB2b.aceptarFacturarDespacharB2b(params[:oc], params[:almacenId])
+  end
+
   # GET almacenes
   def getAlmacenes
     @auth = 'INTEGRACION grupo8:' + doHashSHA1('GET')
