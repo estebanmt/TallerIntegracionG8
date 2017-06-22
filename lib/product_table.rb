@@ -5,6 +5,17 @@ class ProductTable
 
   @BODEGA_GENERAL =  ENV["BODEGA_GENERAL"]
 
+  @PRECIO_ACEITE = ((412*1.2).to_i).to_s
+  @PRECIO_CREMA = ((514*2).to_i).to_s
+  @PRECIO_SEMOLA = ((116*1.2).to_i).to_s
+  @PRECIO_CACAO = ((172*1.2).to_i).to_s
+  @PRECIO_HARINA = ((364*1.2).to_i).to_s
+  @PRECIO_SAL = ((144*1.2).to_i).to_s
+  @PRECIO_LEVADURA = ((232*1.2).to_i).to_s
+  @PRECIO_SEMILLAS = ((370*1.2).to_i).to_s
+  @PRECIO_CEREAL = ((812*1.2).to_i).to_s
+  @PRECIO_PAN = ((620*1.2).to_i).to_s
+
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
 
   @products = [ [4, 'Aceite de Maravilla', 'Producto procesado', 8, 'Lts', 412, 200, 1, 2, 1.205],
@@ -57,16 +68,16 @@ class ProductTable
 
     puts getStockFromJson('4', json)
 
-    @response = '[{"sku": "4", "precio": 412, "stock": ' + getStockFromJson('4', json) + '},' +
-'{"sku": "6", "precio": 514, "stock": ' + getStockFromJson('6', json) + '},' +
-'{"sku": "19", "precio": 116, "stock": ' + getStockFromJson('19', json) + '},' +
-'{"sku": "20", "precio": 172, "stock": ' + getStockFromJson('20', json) + '},' +
-'{"sku": "23", "precio": 364, "stock": ' + getStockFromJson('23', json) + '},' +
-'{"sku": "26", "precio": 99, "stock": ' + getStockFromJson('26', json) + '},' +
-'{"sku": "27", "precio": 232, "stock": ' + getStockFromJson('27', json) + '},' +
-'{"sku": "38", "precio": 379, "stock": ' + getStockFromJson('38', json) + '},' +
-'{"sku": "42", "precio": 812, "stock": ' + getStockFromJson('42', json) + '},' +
-'{"sku": "53", "precio": 934, "stock": ' + getStockFromJson('53', json) + '}]'
+    @response = '[{"sku": "4", "precio": ' + @PRECIO_ACEITE + ', "stock": ' + getStockFromJson('4', json) + '},' +
+'{"sku": "6", "precio": ' + @PRECIO_CREMA + ', "stock": ' + getStockFromJson('6', json) + '},' +
+'{"sku": "19", "precio": ' + @PRECIO_SEMOLA + ', "stock": ' + getStockFromJson('19', json) + '},' +
+'{"sku": "20", "precio": ' + @PRECIO_CACAO + ', "stock": ' + getStockFromJson('20', json) + '},' +
+'{"sku": "23", "precio": ' + @PRECIO_HARINA + ' "stock": ' + getStockFromJson('23', json) + '},' +
+'{"sku": "26", "precio": ' + @PRECIO_SAL + ', "stock": ' + getStockFromJson('26', json) + '},' +
+'{"sku": "27", "precio": ' + @PRECIO_LEVADURA + ', "stock": ' + getStockFromJson('27', json) + '},' +
+'{"sku": "38", "precio": ' + @PRECIO_SEMILLAS + ', "stock": ' + getStockFromJson('38', json) + '},' +
+'{"sku": "42", "precio": ' + @PRECIO_CEREAL + ', "stock": ' + getStockFromJson('42', json) + '},' +
+'{"sku": "53", "precio": ' + @PRECIO_PAN + ', "stock": ' + getStockFromJson('53', json) + '}]'
 
     return @response
   end

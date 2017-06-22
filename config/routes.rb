@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'api/publico/precios', to: 'products#index'
+
   namespace :spree do
     resources :my_pays
   end
   resources :payproxies
-  get 'api/publico/precios', to: 'products#index'
+
 
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
