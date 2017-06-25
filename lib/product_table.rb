@@ -5,16 +5,16 @@ class ProductTable
 
   @BODEGA_GENERAL =  ENV["BODEGA_GENERAL"]
 
-  @PRECIO_ACEITE = ((412*1.2).to_i).to_s
-  @PRECIO_CREMA = ((514*2).to_i).to_s
+  @PRECIO_ACEITE = ((772*1.2).to_i).to_s
+  @PRECIO_CREMA = ((5380*1.2).to_i).to_s
   @PRECIO_SEMOLA = ((116*1.2).to_i).to_s
   @PRECIO_CACAO = ((172*1.2).to_i).to_s
-  @PRECIO_HARINA = ((364*1.2).to_i).to_s
+  @PRECIO_HARINA = ((624*1.2).to_i).to_s
   @PRECIO_SAL = ((144*1.2).to_i).to_s
   @PRECIO_LEVADURA = ((232*1.2).to_i).to_s
   @PRECIO_SEMILLAS = ((370*1.2).to_i).to_s
-  @PRECIO_CEREAL = ((812*1.2).to_i).to_s
-  @PRECIO_PAN = ((620*1.2).to_i).to_s
+  @PRECIO_CEREAL = ((1757*1.2).to_i).to_s
+  @PRECIO_PAN = ((1590*1.2).to_i).to_s
 
   # SKU | Descripcion | Tipo | Grupo productor | Unidades | Costo Unitario | Lote | # Ingredientes | # Dependientes | Tiempo medio produccion
 
