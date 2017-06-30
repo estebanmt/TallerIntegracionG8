@@ -18,14 +18,9 @@ module Spree
         return
       end
 
-
-
-
       pago = ::ApiPago.new
 
       boleta_id = ::ApiPago.get_boleta_id(1, order.total.round)
-
-
 
       secret_token = SecureRandom.base64(30)
 
@@ -43,6 +38,7 @@ module Spree
       payment.payment_method = gateway
       payment.source = transaction
       order.next
+      payment.complete!
       order.save
 
       url_ok = CGI::escape(spree_coinbase_success_url(:payment_method_id => params[:payment_method_id], :order_num => order.number, :boleta_id => boleta_id))
@@ -56,7 +52,6 @@ module Spree
       puts "url_pago #{@url}"
 
     end
-
 
     def cancel
 
@@ -74,19 +69,16 @@ module Spree
     end
 
     def success
-
       order = Spree::Order.find_by_number(params[:order_num]) || raise(ActiveRecord::RecordNotFound)
 
       payments = order.payments
       payment = nil
       payments.each do |p|
         #if payment.source.button_id == params[:boleta_id]
-          payment = p
+        payment = p
         #  end
       end
 
-      # Make payment pending -> make order complete -> make payment complete -> update order
-      payment.complete!
       order.next
       if !order.complete?
         order.next
@@ -100,8 +92,8 @@ module Spree
 
         redirect_to spree.order_path(order), :notice => Spree.t(:order_processed_successfully)
       else
-          redirect_to checkout_state_path(order.state),
-                      :notice => "Pagamento incompleto, intentar nuevamente"
+        redirect_to checkout_state_path(order.state),
+                    :notice => "Pagamento incompleto, intentar nuevamente"
 
       end
 
@@ -142,32 +134,27 @@ module Spree
 
     def get_url(url)
       #puts @url
-
       @response = RestClient::Request.execute(
           method: :get,
           url: url,
           headers: {'Content-Type' => 'application/json',
                     "Authorization" => @auth})
-
       # TODO more error checking (500 error, etc)
       json = JSON.parse(@response.body)
       #puts json
       return json
-
     end
 
     def mover_skus (order, boleta_id)
       order.line_items.each do |item|
-
         puts "sku #{item.sku} single_money #{item.single_money} quantity #{item.quantity} money #{item.money} "
-
-          for i in 1..item.quantity
-            puts "mover stoke para item #{i} sku #{item.sku} single_money #{item.single_money} money #{item.money}  oc/boleta #{boleta_id}"
-            puts ::APIBodega.despachar_Stock(item.sku, " callle a", item.single_money, boleta_id)
-          end
-
+        for i in 1..item.quantity
+          puts "mover stoke para item #{i} sku #{item.sku} single_money #{item.single_money} money #{item.money}  oc/boleta #{boleta_id}"
+          puts ::APIBodega.despachar_stock_spree(item.sku, " callle a", item.price.to_i, boleta_id)
+          puts "Dormir ..................."
+          sleep(10)
+        end
       end
-
     end
 
     def query_params(params)
