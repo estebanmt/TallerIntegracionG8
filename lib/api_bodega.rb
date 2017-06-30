@@ -244,7 +244,7 @@ class APIBodega
   def self.despachar_stock_spree(sku, direccion, precio, oc)
     mover_General_Despacho(sku, 1)
     stock = get_stock(sku.to_s, @BODEGA_DESPACHO)
-    despachar_Stock(stock[0]["_id"], direccion, precio, oc)
+    #despachar_Stock(stock[0]["_id"], direccion, precio, oc)
   end
 
 #Mover pra b2c
