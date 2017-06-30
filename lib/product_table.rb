@@ -78,7 +78,7 @@ class ProductTable
 '{"sku": "6", "precio": ' + @PRECIO_CREMA + ', "stock": ' + getStockFromJson('6', json) + '},' +
 '{"sku": "19", "precio": ' + @PRECIO_SEMOLA + ', "stock": ' + getStockFromJson('19', json) + '},' +
 '{"sku": "20", "precio": ' + @PRECIO_CACAO + ', "stock": ' + getStockFromJson('20', json) + '},' +
-'{"sku": "23", "precio": ' + @PRECIO_HARINA + ' "stock": ' + getStockFromJson('23', json) + '},' +
+'{"sku": "23", "precio": ' + @PRECIO_HARINA + ', "stock": ' + getStockFromJson('23', json) + '},' +
 '{"sku": "26", "precio": ' + @PRECIO_SAL + ', "stock": ' + getStockFromJson('26', json) + '},' +
 '{"sku": "27", "precio": ' + @PRECIO_LEVADURA + ', "stock": ' + getStockFromJson('27', json) + '},' +
 '{"sku": "38", "precio": ' + @PRECIO_SEMILLAS + ', "stock": ' + getStockFromJson('38', json) + '},' +
