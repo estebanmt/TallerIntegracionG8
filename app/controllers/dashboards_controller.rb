@@ -16,17 +16,10 @@ class DashboardsController < ActionController::Base
   # end
 
   def index
-    # @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-    # almacenes =  APIBodega.get_almacenes()
-    # @ARREGLO_ALMACENES = Array.new
-    # for i in 0..almacenes.length-1
-    #   @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
-    # end
-    #
-    # @dicc_skus = {}
-    # obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
-    # @lista_almacenes = []
-    # obtener_almacenes(@lista_almacenes)
+
+    @errores = ''
+
+    begin
     @ordenes_fabricacion = OrdenFabricacion.all
     @transactions = Transaction.all
     datos = encontrar_datos
@@ -61,10 +54,18 @@ class DashboardsController < ActionController::Base
               :legend => ["Exitosas", "Fracasadas"],
               :labels => pendientes,
               :data => pendientes)
+    rescue
+      @errores += 'error en graficos 1-3 \n'
+    end
 
 
-    @stock_por_almacen = DashboardLib.get_almacen_data
+    begin
+      @stock_por_almacen = DashboardLib.get_almacen_data
+    rescue
+      @errores += 'error en dashboard lib'
+    end
 
+    begin
     @OCEstados = Odistribuidore.all
     @OCEstados_estados = Odistribuidore.all.group(:estado).count
 
@@ -74,6 +75,10 @@ class DashboardsController < ActionController::Base
               :legend => @OCEstados_estados.keys,
               :labels => @OCEstados_estados.values,
               :data => @OCEstados_estados.values)
+    rescue
+      @errores += 'error en graph 4'
+    end
+
 
   end
 
