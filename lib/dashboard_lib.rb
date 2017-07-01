@@ -12,6 +12,11 @@ class DashboardLib
     @recepcion = APIBodega.get_skusWithStock(ENV["BODEGA_RECEPCION"])
     @pulmon = APIBodega.get_skusWithStock(ENV["BODEGA_PULMON"])
 
+    @suma_general= 0
+    @suma_despacho= 0
+    @suma_recepcion= 0
+    @suma_pulmon= 0
+
     # Se guardan los datos de cantidad en un hash cuya llave corresponde a una bodega (1=general, 2=despacho, ...)
     aux = Hash.new(0)
     numSkus = 0
@@ -35,7 +40,7 @@ class DashboardLib
     end
 
     # Se crea un arreglo de largo skusValidos (cantidad > 0) y ancho 6
-    response = Array.new(numSkus){Array.new(6)}
+    response = Array.new(numSkus+1){Array.new(6)}
     validSkuCounter = 0
 
     # Las columnas son: sku, general, despacho, recepcion, pulmon, totalProducto
@@ -50,6 +55,20 @@ class DashboardLib
         validSkuCounter += 1
       end
     end
+
+    #@totales = Array.new(4)
+    response[numSkus][0] = 'TOTAL'
+    response[numSkus][1] = 0
+    response[numSkus][2] = 0
+    response[numSkus][3] = 0
+    response[numSkus][4] = 0
+    for i in 1..numSkus
+      response[numSkus][1] += response[i][1]
+      response[numSkus][2] += response[i][2]
+      response[numSkus][3] += response[i][3]
+      response[numSkus][4] += response[i][4]
+    end
+    response[numSkus][5] = response[numSkus][1] + response[numSkus][2] + response[numSkus][3] + response[numSkus][4]
 
     return response
   end

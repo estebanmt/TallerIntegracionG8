@@ -15,18 +15,31 @@ class DashboardsController < ActionController::Base
   #   @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
   # end
 
-  def index
-    @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-    almacenes =  APIBodega.get_almacenes()
-    @ARREGLO_ALMACENES = Array.new
-    for i in 0..almacenes.length-1
-      @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
-    end
+  def dashboard_test
+    puts @general = APIBodega.get_skusWithStock(ENV["BODEGA_GENERAL"])
+    puts @despacho = APIBodega.get_skusWithStock(ENV["BODEGA_DESPACHO"])
+    puts @recepcion = APIBodega.get_skusWithStock(ENV["BODEGA_RECEPCION"])
+    puts @pulmon = APIBodega.get_skusWithStock(ENV["BODEGA_PULMON"])
+  end
 
-    @dicc_skus = {}
-    obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
-    @lista_almacenes = []
-    obtener_almacenes(@lista_almacenes)
+  def index
+
+    @general = APIBodega.get_skusWithStock(ENV["BODEGA_GENERAL"])
+    @despacho = APIBodega.get_skusWithStock(ENV["BODEGA_DESPACHO"])
+    @recepcion = APIBodega.get_skusWithStock(ENV["BODEGA_RECEPCION"])
+    @pulmon = APIBodega.get_skusWithStock(ENV["BODEGA_PULMON"])
+
+    # @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
+    # almacenes =  APIBodega.get_almacenes()
+    # @ARREGLO_ALMACENES = Array.new
+    # for i in 0..almacenes.length-1
+    #   @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
+    # end
+    #
+    # @dicc_skus = {}
+    # obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
+    # @lista_almacenes = []
+    # obtener_almacenes(@lista_almacenes)
     @ordenes_fabricacion = OrdenFabricacion.all
     @transactions = Transaction.all
     datos = encontrar_datos
