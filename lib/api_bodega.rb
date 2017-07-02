@@ -256,13 +256,44 @@ class APIBodega
 
 #Mueve los productos de general a despacho y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
-    for i in 0..cantidad-1
+    stock = get_stock(sku.to_s, @BODEGA_GENERAL) #Se obtiene el stock de sku de general :)!
+    ##---------------##
+    while stock.length != 0
+      for i in 0..stock.length - 1
+        if cantidad == 0
+          return 'Finished moving'
+        end
+        mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
+        sleep(0.5)
+        mover_Stock_Bodega(stock[i]["_id"], direccion, oc, precio)
+        sleep(0.5)
+        cantidad -= 1
+      end
+      stock = get_stock(sku.to_s, @BODEGA_GENERAL)
     end
-    mover_General_Despacho(sku, cantidad)
-    stock = get_stock(sku, @BODEGA_DESPACHO)
-    for i in stock
-    puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    ##---------------##
+    # mover_General_Despacho(sku, cantidad)
+    # stock = get_stock(sku, @BODEGA_DESPACHO)
+    # for i in stock
+    # puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    # end
+  end
+
+  stock = get_stock(sku.to_s, @BODEGA_GENERAL)
+  #puts stock
+  while stock.length != 0
+    for i in 0..stock.length - 1
+      if cantidad == 0
+        return 'Hello there, finished moving'
+      end
+      mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
+      puts cantidad -= 1
+      if i != 0 && i%40==0
+        puts 'DURMIENDOOOOOOOO'*10
+        sleep(30)
+      end
     end
+    stock = get_stock(sku.to_s, @BODEGA_GENERAL)
   end
 
   def self.despachar_Orden_Despacho(sku, cantidad, precio, direccion, oc)
