@@ -279,23 +279,6 @@ class APIBodega
     # end
   end
 
-  stock = get_stock(sku.to_s, @BODEGA_GENERAL)
-  #puts stock
-  while stock.length != 0
-    for i in 0..stock.length - 1
-      if cantidad == 0
-        return 'Hello there, finished moving'
-      end
-      mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
-      puts cantidad -= 1
-      if i != 0 && i%40==0
-        puts 'DURMIENDOOOOOOOO'*10
-        sleep(30)
-      end
-    end
-    stock = get_stock(sku.to_s, @BODEGA_GENERAL)
-  end
-
   def self.despachar_Orden_Despacho(sku, cantidad, precio, direccion, oc)
     stock = get_stock(sku, @BODEGA_DESPACHO)
     count = 0
