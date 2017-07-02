@@ -256,27 +256,13 @@ class APIBodega
 
 #Mueve los productos de general a despacho y despues los despacha al almacen del otro grupo
   def self.despachar_Orden(sku, cantidad, precio, direccion, oc)
-    stock = get_stock(sku.to_s, @BODEGA_GENERAL) #Se obtiene el stock de sku de general :)!
-    ##---------------##
-    while stock.length != 0
-      for i in 0..stock.length - 1
-        if cantidad == 0
-          return 'Finished moving'
-        end
-        mover_Stock(stock[i]["_id"],@BODEGA_DESPACHO)
-        sleep(0.5)
-        mover_Stock_Bodega(stock[i]["_id"], direccion, oc, precio)
-        sleep(0.5)
-        cantidad -= 1
-      end
-      stock = get_stock(sku.to_s, @BODEGA_GENERAL)
+    for i in 0..cantidad-1
     end
-    ##---------------##
-    # mover_General_Despacho(sku, cantidad)
-    # stock = get_stock(sku, @BODEGA_DESPACHO)
-    # for i in stock
-    # puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
-    # end
+    mover_General_Despacho(sku, cantidad)
+    stock = get_stock(sku, @BODEGA_DESPACHO)
+    for i in stock
+    puts  mover_Stock_Bodega(i["_id"], direccion, oc, precio)
+    end
   end
 
   def self.despachar_Orden_Despacho(sku, cantidad, precio, direccion, oc)
@@ -484,15 +470,15 @@ class APIBodega
   def self.post_url(uri, params, authorization)
     @auth = 'INTEGRACION grupo8:'.concat(authorization)
     @url = @API_URL_BODEGA + uri
-    begin
+    # begin
       @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
     # TODO more error checking (500 error, etc)
       puts "response code " + @response.code.to_s
-    rescue
-      puts "--------------------INTENTANDO NUEVAMENTE--------------------------"
-      retry
-      #@response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
-    end
+    # rescue
+    #   puts "--------------------INTENTANDO NUEVAMENTE--------------------------"
+    #   retry
+    #   @response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
+    # end
     json = JSON.parse(@response.body)
     #puts json
   end

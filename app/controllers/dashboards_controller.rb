@@ -4,7 +4,7 @@ require 'dashboard_lib'
 require 'api_distribuidores.rb'
 
 class DashboardsController < ActionController::Base
-  #@ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
+  @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
   ##ACEITE MARA - CREMA - SEMOLA - CACAO - HARINA - SAL -LEVADURA - SEMILLAS_MARAVILLA - CEREAL_MAIZ - PAN INT
   ##GEN-GEN2-RECEP-DESPA-PULM
 
@@ -16,16 +16,26 @@ class DashboardsController < ActionController::Base
   # end
 
   def index
+    @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
+    almacenes =  APIBodega.get_almacenes()
+    @ARREGLO_ALMACENES = Array.new
+    for i in 0..almacenes.length-1
+      @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
+    end
 
-    @errores = ''
-
-    begin
+    @dicc_skus = {}
+    obtain_skus(@ARREGLO_ALMACENES, @dicc_skus)
+    @lista_almacenes = []
+    obtener_almacenes(@lista_almacenes)
     @ordenes_fabricacion = OrdenFabricacion.all
     @transactions = Transaction.all
     datos = encontrar_datos
     exitosas = encontrar_exitosas
     boletas = encontrar_datos_boletas
     pendientes = encontrar_pendientes
+    puts "."*100
+    puts boletas
+    puts "."*100
     @graph = Gchart.pie(  :size => '600x500',
               :title => "Transacciones por monto: Monto - Status",
               :bg => 'efefef',
@@ -54,18 +64,10 @@ class DashboardsController < ActionController::Base
               :legend => ["Exitosas", "Fracasadas"],
               :labels => pendientes,
               :data => pendientes)
-    rescue
-      @errores += 'error en graficos 1-3 \n'
-    end
 
 
-    begin
-      @stock_por_almacen = DashboardLib.get_almacen_data
-    rescue
-      @errores += 'error en dashboard lib'
-    end
+    @stock_por_almacen = DashboardLib.get_almacen_data
 
-    begin
     @OCEstados = Odistribuidore.all
     @OCEstados_estados = Odistribuidore.all.group(:estado).count
 
@@ -75,10 +77,6 @@ class DashboardsController < ActionController::Base
               :legend => @OCEstados_estados.keys,
               :labels => @OCEstados_estados.values,
               :data => @OCEstados_estados.values)
-    rescue
-      @errores += 'error en graph 4'
-    end
-
 
   end
 
