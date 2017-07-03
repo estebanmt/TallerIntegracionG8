@@ -62,7 +62,7 @@ class DashboardLib
     response[numSkus][2] = 0
     response[numSkus][3] = 0
     response[numSkus][4] = 0
-    for i in 1..numSkus-1
+    for i in 0..numSkus-1
       response[numSkus][1] += response[i][1]
       response[numSkus][2] += response[i][2]
       response[numSkus][3] += response[i][3]
