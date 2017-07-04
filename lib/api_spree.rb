@@ -9,72 +9,31 @@ class APISpree
   @SPREE_API_KEY = ENV["SPREE_API_KEY"]
   @API_URL_SPREE = ENV["API_URL_SPREE"]
 
-  @ingredients = [ [4, 'Aceite de Maravilla', 'Lts', 38, 'Semillas Maravilla', 190, 'Kg'],
-              [6, 'Crema', 'Lts', 49, 'Leche Descremada', 100, 'Lts'],
-              [6, 'Crema', 'Lts', 7, 'Leche', 300, 'Lts'],
-              [23, 'Harina', 'Kg', 8, 'Trigo', 309, 'Kg'],
-              [42, 'Cereal Maiz', 'Kg', 25, 'Azucar', 67, 'Kg'],
-              [42, 'Cereal Maiz', 'Kg', 20, 'Cacao', 71, 'Kg'],
-              [42, 'Cereal Maiz', 'Kg', 3, 'Maiz', 69, 'Kg'],
-              [53, 'Pan Integral', 'Kg', 52, 'Harina Integral', 500, 'Kg'],
-              [53, 'Pan Integral', 'Kg', 26, 'Sal', 63, 'Kg'],
-              [53, 'Pan Integral', 'Kg', 7, 'Leche', 651, 'Lts'],
-              [53, 'Pan Integral', 'Kg', 23, 'Harina', 15, 'Kg'],
-              [53, 'Pan Integral', 'Kg', 38, 'Semillas Maravilla', 250,'Kg']
-  ]
-
-  @LOTE_SKU = ["4" => 200, "6"=> 30, "19"=> 1420, "20"=> 60, "23"=>300,
-     "26"=>144, "27"=> 620, "38"=> 30, "42"=> 200, "53"=> 620]
-
-
-  ## Create
-  curl -i -X POST -H "X-Spree-Token: 1375e7e9ef762240bdc94e59c51b56f8f17d67804eeed43f" -d "product[name]=Prod1&product[price]=1000&product[shipping_category_id]=1" \
-http://localhost:4000/api/v1/products
-
-  @URI_GET_PRODUCTS = 'products'
-
 
   def initialize()
+    create_all_object
   end
 
-  @COSTO_SKU = ["4" => 412, "6"=> 514, "19"=> 116, "20"=> 172, "23"=>364,
-     "26"=>99, "27"=> 232, "38"=> 379, "42"=> 812, "53"=> 934]
+  @products = [ [4, 'Aceite de Maravilla', 'Producto procesado', 8, 'Lts', 412, 200, 1, 2, 1.205],
+                [6, 'Crema', 'Producto procesado', 8, 'Lts', 514, 30, 2, 2, 2.481],
+                [19, 'Semola', 'Materia prima', 8, 'Kg', 116, 1420, 0, 1, 1.881],
+                [20, 'Cacao', 'Materia prima', 8, 'Kg', 172, 60, 0, 5, 2.258],
+                [23, 'Harina', 'Producto procesado', 8, 'Kg', 364, 300, 1, 6, 0.910],
+                [26, 'Sal', 'Materia prima', 8, 'Kg', 99, 144, 0, 7, 3.059],
+                [27, 'Levadura', 'Materia prima', 8, 'Kg', 232, 620, 0, 4, 1.566],
+                [38, 'Semillas Maravilla', 'Materia prima', 8, 'Kg', 379, 30, 0, 3, 3.462],
+                [42, 'Cereal Maiz', 'Producto procesado', 8, 'Kg', 812, 200, 3, 0, 2.743],
+                [53, 'Pan Integral', 'Producto', 8, 'Kg', 934, 620, 5, 0, 2.400]]
 
-  @URL_PAGO_TRANSFERENCIA = ENV["URL_PAGO_TRANSFERENCIA"]
-
-
-  def self.update_sku()
-    params = {'monto' => monto, 'origen' => @CUENTA_BANCO, 'destino' => @CUENTA_FABRICA}
-    response = put_url_banco("/trx", params, )
-    #return response["_id"]
-    return response
-  end
-
-  def self.put_url_spree(uri, params)
-    @url = @API_URL_SPREE + uri
-    #puts params
-    @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json#, :Authorization => 'INTEGRACION grupo8:'.concat(authorization)
-    json = JSON.parse(@response.body)
-    return json
-  end
-
-  def self.create_sku(productoId, almacenId)
-    params = {'product[name]' => almacenId, 'product[price]' => productoId, 'product[shipping_category_id]' => 1}
-
-    return post_url(@API_URL_SPREE, params)
-  end
-
-  def self.query_params(params)
-    if params != nil
-      queryParams = "";
-      params.each do |field, value|
-        queryParams.concat(field).concat("=").concat(value).concat("&");
-        #queryParams = queryParams + field + "=" + value + "&";
-      end
-      return queryParams
-    else
-      return nil;
+  def self.create_all_object()
+    @products.each do |product|
+      create_sku(product[1], product[2], product[3], product[6])
     end
+  end
+
+  def self.create_product(sku, nombre, tipo, precio)
+    params = {'product[sku]' => sku, 'product[name]' => nombre, 'product[price]' => precio, 'product[shipping_category_id]' => 1}
+    return post_url('products', params)
   end
 
   def self.post_url(uri, params)
@@ -90,31 +49,29 @@ http://localhost:4000/api/v1/products
     puts json
   end
 
-  def self.put_url(uri, params, authorization)
-    #puts params
+  def self.put_url(uri, params)
+    puts params
 
     @url = @API_URL_SPREE + uri
-    #puts @url
+    puts @url
 
     @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :X-Spree-Token => @SPREE_API_KEY
-    # TODO more error checking (500 error, etc)
     json = JSON.parse(@response.body)
     return json
   end
 
-  def self.delete_url(uri, params, authorization)
-    @url = @API_URL_SPREE + uri
-
-    @response = HTTParty.delete(@url, {:headers => {'Content-Type' => 'application/json', :X-Spree-Token => @SPREE_API_KEY},
-                                       :body => params.to_json})
-
-    # TODO more error checking (500 error, etc)
-    json = JSON.parse(@response.body)
-    #puts json
-    return json
-
+  def self.query_params(params)
+    if params != nil
+      queryParams = "";
+      params.each do |field, value|
+        queryParams.concat(field).concat("=").concat(value).concat("&");
+        #queryParams = queryParams + field + "=" + value + "&";
+      end
+      return queryParams
+    else
+      return nil;
+    end
   end
-
 
 end
 
