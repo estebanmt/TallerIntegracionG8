@@ -382,7 +382,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capistrano (~> 3.7, >= 3.7.1)
+  capistrano
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.2)
   capistrano-rails-db
@@ -396,7 +396,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   net-sftp
   net-ssh
-  pg (~> 0.18)
+  pg
   puma (~> 3.0)
   rails (= 5.0.1)
   rake-assets
@@ -414,4 +414,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

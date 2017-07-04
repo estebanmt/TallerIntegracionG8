@@ -43,3 +43,6 @@ API_URL_OC: 'https://integracion-2017-dev.herokuapp.com/oc/'
 API_URL_PAGO: 'https://integracion-2017-dev.herokuapp.com/web/'
 URL_PAY_PROXY: 'http://localhost:3000/payproxies/'
 API_URL_FACTURAS: 'https://integracion-2017-dev.herokuapp.com/sii/' ##Produccion
+
+SPREE_API_KEY: "1375e7e9ef762240bdc94e59c51b56f8f17d67804eeed43f"
+API_URL_SPREE: "http://localhost:4000/api/v1/"
