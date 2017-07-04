@@ -12,6 +12,8 @@ gem 'hirb'
 
 gem 'googlecharts'
 
+gem 'bunny'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.1'
 # Use postgresql as the database for Active Record
@@ -81,5 +83,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'spree', '~> 3.2.0'
 gem 'spree_auth_devise', '~> 3.2.0.beta'
 gem 'spree_gateway', '~> 3.2.0.beta'
-
-

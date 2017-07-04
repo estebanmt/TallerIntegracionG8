@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622032711) do
+ActiveRecord::Schema.define(version: 20170704205802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "adyen_notifications", force: :cascade do |t|
     t.boolean  "live",                             default: false, null: false
@@ -106,6 +105,16 @@ ActiveRecord::Schema.define(version: 20170622032711) do
     t.string   "_id"
   end
 
+  create_table "orden_fabrics", force: :cascade do |t|
+    t.string   "sku"
+    t.integer  "cantidad"
+    t.string   "_id"
+    t.integer  "monto"
+    t.string   "disponible"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string   "_id"
     t.string   "canal"
@@ -143,6 +152,17 @@ ActiveRecord::Schema.define(version: 20170622032711) do
     t.string   "product_id"
     t.string   "warehouse_id"
     t.decimal  "cost",         precision: 64, scale: 12
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string   "sku"
+    t.integer  "precio"
+    t.datetime "inicio"
+    t.datetime "fin"
+    t.boolean  "publicar"
+    t.string   "codigo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "receipts", force: :cascade do |t|
@@ -480,14 +500,10 @@ ActiveRecord::Schema.define(version: 20170622032711) do
     t.string   "number"
     t.string   "cvv_response_code"
     t.string   "cvv_response_message"
-    t.hstore   "webpay_params"
-    t.string   "webpay_trx_id"
-    t.boolean  "accepted"
     t.index ["number"], name: "index_spree_payments_on_number", using: :btree
     t.index ["order_id"], name: "index_spree_payments_on_order_id", using: :btree
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id", using: :btree
     t.index ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type", using: :btree
-    t.index ["webpay_trx_id"], name: "index_spree_payments_on_webpay_trx_id", using: :btree
   end
 
   create_table "spree_preferences", force: :cascade do |t|

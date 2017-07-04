@@ -5,15 +5,6 @@ require 'api_distribuidores.rb'
 
 class DashboardsController < ActionController::Base
   @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
-  ##ACEITE MARA - CREMA - SEMOLA - CACAO - HARINA - SAL -LEVADURA - SEMILLAS_MARAVILLA - CEREAL_MAIZ - PAN INT
-  ##GEN-GEN2-RECEP-DESPA-PULM
-
-  # almacenes =  APIBodega.get_almacenes()
-  # puts almacenes
-  # @ARREGLO_ALMACENES = Array.new
-  # for i in 0..almacenes.length-1
-  #   @ARREGLO_ALMACENES.push(almacenes[i]["_id"])
-  # end
 
   def index
     @ARREGLO_SKUS = ['4', '6', '19', '20', '23', '26', '27', '38', '42', '53']
