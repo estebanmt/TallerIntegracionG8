@@ -44,5 +44,8 @@ API_URL_PAGO: 'https://integracion-2017-dev.herokuapp.com/web/'
 URL_PAY_PROXY: 'http://localhost:3000/payproxies/'
 API_URL_FACTURAS: 'https://integracion-2017-dev.herokuapp.com/sii/' ##Produccion
 
-SPREE_API_KEY: "a685e0757f4d0175ce1a17a924a330bfdcf8a939216171f0"
-API_URL_SPREE: "http://localhost:4000/api/v1/"
+SPREE_API_KEY: "234c9658f8a875bc61a06ce83c058feb5340777ee9df14ff"
+API_URL_SPREE: "http://integra17-8.ing.puc.cl/api/v1/"
+
+#SPREE_API_KEY: "a685e0757f4d0175ce1a17a924a330bfdcf8a939216171f0"
+#API_URL_SPREE: "http://localhost:4000/api/v1/"

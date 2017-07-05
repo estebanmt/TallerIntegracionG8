@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40f1ad05-5f95-49aa-910b-6e6424cf13f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/api_env.yml" afterPath="$PROJECT_DIR$/config/api_env.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/schedule.rb" afterPath="$PROJECT_DIR$/config/schedule.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/api_spree.rb" afterPath="$PROJECT_DIR$/lib/api_spree.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/spree.rake" afterPath="$PROJECT_DIR$/lib/tasks/spree.rake" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -63,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/config/api_env.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="690">
-              <caret line="46" column="64" lean-forward="false" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+              <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -940,7 +935,7 @@
       <workItem from="1497760005125" duration="7878000" />
       <workItem from="1497842530832" duration="8717000" />
       <workItem from="1498623057648" duration="512000" />
-      <workItem from="1499193768481" duration="19131000" />
+      <workItem from="1499193768481" duration="19706000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch remotes/origin/spree_iic3103pay'">
       <created>1496164037492</created>
@@ -1061,11 +1056,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499214631195</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="refresh spree stock">
+      <created>1499235386381</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1499235386381</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118869000" />
+    <option name="totallyTimeSpent" value="119444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1751" height="965" extended-state="0" />
@@ -1119,7 +1121,8 @@
     <MESSAGE value="change controller" />
     <MESSAGE value="Notices update" />
     <MESSAGE value="spree api chagnes" />
-    <option name="LAST_COMMIT_MESSAGE" value="spree api chagnes" />
+    <MESSAGE value="refresh spree stock" />
+    <option name="LAST_COMMIT_MESSAGE" value="refresh spree stock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1634,7 +1637,7 @@
     <entry file="file://$PROJECT_DIR$/config/api_env.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
-          <caret line="46" column="64" lean-forward="false" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
           <folding />
         </state>
       </provider>
