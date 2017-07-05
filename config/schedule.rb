@@ -29,5 +29,8 @@ set :environment, "development"
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 every 30.minutes do
   rake "bodega:vaciar_bodega_recepcion"
+end
 
+every 60.minutes do
+  rake "spree:refresh_stock"
 end

@@ -1,17 +1,22 @@
+require_relative 'api_bodega'
 require 'rest_client'
 require 'openssl'
 require "base64"
 require 'digest'
 require 'json'
 require 'httparty'
+require 'cgi'
+
 
 class APISpree
   @SPREE_API_KEY = ENV["SPREE_API_KEY"]
   @API_URL_SPREE = ENV["API_URL_SPREE"]
+  @BODEGA_GENERAL =  ENV["BODEGA_GENERAL"]
 
 
-  @SPREE_API_KEY = "a685e0757f4d0175ce1a17a924a330bfdcf8a939216171f0"
-  @API_URL_SPREE = "http://localhost:4000/api/v1/"
+ # @SPREE_API_KEY = "a685e0757f4d0175ce1a17a924a330bfdcf8a939216171f0"
+ # @API_URL_SPREE = "http://localhost:4000/api/v1/"
+ # @BODEGA_GENERAL =  "590baa77d6b4ec0004902cbf"
 
 
   def initialize()
@@ -36,59 +41,180 @@ class APISpree
     end
   end
 
+
+  def self.refresh_stock
+    json = APIBodega.get_skusWithStock(@BODEGA_GENERAL)
+    puts  "skus con stock #{json}"
+
+    @products.each do |product|
+
+      stock_item =  get_stock_item(product[0].to_s)
+      if (stock_item != nil)
+        add_stock(stock_item["id"], 100)
+      else
+        puts "product invalid con sku #{product[0].to_s}"
+      end
+
+
+    end
+  end
+
   def self.create_product(sku, nombre, tipo, precio)
     params = {'product[sku]' => sku, 'product[name]' => nombre, 'product[price]' => precio, 'product[shipping_category_id]' => 1}
+    #params = {'sku' => sku, 'name' => nombre, 'price' => precio, 'shipping_category_id' => 1}
     return post_url('products', params)
   end
 
+
+
+
   def self.post_url(uri, params)
     @url = @API_URL_SPREE + uri
-    body_params = query_params(params)
+    #query_params = CGI::escape(query_params(params))
+    query_params = query_params(params)
     puts @url
-    puts body_params
+    puts query_params
+    puts params.to_json
+
+    url_param = @url + '?' + query_params
 
     @response = RestClient::Request.new({
-                                           method: :post,
-                                           url: @url,
+      method: :post,
+      url: url_param,
       user: 'someone',
       password: 'mybirthday',
-      payload: params.to_json,
       headers: { :accept => :json, content_type: :json, :'X-Spree-Token' => @SPREE_API_KEY }
     }).execute do |response, request, result|
       case response.code
       when 400
-        [ :error, parse_json(response.to_str) ]
+        [ :error, response.to_str.to_json ]
       when 200
-        [ :success, parse_json(response.to_str) ]
+        [ :success, response.to_str.to_json ]
+      when 201
+        [ :success, response.to_str.to_json ]
       else
-        fail "Invalid response #{response.to_str} received."
+        puts  "Invalid response #{response.to_str} received."
       end
     end
 
+  end
 
 
+  def self.add_stock(stock_item_id, quantity)
+    @url = @API_URL_SPREE + 'stock_locations/1/stock_movements'
 
-#
-# begin
-      #@response=RestClient.post @url, params.to_json, :content_type => :json, :accept => :json, :'X-Spree-Token' => @SPREE_API_KEY
-      puts "response code " + @response.code.to_s
-#    rescue Exception => e
-#      puts e.message
-#      puts e.backtrace.inspect
-#    end
-    json = JSON.parse(@response.body)
-    puts json
+    body = '{
+      "stock_movement": {
+        "quantity":"' + quantity.to_s + '",
+        "stock_item_id":"' + stock_item_id.to_s + '",
+        "action": "received"
+      }
+    }'
+
+    puts @url
+
+    @response = RestClient::Request.new({
+                                            method: :post,
+                                            url: @url,
+                                            user: 'someone',
+                                            password: 'mybirthday',
+                                            payload: body,
+                                            headers: { :accept => :json, content_type: :json, :'X-Spree-Token' => @SPREE_API_KEY }
+                                        }).execute do |response, request, result|
+      case response.code
+        when 400
+          [ :error, response.to_str.to_json ]
+        when 200
+          [ :success, response.to_str.to_json ]
+        when 201
+          [ :success, response.to_str.to_json ]
+        else
+          fail "Invalid response #{response.to_str} received."
+      end
+    end
+
+    puts @response
+
+  end
+
+  def self.get_stock_item(sku)
+    params = {'q[sku_cont]' => sku}
+    variants = get('variants', params)
+    if (variants["count"] > 0)
+      stock_items = variants["variants"][0]["stock_items"]
+      stock_items.each do |item|
+        if item["available"]
+          return item
+        end
+      end
+    end
+  end
+
+  def self.get(uri, params)
+    @url = @API_URL_SPREE + uri
+    #query_params = CGI::escape(query_params(params))
+    query_params = query_params(params)
+    puts @url
+    puts query_params
+    puts params.to_json
+
+    url_param = @url + '?' + query_params
+
+    @response = RestClient::Request.execute(
+        method: :get,
+        url: url_param,
+        headers: { :accept => :json, content_type: :json, :'X-Spree-Token' => @SPREE_API_KEY }
+    )
+
+     json1 = JSON.parse(@response)
+
+    puts json1
+
+    return json1
+  end
+
+  def self.test
+    client = Spree::API::Client.new(@API_URL_SPREE, @SPREE_API_KEY)
+    products = client.products
+
+    puts products
+  end
+
+  def self.update_product(sku, cantidad)
+    params = {'product[sku]' => sku, 'product[name]' => nombre, 'product[price]' => precio, 'product[shipping_category_id]' => 1}
+    #params = {'sku' => sku, 'name' => nombre, 'price' => precio, 'shipping_category_id' => 1}
+    return post_url('products', params)
   end
 
   def self.put_url(uri, params)
-    puts params
-
     @url = @API_URL_SPREE + uri
+    #query_params = CGI::escape(query_params(params))
+    query_params = query_params(params)
     puts @url
+    puts query_params
+    puts params.to_json
 
-    @response=RestClient.put @url, params.to_json, :content_type => :json, :accept => :json, :"X-Spree-Token" => @SPREE_API_KEY
-    json = JSON.parse(@response.body)
-    return json
+    url_param = @url + '?' + query_params
+
+    @response = RestClient::Request.new({
+                                            method: :post,
+                                            url: url_param,
+                                            user: 'someone',
+                                            password: 'mybirthday',
+                                            headers: { :accept => :json, content_type: :json, :'X-Spree-Token' => @SPREE_API_KEY }
+                                        }).execute do |response, request, result|
+      case response.code
+        when 400
+          [ :error, response.to_str.to_json ]
+        when 200
+          [ :success, response.to_str.to_json ]
+        when 201
+          [ :success, response.to_str.to_json ]
+        else
+          fail "Invalid response #{response.to_str} received."
+      end
+    end
+
   end
 
   def self.query_params(params)
@@ -106,4 +232,4 @@ class APISpree
 
 end
 
-APISpree.create_all_object
+#APISpree.refresh_stock
